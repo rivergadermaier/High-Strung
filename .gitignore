@@ -2,6 +2,8 @@
 # Magento Default Files    #
 #--------------------------#
 
+*.tx
+
 /PATCH_*.sh
 
 /app/etc/local.xml
