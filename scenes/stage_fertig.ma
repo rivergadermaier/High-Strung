@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: stage_fertig.ma
-//Last modified: Fri, May 26, 2023 03:05:55 PM
+//Last modified: Sat, Jun 03, 2023 04:11:24 PM
 //Codeset: 1252
 requires maya "2023";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiStandardSurface"
@@ -13,17 +13,17 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "D5CD424A-4435-E4A1-3681-F29A57E27F2B";
+fileInfo "UUID" "697E2A52-4493-AB77-6786-4E80B6317BF5";
 createNode transform -s -n "persp";
 	rename -uid "956FFF1C-4AFF-8F17-5764-63BDE50A3963";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -23.926041563312388 -4.8470985429051217 420.53465786328326 ;
+	setAttr ".t" -type "double3" -23.926041563311806 -4.8470985429050808 420.53465786327439 ;
 	setAttr ".r" -type "double3" 0.26164727363034646 356.20000000005126 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "C1FC66D2-4FBB-4388-5533-A78A99C334CB";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 366.71663560801107;
+	setAttr ".coi" 366.71663560800295;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -13623,19 +13623,19 @@ createNode mesh -n "plane_canvasSize3Shape" -p "plane_canvasSize3";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 	setAttr ".ai_opaque" no;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "4D6FD857-460D-D8C9-5479-CBA93FBB0632";
-	setAttr -s 33 ".lnk";
-	setAttr -s 33 ".slnk";
+	rename -uid "6F0B7676-472C-238F-779B-5CB31274A266";
+	setAttr -s 6 ".lnk";
+	setAttr -s 6 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "BC3A40BF-4077-F4CA-74AE-F69D5CAF991B";
+	rename -uid "EEC7123A-420F-4667-1808-268C02E67B86";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "A86E8E29-4BDF-A80C-B082-D7A9D7D2A55B";
+	rename -uid "F5AEB48F-4956-A3E2-AB1B-2FAB330C8EAE";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "DDC5C0A4-44A1-5B18-A23F-3EAA3752FB85";
+	rename -uid "165D4CAA-4811-FC93-63AE-D5A297178FE9";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "AD37AFA8-407A-F8E3-83C9-11AB5E1E0999";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "52D06BD5-46F1-5C99-99D7-699B73D9A8A0";
+	rename -uid "FA7F5913-4770-EF6B-489E-7488684B0307";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "D7A1DAA2-4182-F010-697F-9A9E267289E7";
 	setAttr ".g" yes;
@@ -13848,52 +13848,11 @@ createNode displacementShader -n "displacementShader1";
 createNode bump2d -n "bump2d1";
 	rename -uid "BE9FE4C6-4BC3-101B-20AF-CBB81D8992F6";
 	setAttr ".bi" 1;
-	setAttr ".vc1" -type "float3" 0 3.9999999e-05 0 ;
+	setAttr ".vc1" -type "float3" 0 2.9999999e-05 0 ;
 	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
-createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "A23BFE42-46BF-8DA8-2FF7-3CBE38526AE5";
-	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" 1737.0589588057328 -2046.5601643093325 ;
-	setAttr ".tgi[0].vh" -type "double2" 4398.9636149359058 -187.03642867635821 ;
-	setAttr -s 12 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 3190;
-	setAttr ".tgi[0].ni[0].y" -872.85711669921875;
-	setAttr ".tgi[0].ni[0].nvs" 2387;
-	setAttr ".tgi[0].ni[1].x" 2525.71435546875;
-	setAttr ".tgi[0].ni[1].y" -818.5714111328125;
-	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" 2854.28564453125;
-	setAttr ".tgi[0].ni[2].y" -1202.857177734375;
-	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" 2525.71435546875;
-	setAttr ".tgi[0].ni[3].y" -1108.5714111328125;
-	setAttr ".tgi[0].ni[3].nvs" 1923;
-	setAttr ".tgi[0].ni[4].x" 3538.571533203125;
-	setAttr ".tgi[0].ni[4].y" -762.85711669921875;
-	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" 2854.28564453125;
-	setAttr ".tgi[0].ni[5].y" -851.4285888671875;
-	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" 3190;
-	setAttr ".tgi[0].ni[6].y" -697.14288330078125;
-	setAttr ".tgi[0].ni[6].nvs" 1923;
-	setAttr ".tgi[0].ni[7].x" 2854.28564453125;
-	setAttr ".tgi[0].ni[7].y" -1027.142822265625;
-	setAttr ".tgi[0].ni[7].nvs" 1923;
-	setAttr ".tgi[0].ni[8].x" 2854.28564453125;
-	setAttr ".tgi[0].ni[8].y" -675.71429443359375;
-	setAttr ".tgi[0].ni[8].nvs" 1923;
-	setAttr ".tgi[0].ni[9].x" 2218.571533203125;
-	setAttr ".tgi[0].ni[9].y" -1020;
-	setAttr ".tgi[0].ni[9].nvs" 1923;
-	setAttr ".tgi[0].ni[10].x" 2854.28564453125;
-	setAttr ".tgi[0].ni[10].y" -1355.7142333984375;
-	setAttr ".tgi[0].ni[10].nvs" 1923;
-	setAttr ".tgi[0].ni[11].x" 2975.71435546875;
-	setAttr ".tgi[0].ni[11].y" -1728.5714111328125;
-	setAttr ".tgi[0].ni[11].nvs" 1923;
 createNode aiStandardSurface -n "aiStandardSurface1";
 	rename -uid "1AF2B979-4987-E088-5D16-D8A3551CC9E3";
+	setAttr ".specular_roughness" 1;
 createNode shadingEngine -n "aiStandardSurface1SG";
 	rename -uid "AF28F4B0-4677-0CD3-47F3-E0B37F869C9B";
 	setAttr ".ihi" 0;
@@ -13916,6 +13875,7 @@ createNode partition -s -n "creasePartition";
 	rename -uid "D94EFE65-412A-FA80-77D7-85B08A9F876E";
 createNode aiStandardSurface -n "aiStandardSurface2";
 	rename -uid "080D8EBF-4645-3A21-EA9B-CD8749588475";
+	setAttr ".specular_roughness" 1;
 createNode shadingEngine -n "aiStandardSurface2SG";
 	rename -uid "74C06B13-40DE-1C5B-D848-25BDEE0B4376";
 	setAttr ".ihi" 0;
@@ -13936,6 +13896,7 @@ createNode place2dTexture -n "place2dTexture7";
 	rename -uid "D8666FDD-4D74-D603-980E-C58424815C38";
 createNode aiStandardSurface -n "aiStandardSurface3";
 	rename -uid "B958A3FE-430F-52CB-2A5C-938C8A8B32AB";
+	setAttr ".specular_roughness" 1;
 createNode shadingEngine -n "aiStandardSurface3SG";
 	rename -uid "9843FD48-4E9D-6D4A-15D4-78AC1C8FA02E";
 	setAttr ".ihi" 0;
@@ -13954,6 +13915,45 @@ createNode file -n "file13";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "place2dTexture9";
 	rename -uid "02D41A02-4234-D306-629C-6C849806B83E";
+createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
+	rename -uid "5DF2A166-4C4B-CA1D-7092-03911D6501C2";
+	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
+	setAttr ".tgi[0].vl" -type "double2" 2253.1293347095543 -1801.9055869854217 ;
+	setAttr ".tgi[0].vh" -type "double2" 4348.8451434053941 -486.18194998832723 ;
+	setAttr -s 11 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" 2525.71435546875;
+	setAttr ".tgi[0].ni[0].y" -1108.5714111328125;
+	setAttr ".tgi[0].ni[0].nvs" 1923;
+	setAttr ".tgi[0].ni[1].x" 3190;
+	setAttr ".tgi[0].ni[1].y" -697.14288330078125;
+	setAttr ".tgi[0].ni[1].nvs" 1923;
+	setAttr ".tgi[0].ni[2].x" 2525.71435546875;
+	setAttr ".tgi[0].ni[2].y" -818.5714111328125;
+	setAttr ".tgi[0].ni[2].nvs" 1923;
+	setAttr ".tgi[0].ni[3].x" 2218.571533203125;
+	setAttr ".tgi[0].ni[3].y" -1020;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" 2854.28564453125;
+	setAttr ".tgi[0].ni[4].y" -851.4285888671875;
+	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[5].x" 2854.28564453125;
+	setAttr ".tgi[0].ni[5].y" -1355.7142333984375;
+	setAttr ".tgi[0].ni[5].nvs" 1923;
+	setAttr ".tgi[0].ni[6].x" 2854.28564453125;
+	setAttr ".tgi[0].ni[6].y" -675.71429443359375;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" 3190;
+	setAttr ".tgi[0].ni[7].y" -872.85711669921875;
+	setAttr ".tgi[0].ni[7].nvs" 2387;
+	setAttr ".tgi[0].ni[8].x" 2854.28564453125;
+	setAttr ".tgi[0].ni[8].y" -1202.857177734375;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" 2854.28564453125;
+	setAttr ".tgi[0].ni[9].y" -1027.142822265625;
+	setAttr ".tgi[0].ni[9].nvs" 1923;
+	setAttr ".tgi[0].ni[10].x" 3538.571533203125;
+	setAttr ".tgi[0].ni[10].y" -762.85711669921875;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -14155,28 +14155,6 @@ connectAttr "stage_MAT.msg" "materialInfo7.m";
 connectAttr "stage_MAT.msg" "materialInfo7.t" -na;
 connectAttr "file4.oa" "displacementShader1.d";
 connectAttr "file6.oa" "bump2d1.bv";
-connectAttr "stage_MAT.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
-		;
-connectAttr "file3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
-		;
-connectAttr "bump2d1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
-		;
-connectAttr "file6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
-		;
-connectAttr "set1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
-		;
-connectAttr "multiplyDivide1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
-		;
-connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
-		;
-connectAttr "file5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
-		;
-connectAttr "file4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
-		;
-connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
-		;
-connectAttr "file7.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
-		;
 connectAttr "file8.oc" "aiStandardSurface1.base_color";
 connectAttr "file9.oc" "aiStandardSurface1.opacity";
 connectAttr "aiStandardSurface1.out" "aiStandardSurface1SG.ss";
@@ -14330,6 +14308,28 @@ connectAttr "place2dTexture9.vt3" "file13.vt3";
 connectAttr "place2dTexture9.vc1" "file13.vc1";
 connectAttr "place2dTexture9.o" "file13.uv";
 connectAttr "place2dTexture9.ofs" "file13.fs";
+connectAttr "file6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "file3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "multiplyDivide1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "file7.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "file4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "stage_MAT.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "bump2d1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "file5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "set1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
 connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface2SG.pa" ":renderPartition.st" -na;
