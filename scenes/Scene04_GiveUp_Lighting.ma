@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Scene04_GiveUp_Lighting.ma
-//Last modified: Sat, Jun 10, 2023 09:18:08 PM
+//Last modified: Mon, Jun 12, 2023 10:56:23 AM
 //Codeset: 1252
 file -rdi 1 -ns "Geige_Rig" -rfn "Geige_RigRN" -op "v=0;" -typ "mayaAscii" "E:/High-Strung//scenes/Geige_Rig.ma";
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
@@ -21,18 +21,18 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "C76F631D-4FFA-052A-D00F-97BB52465A68";
+fileInfo "UUID" "6905CB20-495C-D00B-F37E-53AF67350772";
 createNode transform -s -n "persp";
 	rename -uid "EC91D28C-47A7-6F78-97BD-25A7F411BD77";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -3.9885374890951866 -9.3930567969300256 62.63129212026189 ;
-	setAttr ".r" -type "double3" -32.400000000001718 -1.6000000000002981 4.9715550243167783e-17 ;
+	setAttr ".t" -type "double3" -5.1642055273685976 -12.656700227784032 49.283624456004318 ;
+	setAttr ".r" -type "double3" -40.800000000009142 -9.9999999999999147 -4.0370248301448032e-16 ;
 	setAttr ".rpt" -type "double3" 1.3457439164234464e-16 -1.8588340710222325e-16 -3.2080555489202877e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "89E2E638-4D92-C963-A363-9594341AE8A5";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 36.199789114538561;
+	setAttr ".coi" 23.572926461008066;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -430,11 +430,13 @@ createNode camera -n "zoomOutShape" -p "zoomOut";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
 	setAttr ".hc" -type "string" "viewSet -p %camera";
-createNode transform -n "aiAreaLight1";
+createNode transform -n "lighting_1";
+	rename -uid "9DB31412-4AEF-D8D6-A426-5F81D70C670F";
+createNode transform -n "aiAreaLight1" -p "lighting_1";
 	rename -uid "CD57090E-4DD3-967D-2D03-84806638A1CC";
 	setAttr ".t" -type "double3" 0 0 76.318209549283793 ;
 	setAttr ".s" -type "double3" 71.735462137470847 71.735462137470847 71.735462137470847 ;
-createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
+createNode aiAreaLight -n "aiAreaLightShape1" -p "|lighting_1|aiAreaLight1";
 	rename -uid "B8B70278-4BEF-E282-30D6-998D89385317";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr -k off ".v";
@@ -445,12 +447,12 @@ createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
-createNode transform -n "spotLight1";
+createNode transform -n "spotLight1" -p "lighting_1";
 	rename -uid "D3048915-4B68-5477-D286-45ADC7A1FB86";
 	setAttr ".t" -type "double3" -5.2718757485632475 0 30.944481717311682 ;
 	setAttr ".r" -type "double3" -90 0 0 ;
 	setAttr ".s" -type "double3" 21.682476587130349 21.682476587130349 21.682476587130349 ;
-createNode spotLight -n "spotLightShape1" -p "spotLight1";
+createNode spotLight -n "spotLightShape1" -p "|lighting_1|spotLight1";
 	rename -uid "E2CAACBC-4137-BD36-31A2-7289952F6DFF";
 	setAttr -k off ".v";
 	setAttr ".cl" -type "float3" 0.35299999 0.42765301 1 ;
@@ -458,13 +460,13 @@ createNode spotLight -n "spotLightShape1" -p "spotLight1";
 	setAttr ".ca" 43.849092074064529;
 	setAttr ".pa" -7.0512820539088583;
 	setAttr ".ai_exposure" 12;
-createNode transform -n "aiAreaLight2";
+createNode transform -n "aiAreaLight2" -p "lighting_1";
 	rename -uid "D4F38963-43EB-A2EF-D8B1-AD85654AB7A2";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 1.5367292564430781 -26.651700954016647 31.183732133693564 ;
 	setAttr ".r" -type "double3" -4.1999999999996369 93.999999999998948 0 ;
 	setAttr ".s" -type "double3" 8.5349639712683381 1.7792610399763866 1 ;
-createNode aiAreaLight -n "aiAreaLightShape2" -p "aiAreaLight2";
+createNode aiAreaLight -n "aiAreaLightShape2" -p "|lighting_1|aiAreaLight2";
 	rename -uid "0D2540C3-49DD-1A15-61D9-50BC04E78595";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr -k off ".v";
@@ -474,12 +476,12 @@ createNode aiAreaLight -n "aiAreaLightShape2" -p "aiAreaLight2";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
-createNode transform -n "aiAreaLight3";
+createNode transform -n "aiAreaLight3" -p "lighting_1";
 	rename -uid "740A5742-4D48-FF92-B998-648CE120509D";
 	setAttr ".t" -type "double3" 0.80229990264735407 -28.421108585374053 29.961035001873906 ;
 	setAttr ".r" -type "double3" -0.57734180114733302 93.999999999998934 0 ;
 	setAttr ".s" -type "double3" 8.5349639712683381 1.3947929554111693 1 ;
-createNode aiAreaLight -n "aiAreaLightShape3" -p "aiAreaLight3";
+createNode aiAreaLight -n "aiAreaLightShape3" -p "|lighting_1|aiAreaLight3";
 	rename -uid "A5326341-46EE-5E8E-2B11-E8A4DC78BAC4";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr -k off ".v";
@@ -489,21 +491,83 @@ createNode aiAreaLight -n "aiAreaLightShape3" -p "aiAreaLight3";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
+createNode transform -n "lighting_2";
+	rename -uid "5CF74567-4F4F-3449-D8B2-9DB531C2B608";
+	setAttr ".v" no;
+createNode transform -n "aiAreaLight1" -p "lighting_2";
+	rename -uid "7194DA2A-4C04-5F41-BB8B-1DA5FEE7462C";
+	setAttr ".t" -type "double3" 0 0 76.318209549283793 ;
+	setAttr ".s" -type "double3" 71.735462137470847 71.735462137470847 71.735462137470847 ;
+createNode aiAreaLight -n "aiAreaLightShape1" -p "|lighting_2|aiAreaLight1";
+	rename -uid "7F243712-44A1-B722-38A5-A3BE0632F12E";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".sc" -type "float3" 1 0.83350003 0.667 ;
+	setAttr ".ai_exposure" 14.5;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
+		} ;
+createNode transform -n "spotLight1" -p "lighting_2";
+	rename -uid "D96E91C2-4F89-A56B-843F-A2AA2252E981";
+	setAttr ".t" -type "double3" -5.2718757485632475 0 30.944481717311682 ;
+	setAttr ".r" -type "double3" -90 0 0 ;
+	setAttr ".s" -type "double3" 21.682476587130349 21.682476587130349 21.682476587130349 ;
+createNode spotLight -n "spotLightShape1" -p "|lighting_2|spotLight1";
+	rename -uid "8197A9CE-4B4F-178C-0444-84881D29CA55";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 0.48699999 0.54619169 1 ;
+	setAttr ".sc" -type "float3" 0.27200001 0.073168002 0.1453274 ;
+	setAttr ".ca" 43.849092074064529;
+	setAttr ".pa" -7.0512820539088583;
+	setAttr ".ai_exposure" 12;
+createNode transform -n "aiAreaLight2" -p "lighting_2";
+	rename -uid "D43CF262-43E4-F9C7-EA13-F58F2C3ACE78";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 1.5367292564430781 -26.651700954016647 31.183732133693564 ;
+	setAttr ".r" -type "double3" -4.1999999999996369 93.999999999998948 0 ;
+	setAttr ".s" -type "double3" 8.5349639712683381 1.7792610399763866 1 ;
+createNode aiAreaLight -n "aiAreaLightShape2" -p "|lighting_2|aiAreaLight2";
+	rename -uid "7A9944DE-4D1C-D296-FB9C-159D19E3860D";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".sc" -type "float3" 0.3861559 0.16000003 1 ;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
+		} ;
+createNode transform -n "aiAreaLight3" -p "lighting_2";
+	rename -uid "34D5816A-4333-243C-0D58-AB8D028DFB17";
+	setAttr ".t" -type "double3" 1.2035852537558123 -27.149296444985268 29.961035001873906 ;
+	setAttr ".r" -type "double3" -4.9881098863843301 93.999999999998963 0 ;
+	setAttr ".s" -type "double3" 12.552119665500737 0.44580931251822592 1 ;
+createNode aiAreaLight -n "aiAreaLightShape3" -p "|lighting_2|aiAreaLight3";
+	rename -uid "51ED79B3-4A1E-4444-362D-22AFD9906CD7";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".sc" -type "float3" 0.14369136 0.032000005 1 ;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
+		} ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "CAE535AF-4610-8FF2-6D01-FC87AD3D080E";
-	setAttr -s 20 ".lnk";
-	setAttr -s 12 ".ign";
-	setAttr -s 20 ".slnk";
+	rename -uid "49771977-4E7A-DD21-3F2E-57BE05D5BB41";
+	setAttr -s 12 ".lnk";
+	setAttr -s 18 ".ign";
+	setAttr -s 12 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "66DA23E2-407A-F2CA-9F03-368ECEE428F6";
+	rename -uid "C7A175B9-444B-F52F-C62D-818C5594C331";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "47DB65C4-4C56-6BDF-7246-CAA2D35E6882";
+	rename -uid "49370AC5-4E2F-8ECE-0073-EF85B02406E6";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "B04EE379-45A2-3A9B-F4D8-9F91FB3025B7";
+	rename -uid "09F32BD6-49EC-A3DC-BEA5-DBBDBA41EAD6";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "D803BBA0-4099-5E6E-3880-D899922D204C";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "1238456A-4F4F-37BF-E58F-1CB16E940325";
+	rename -uid "CF570AFA-45F5-E350-4653-AABB0F75E4B4";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "D1867673-4751-8632-E4D6-62A32F008AB8";
 	setAttr ".g" yes;
@@ -511,6 +575,7 @@ createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "895D829F-49BA-1B03-49C7-9897964CB793";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "4.2.4";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=ubercamShape;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "78C44D3B-408D-6EBC-5980-B68E5D995468";
 	setAttr ".ai_translator" -type "string" "gaussian";
@@ -901,30 +966,42 @@ createNode reference -n "stage_fertigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"stage_fertigRN"
 		"stage_fertigRN" 0
-		"stage_fertigRN" 12
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		"stage_fertigRN" 18
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|aiAreaLight3|aiAreaLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|aiAreaLight2|aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0;
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
@@ -936,9 +1013,12 @@ createNode animCurveTU -n "aiAreaLightShape3_exposure";
 	rename -uid "9B46C0FC-4D13-DB67-7117-E89AA0890987";
 	setAttr ".tan" 18;
 	setAttr -s 4 ".ktv[0:3]"  95 7.5 96 6.5 239 6.5 240 7.5;
+createNode animCurveTU -n "aiAreaLightShape3_exposure1";
+	rename -uid "4777BB7A-4D93-3C59-6162-7E9C7A4BE3D3";
+	setAttr ".tan" 18;
+	setAttr -s 4 ".ktv[0:3]"  95 8 96 6.5 239 6.5 240 9;
 select -ne :time1;
-	setAttr ".o" 89;
-	setAttr ".unw" 89;
+	setAttr ".o" 0;
 select -ne :sequenceManager1;
 	setAttr ".o" 29;
 select -ne :hardwareRenderingGlobals;
@@ -960,7 +1040,7 @@ select -ne :defaultRenderUtilityList1;
 select -ne :defaultRenderingList1;
 	setAttr -s 3 ".r";
 select -ne :lightList1;
-	setAttr -s 4 ".l";
+	setAttr -s 8 ".l";
 select -ne :defaultTextureList1;
 	setAttr -s 36 ".tx";
 select -ne :initialShadingGroup;
@@ -976,7 +1056,7 @@ select -ne :defaultRenderGlobals;
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
 select -ne :defaultLightSet;
-	setAttr -s 4 ".dsm";
+	setAttr -s 8 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -1026,8 +1106,12 @@ connectAttr "zoomOut_translateZ.o" "zoomOut.tz" -l on;
 connectAttr "zoomOut_rotateX.o" "zoomOut.rx" -l on;
 connectAttr "zoomOut_rotateY.o" "zoomOut.ry" -l on;
 connectAttr "zoomOut_rotateZ.o" "zoomOut.rz" -l on;
-connectAttr "aiAreaLightShape2_exposure.o" "aiAreaLightShape2.ai_exposure";
-connectAttr "aiAreaLightShape3_exposure.o" "aiAreaLightShape3.ai_exposure";
+connectAttr "aiAreaLightShape2_exposure.o" "|lighting_1|aiAreaLight2|aiAreaLightShape2.ai_exposure"
+		;
+connectAttr "aiAreaLightShape3_exposure.o" "|lighting_1|aiAreaLight3|aiAreaLightShape3.ai_exposure"
+		;
+connectAttr "aiAreaLightShape3_exposure1.o" "|lighting_2|aiAreaLight3|aiAreaLightShape3.ai_exposure"
+		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -1043,12 +1127,26 @@ connectAttr "zoomOutShape.msg" "zoomOut1.ccm";
 connectAttr "sequencer1.msg" ":sequenceManager1.seqts" -na;
 connectAttr "trackInfoManager1.msg" ":sequenceManager1.tim";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "spotLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "aiAreaLightShape2.ltd" ":lightList1.l" -na;
-connectAttr "aiAreaLightShape3.ltd" ":lightList1.l" -na;
-connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
-connectAttr "spotLight1.iog" ":defaultLightSet.dsm" -na;
-connectAttr "aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
-connectAttr "aiAreaLight3.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_1|aiAreaLight1|aiAreaLightShape1.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_1|spotLight1|spotLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "|lighting_1|aiAreaLight2|aiAreaLightShape2.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_1|aiAreaLight3|aiAreaLightShape3.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_2|aiAreaLight1|aiAreaLightShape1.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_2|spotLight1|spotLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "|lighting_2|aiAreaLight2|aiAreaLightShape2.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_2|aiAreaLight3|aiAreaLightShape3.ltd" ":lightList1.l" -na
+		;
+connectAttr "|lighting_1|aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_1|spotLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_1|aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_1|aiAreaLight3.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_2|aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_2|spotLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_2|aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
+connectAttr "|lighting_2|aiAreaLight3.iog" ":defaultLightSet.dsm" -na;
 // End of Scene04_GiveUp_Lighting.ma
