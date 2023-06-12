@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Scene04_GiveUp_Lighting.ma
-//Last modified: Sun, Jun 11, 2023 08:11:53 PM
+//Last modified: Mon, Jun 12, 2023 10:56:23 AM
 //Codeset: 1252
 file -rdi 1 -ns "Geige_Rig" -rfn "Geige_RigRN" -op "v=0;" -typ "mayaAscii" "E:/High-Strung//scenes/Geige_Rig.ma";
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
@@ -21,12 +21,12 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "8B725A50-4323-A638-7669-FCAD7A931646";
+fileInfo "UUID" "6905CB20-495C-D00B-F37E-53AF67350772";
 createNode transform -s -n "persp";
 	rename -uid "EC91D28C-47A7-6F78-97BD-25A7F411BD77";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" -5.1642055273685976 -12.656700227784032 49.283624456004318 ;
-	setAttr ".r" -type "double3" -40.800000000009142 -9.999999999999913 -4.0370248301448032e-16 ;
+	setAttr ".r" -type "double3" -40.800000000009142 -9.9999999999999147 -4.0370248301448032e-16 ;
 	setAttr ".rpt" -type "double3" 1.3457439164234464e-16 -1.8588340710222325e-16 -3.2080555489202877e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "89E2E638-4D92-C963-A363-9594341AE8A5";
@@ -135,7 +135,7 @@ createNode transform -n "ubercam";
 	setAttr -av ".gar";
 	setAttr -av ".gag";
 	setAttr -av ".gab";
-	setAttr ".r" -type "double3" -90.000000000001052 -44.800000000000139 4.8094625973537513e-15 ;
+	setAttr ".r" -type "double3" -60.33835273023935 671.40000000005034 4.8094625973537513e-15 ;
 	setAttr -l on ".rz";
 	setAttr -av ".ro";
 	setAttr -av ".shxy";
@@ -288,7 +288,7 @@ createNode camera -n "ubercamShape" -p "ubercam";
 	setAttr -av ".cs";
 	setAttr -av ".ncp";
 	setAttr -av ".fcp";
-	setAttr ".coi" 91.631602089526396;
+	setAttr ".coi" 30.903593874436293;
 	setAttr -l on -av ".ow";
 	setAttr -av ".tpx";
 	setAttr -av ".tpy";
@@ -432,7 +432,6 @@ createNode camera -n "zoomOutShape" -p "zoomOut";
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -n "lighting_1";
 	rename -uid "9DB31412-4AEF-D8D6-A426-5F81D70C670F";
-	setAttr ".v" no;
 createNode transform -n "aiAreaLight1" -p "lighting_1";
 	rename -uid "CD57090E-4DD3-967D-2D03-84806638A1CC";
 	setAttr ".t" -type "double3" 0 0 76.318209549283793 ;
@@ -494,6 +493,7 @@ createNode aiAreaLight -n "aiAreaLightShape3" -p "|lighting_1|aiAreaLight3";
 		} ;
 createNode transform -n "lighting_2";
 	rename -uid "5CF74567-4F4F-3449-D8B2-9DB531C2B608";
+	setAttr ".v" no;
 createNode transform -n "aiAreaLight1" -p "lighting_2";
 	rename -uid "7194DA2A-4C04-5F41-BB8B-1DA5FEE7462C";
 	setAttr ".t" -type "double3" 0 0 76.318209549283793 ;
@@ -554,20 +554,20 @@ createNode aiAreaLight -n "aiAreaLightShape3" -p "|lighting_2|aiAreaLight3";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "4B25D9E0-4523-46A3-6D22-4AB8264C4544";
+	rename -uid "49771977-4E7A-DD21-3F2E-57BE05D5BB41";
 	setAttr -s 12 ".lnk";
 	setAttr -s 18 ".ign";
 	setAttr -s 12 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "06FF2910-4C4D-80A5-DA02-8A9B342A427B";
+	rename -uid "C7A175B9-444B-F52F-C62D-818C5594C331";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "1C3B6E7C-4FCF-03FA-5131-EF955AA6C653";
+	rename -uid "49370AC5-4E2F-8ECE-0073-EF85B02406E6";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "79C705AB-4CFD-8DA2-A4B6-C88D90472F2C";
+	rename -uid "09F32BD6-49EC-A3DC-BEA5-DBBDBA41EAD6";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "D803BBA0-4099-5E6E-3880-D899922D204C";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "90F955A0-4D0D-B004-A45F-BF94C46A41DF";
+	rename -uid "CF570AFA-45F5-E350-4653-AABB0F75E4B4";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "D1867673-4751-8632-E4D6-62A32F008AB8";
 	setAttr ".g" yes;
@@ -967,39 +967,39 @@ createNode reference -n "stage_fertigRN";
 		"stage_fertigRN"
 		"stage_fertigRN" 0
 		"stage_fertigRN" 18
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_1|aiAreaLight3|aiAreaLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_1|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting_2|aiAreaLight3|aiAreaLightShape3.message" 
 		0;
@@ -1018,8 +1018,7 @@ createNode animCurveTU -n "aiAreaLightShape3_exposure1";
 	setAttr ".tan" 18;
 	setAttr -s 4 ".ktv[0:3]"  95 8 96 6.5 239 6.5 240 9;
 select -ne :time1;
-	setAttr ".o" 261;
-	setAttr ".unw" 261;
+	setAttr ".o" 0;
 select -ne :sequenceManager1;
 	setAttr ".o" 29;
 select -ne :hardwareRenderingGlobals;
