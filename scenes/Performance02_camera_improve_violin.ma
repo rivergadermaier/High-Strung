@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Performance02_camera_improve_violin.ma
-//Last modified: Sat, Jun 10, 2023 11:51:12 PM
+//Last modified: Sun, Jun 11, 2023 10:34:30 PM
 //Codeset: 1252
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
@@ -25,22 +25,23 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "64D1CD07-44AA-E311-3611-0ABED908ADF2";
+fileInfo "UUID" "673B7B65-44B0-DAF7-AFB9-DD94BD3136E9";
 createNode transform -s -n "persp";
 	rename -uid "37C5FE8C-4A08-816E-EFA9-E2BCB9C23993";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -1.8073043062116767e-13 2.201395269086222 119.6763571492212 ;
-	setAttr ".rpt" -type "double3" 4.1019383518049477e-15 -2.2692638656730563e-15 2.1802436305610574e-16 ;
+	setAttr ".t" -type "double3" -8.2972786182648317 14.765947213555378 188.20565942984638 ;
+	setAttr ".r" -type "double3" -6.6000000000001764 -2.8000000000000043 0 ;
+	setAttr ".rpt" -type "double3" 4.2376847401973034e-15 -1.9871837671314243e-15 1.0718117909779974e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "F9EF8120-45F2-69B4-2154-96900ED0A24B";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 75.160642549275721;
+	setAttr ".coi" 157.74196124173912;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" -1.7662849226936272e-13 2.2013952690862197 44.515714599945454 ;
+	setAttr ".tp" -type "double3" -52.278813267516711 40.090782068198564 29.263766116791288 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "8C8A4BAD-4F6A-8143-D50A-8F91671E6894";
@@ -404,7 +405,7 @@ createNode lookAt -n "cameraAim_360";
 	rename -uid "15D71206-42CA-5662-E9D7-87A1989572E5";
 	setAttr ".smd" 7;
 	setAttr ".a" -type "double3" 0 0 -1 ;
-	setAttr ".db" 22.390436839076497;
+	setAttr ".db" 22.393996447259422;
 createNode transform -n "camera_360" -p "cameraAim_360";
 	rename -uid "6D6C9B3A-4493-7B3C-6D68-B6A751141BAE";
 	setAttr ".t" -type "double3" 0.328123934224824 -0.66775412428112491 0.5042987160072484 ;
@@ -417,7 +418,7 @@ createNode camera -n "camera_Shape360" -p "camera_360";
 	setAttr ".rnd" no;
 	setAttr ".cap" -type "double2" 1.41732 0.94488 ;
 	setAttr ".ff" 0;
-	setAttr ".coi" 22.390436839076497;
+	setAttr ".coi" 22.393996447259422;
 	setAttr -l on ".ow" 30;
 	setAttr ".imn" -type "string" "camera1";
 	setAttr ".den" -type "string" "camera1_depth";
@@ -844,11 +845,11 @@ createNode camera -n "ubercamShape" -p "ubercam";
 	setAttr -av ".ai_lens_shifty";
 	setAttr -av ".motion_blur_override";
 	setAttr -av ".ai_fov";
-createNode transform -n "group";
+createNode transform -n "lighting";
 	rename -uid "AC5A2BF7-4D6D-D72A-CBAF-B7A277629AED";
 	setAttr ".rp" -type "double3" 0 20.574875248986846 73.756654489884113 ;
 	setAttr ".sp" -type "double3" 0 20.574875248986846 73.756654489884113 ;
-createNode transform -n "pasted__Lights" -p "group";
+createNode transform -n "pasted__Lights" -p "lighting";
 	rename -uid "2855784A-457D-4D78-BDF3-8D9B9C3990B0";
 createNode transform -n "pasted__aiAreaLight1" -p "pasted__Lights";
 	rename -uid "6C587870-4221-989A-351C-57B5299F5E42";
@@ -884,6 +885,7 @@ createNode aiAreaLight -n "pasted__aiAreaLightShape2" -p "pasted__aiAreaLight2";
 		} ;
 createNode transform -n "pasted__spotLight1" -p "pasted__Lights";
 	rename -uid "D4E6CAB5-4A0A-A69B-5145-AC8CDD7578A9";
+	setAttr ".v" no;
 	setAttr ".t" -type "double3" 0 38.409881769766535 36.873897921753105 ;
 	setAttr ".r" -type "double3" -84.623565374188217 0 0 ;
 	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
@@ -897,35 +899,49 @@ createNode spotLight -n "pasted__spotLightShape1" -p "pasted__spotLight1";
 	setAttr ".ai_exposure" 13.5;
 createNode transform -n "pasted__spotLight2" -p "pasted__Lights";
 	rename -uid "FCDD1267-4FDA-7082-FE1D-1988FA188B67";
+	setAttr ".v" no;
 	setAttr ".t" -type "double3" -44.550811260411194 38.409881769766535 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.320143599127775 -2.6496443288599107 29.454273608936365 ;
+	setAttr ".r" -type "double3" -85.577208340132728 -3.0599954608182869 34.612146773176242 ;
 	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
 createNode spotLight -n "pasted__spotLightShape2" -p "pasted__spotLight2";
 	rename -uid "27295F3D-465F-31B9-559E-68ACA598BE07";
 	setAttr -k off ".v";
 	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
 	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 15.004774620354858;
+	setAttr ".ca" 12.000000000000002;
 	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 13.5;
+	setAttr ".ai_exposure" 12.5;
 createNode transform -n "pasted__spotLight3" -p "pasted__Lights";
 	rename -uid "BBFF109A-429F-513E-E09F-8CB4F333412A";
+	setAttr ".v" no;
 	setAttr ".t" -type "double3" 45.170007170874179 38.409881769766535 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.356600557573685 2.7131192111430362 -30.23355840907087 ;
+	setAttr ".r" -type "double3" -85.601052928349446 3.094210207391622 -35.056345237192026 ;
 	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
 createNode spotLight -n "pasted__spotLightShape3" -p "pasted__spotLight3";
 	rename -uid "FD56EDD6-4100-634F-2E56-468B3E798407";
 	setAttr -k off ".v";
 	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
 	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 15.004774620354858;
+	setAttr ".ca" 12.000000000000002;
 	setAttr ".pa" -0.769;
-	setAttr ".ai_exposure" 13.5;
+	setAttr ".ai_exposure" 12.5;
+createNode transform -n "spotLight1" -p "pasted__Lights";
+	rename -uid "F2A26047-42A3-97A0-664F-74A89496DC5F";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 47.967877495168096 -29.277466981009283 30.431231442047064 ;
+	setAttr ".r" -type "double3" 61.489815315288602 71.19096585924872 50.550271616786809 ;
+	setAttr ".s" -type "double3" 28.281247484744714 28.281247484744714 28.281247484744714 ;
+createNode spotLight -n "spotLightShape1" -p "spotLight1";
+	rename -uid "1EC98D6B-4504-2EE1-53D6-A2B56D1E4C79";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.67135596 0.37800002 ;
+	setAttr ".ca" 11.543456559435176;
+	setAttr ".ai_exposure" 12.5;
 createNode transform -n "pasted__spotLight4" -p "pasted__Lights";
 	rename -uid "A260A0CD-4A84-98AF-C9B0-AF90B4B3852E";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" -21.187543828156464 38.409881769766535 29.263766116791288 ;
-	setAttr ".r" -type "double3" -84.784110152517968 -1.3058544295548358 14.01721778684214 ;
+	setAttr ".r" -type "double3" -84.784110152517968 -1.305854429554836 14.01721778684214 ;
 	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
 createNode spotLight -n "pasted__spotLightShape4" -p "pasted__spotLight4";
 	rename -uid "3FE7B9C4-47BC-D72F-4A3B-E2B5714D8330";
@@ -963,8 +979,74 @@ createNode spotLight -n "pasted__spotLightShape6" -p "pasted__spotLight6";
 	setAttr ".ca" 15.004774620354858;
 	setAttr ".pa" -0.769;
 	setAttr ".ai_exposure" 13.5;
+createNode transform -n "spotLight2" -p "pasted__Lights";
+	rename -uid "A504183B-44D6-C5CB-C400-2F8FEACD638A";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" -48.276511688302257 -29.277466981009283 30.431231442047064 ;
+	setAttr ".r" -type "double3" 49.684352723091585 -57.695419193655425 -45.281524431126591 ;
+	setAttr ".s" -type "double3" 28.281247484744714 28.281247484744714 28.281247484744714 ;
+createNode spotLight -n "spotLightShape2" -p "spotLight2";
+	rename -uid "A338EB72-40C5-E033-3CB8-BA92653E20B9";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.67135596 0.37800002 ;
+	setAttr ".ca" 11.543456559435176;
+	setAttr ".ai_exposure" 12.5;
+createNode transform -n "pasted__spotLight8" -p "pasted__Lights";
+	rename -uid "38F64AC1-4FCF-ADAF-1DC9-E2B151561B4C";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" -52.278813267516718 40.090782068198557 29.263766116791288 ;
+	setAttr ".r" -type "double3" -85.753879018544694 -3.3009795246681346 37.795641323176753 ;
+	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
+createNode spotLight -n "pasted__spotLightShape8" -p "pasted__spotLight8";
+	rename -uid "3D6FDFD4-4E17-CE3D-1E40-EFA5A7A25909";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
+	setAttr ".col" 9.9999997473787516e-06;
+	setAttr ".ca" 12.000000000000002;
+	setAttr ".pa" -0.76923076206674956;
+	setAttr ".ai_exposure" 13.5;
+createNode transform -n "pasted__spotLight9" -p "pasted__Lights";
+	rename -uid "ADE698A2-4D77-7404-9846-4082F616A5E0";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 52.613079073652237 40.090782068198557 29.263766116791288 ;
+	setAttr ".r" -type "double3" -276.48461014615958 16.549015291865629 140.33709593672756 ;
+	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
+createNode spotLight -n "pasted__spotLightShape9" -p "pasted__spotLight9";
+	rename -uid "79449941-48FD-686E-734A-30A371793094";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
+	setAttr ".col" 9.9999997473787516e-06;
+	setAttr ".ca" 12.000000000000002;
+	setAttr ".pa" -0.76923076206674956;
+	setAttr ".ai_exposure" 13.5;
+createNode transform -n "pasted__spotLight10" -p "pasted__Lights";
+	rename -uid "4A432401-4C69-D82A-61C7-63834D523146";
+	setAttr ".t" -type "double3" -52.278813267516718 40.090782068198557 29.263766116791288 ;
+	setAttr ".r" -type "double3" -85.75387901854468 -3.3009795246681417 41.887497111642254 ;
+	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
+createNode spotLight -n "pasted__spotLightShape10" -p "pasted__spotLight10";
+	rename -uid "D782D63A-4C4F-16D6-E666-F08F28B99CBB";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
+	setAttr ".col" 9.9999997473787516e-06;
+	setAttr ".ca" 18.466;
+	setAttr ".pa" -0.76923076206674956;
+	setAttr ".ai_exposure" 14;
+createNode transform -n "pasted__spotLight11" -p "pasted__Lights";
+	rename -uid "E34434FD-49E1-A5E4-C13F-E8AE02D2481F";
+	setAttr ".t" -type "double3" 52.613079073652237 40.090782068198557 29.263766116791288 ;
+	setAttr ".r" -type "double3" -276.48461014615953 16.54901529186558 135.62054327962963 ;
+	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
+createNode spotLight -n "pasted__spotLightShape11" -p "pasted__spotLight11";
+	rename -uid "1B0573A2-485D-8582-BB0E-8091529121B0";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
+	setAttr ".col" 9.9999997473787516e-06;
+	setAttr ".ca" 18.466092681274542;
+	setAttr ".pa" -0.76923076206674956;
+	setAttr ".ai_exposure" 14;
 createNode fosterParent -n "Bow_BottomCTRLRNfosterParent1";
-	rename -uid "58EE54EA-412C-B180-9ED5-11B15EEA4A06";
+	rename -uid "88D527FF-4721-1101-6627-20BA452C0256";
 createNode mesh -n "metall_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	rename -uid "0B89EE8D-4B14-B479-D2F8-29A295EE4A26";
 	setAttr -k off ".v";
@@ -999,20 +1081,20 @@ createNode mesh -n "griff_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "90C5A64F-4D0E-2E1C-75C3-E7BB0F35A66D";
-	setAttr -s 21 ".lnk";
-	setAttr -s 74 ".ign";
+	rename -uid "FFAE4562-4A3F-FB55-25B4-69A9C05669E1";
+	setAttr -s 54 ".lnk";
+	setAttr -s 361 ".ign";
 	setAttr -s 21 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "7F077441-48A7-5A5E-CAD5-2FA31655ED3B";
+	rename -uid "D8657453-4A4B-38BA-4EF3-FFBAE8CA6BC7";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "8B84D9CE-4E78-C0C4-2D94-77BC5E90601D";
+	rename -uid "7EBDCFB8-4A93-D5D3-87DD-32970CFDCB67";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "82B01533-4D86-71B9-3146-2E9FDB848C36";
+	rename -uid "4AE733BF-49CA-230E-C4F1-3C8A25AC1D33";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "B34918BE-41F2-0950-DF76-819062BC127E";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "A70ED785-4C17-EB5E-FD1E-8D969E7A2648";
+	rename -uid "D8AF21D5-4DDA-FC9E-DAB5-E1B1FA603483";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1D504B90-43B4-14D8-F7DB-9CA327FB6C2D";
 	setAttr ".g" yes;
@@ -1052,7 +1134,7 @@ createNode reference -n "stage_fertigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"stage_fertigRN"
 		"stage_fertigRN" 0
-		"stage_fertigRN" 71
+		"stage_fertigRN" 114
 		2 "|stage_fertig:plane_canvasSize" "visibility" " 0"
 		2 "|stage_fertig:curtains" "visibility" " 1"
 		2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1" "visibility" " 1"
@@ -1123,75 +1205,161 @@ createNode reference -n "stage_fertigRN";
 		""
 		5 3 "stage_fertigRN" "stage_fertig:place2dTexture7.message" "stage_fertigRN.placeHolderList[30]" 
 		""
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__spotLight1|pasted__spotLightShape1.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|group|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight1|pasted__spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight11|pasted__spotLightShape11.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0;
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
@@ -1301,7 +1469,7 @@ createNode reference -n "Geige_RigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Geige_RigRN"
 		"Geige_RigRN" 0
-		"Geige_RigRN" 101
+		"Geige_RigRN" 232
 		2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape" 
 		"uvPivot" " -type \"double2\" 0.49411535263061523 0.30526250600814819"
 		2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low" 
@@ -1487,39 +1655,301 @@ createNode reference -n "Geige_RigRN";
 		5 0 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.instObjGroups" 
 		"Geige_Rig:set6.dagSetMembers" "Geige_RigRN.placeHolderList[81]" "Geige_RigRN.placeHolderList[82]" 
 		"Geige_Rig:set3.dsm"
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:body_high|Geige_Rig:body_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:saiten_high|Geige_Rig:saiten_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:griffbrett_high|Geige_Rig:griffbrett_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_01|Geige_Rig:wirbel_high_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_02|Geige_Rig:wirbel_high_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_03|Geige_Rig:wirbel_high_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_04|Geige_Rig:wirbel_high_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:kinnstuetze_high|Geige_Rig:kinnstuetze_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:hals_high|Geige_Rig:hals_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:metallplatte_high|Geige_Rig:metallplatte_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:saitenhalter_high|Geige_Rig:saitenhalter_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:schraube_high|Geige_Rig:schraube_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:inside_high|Geige_Rig:inside_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:griff_high|Geige_Rig:griff_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:sehne_high|Geige_Rig:sehne_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:metall_high|Geige_Rig:metall_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0;
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
@@ -2633,7 +3063,7 @@ createNode reference -n "Bow_BottomCTRLRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Bow_BottomCTRLRN"
 		"Bow_BottomCTRLRN" 0
-		"Bow_BottomCTRLRN" 57
+		"Bow_BottomCTRLRN" 129
 		0 "|Bow_BottomCTRLRNfosterParent1|griff_lowShapeDeformed" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low" 
 		"-s -r "
 		0 "|Bow_BottomCTRLRNfosterParent1|sehne_lowShapeDeformed" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low" 
@@ -2762,29 +3192,173 @@ createNode reference -n "Bow_BottomCTRLRN";
 		"Bow_BottomCTRLRN.placeHolderList[16]" ""
 		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.visibility" 
 		"Bow_BottomCTRLRN.placeHolderList[17]" ""
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|group|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0;
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
@@ -2883,8 +3457,8 @@ select -ne :time1;
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr ".o" 123;
-	setAttr -av -k on ".unw" 123;
+	setAttr ".o" 121;
+	setAttr -av -k on ".unw" 121;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -2947,7 +3521,7 @@ select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 	setAttr -s 4 ".r";
 select -ne :lightList1;
-	setAttr -s 8 ".l";
+	setAttr -s 14 ".l";
 select -ne :defaultTextureList1;
 	setAttr -s 46 ".tx";
 select -ne :initialShadingGroup;
@@ -3106,7 +3680,7 @@ select -ne :defaultResolution;
 	setAttr -av -k on ".isu";
 	setAttr -av -k on ".pdu";
 select -ne :defaultLightSet;
-	setAttr -s 8 ".dsm";
+	setAttr -s 14 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -3358,6 +3932,36 @@ relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__a
 relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape5.message";
 relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape5.message";
 relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape5.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape3.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape3.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape3.message";
+relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "BG_planeShape.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "spotLightShape2.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "BG_planeShape.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "spotLightShape1.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape8.message";
+relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape9.message";
+relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape9.message";
+relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape9.message";
+relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape9.message";
+relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape9.message";
+relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape9.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
 connectAttr "aiAtmosphereVolume.msg" ":defaultArnoldRenderOptions.atm";
@@ -3688,6 +4292,12 @@ connectAttr "pasted__spotLightShape3.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape4.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape5.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape6.ltd" ":lightList1.l" -na;
+connectAttr "spotLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "spotLightShape2.ltd" ":lightList1.l" -na;
+connectAttr "pasted__spotLightShape8.ltd" ":lightList1.l" -na;
+connectAttr "pasted__spotLightShape9.ltd" ":lightList1.l" -na;
+connectAttr "pasted__spotLightShape10.ltd" ":lightList1.l" -na;
+connectAttr "pasted__spotLightShape11.ltd" ":lightList1.l" -na;
 connectAttr "pasted__file1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "pasted__file2.msg" ":defaultTextureList1.tx" -na;
 connectAttr "pasted__file3.msg" ":defaultTextureList1.tx" -na;
@@ -3708,4 +4318,10 @@ connectAttr "pasted__spotLight3.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight4.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight5.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight6.iog" ":defaultLightSet.dsm" -na;
+connectAttr "spotLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "spotLight2.iog" ":defaultLightSet.dsm" -na;
+connectAttr "pasted__spotLight8.iog" ":defaultLightSet.dsm" -na;
+connectAttr "pasted__spotLight9.iog" ":defaultLightSet.dsm" -na;
+connectAttr "pasted__spotLight10.iog" ":defaultLightSet.dsm" -na;
+connectAttr "pasted__spotLight11.iog" ":defaultLightSet.dsm" -na;
 // End of Performance02_camera_improve_violin.ma
