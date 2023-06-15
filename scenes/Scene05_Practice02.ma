@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Scene05_Practice02.ma
-//Last modified: Thu, Jun 15, 2023 05:03:33 PM
+//Last modified: Thu, Jun 15, 2023 05:18:20 PM
 //Codeset: 1252
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
@@ -24,7 +24,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "4A4E18BD-48EB-D9D4-2420-80928D1F188A";
+fileInfo "UUID" "FB752EDE-4F7C-DA4D-61BD-6EAF8E975A83";
 createNode transform -s -n "persp";
 	rename -uid "D89B634B-4FF6-E51C-602F-70840D7ECFD7";
 	setAttr ".v" no;
@@ -427,7 +427,7 @@ createNode aiAreaLight -n "pasted__aiAreaLightShape5" -p "pasted__aiAreaLight5";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
 createNode fosterParent -n "notenblaetterRNfosterParent1";
-	rename -uid "6D3748AD-4E61-AA29-95CF-BBB5333E6549";
+	rename -uid "5F6CAC78-4390-E718-D6A4-8B9BC3A39047";
 createNode transform -n "blatt_01" -p "notenblaetterRNfosterParent1";
 	rename -uid "794BA2A3-4AFA-6BF6-AA0F-86A02197F47A";
 	setAttr ".t" -type "double3" 81.143263288769631 -7.9065138326329254e-13 -67.136854342100733 ;
@@ -4556,20 +4556,20 @@ createNode mesh -n "blatt_Shape6" -p "blatt_06";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "D584E9FD-460B-4CE2-BD88-15AD0F9DEB88";
+	rename -uid "7C593A8A-405B-59BD-376F-BD8FB8EDEBA9";
 	setAttr -s 18 ".lnk";
 	setAttr -s 4 ".ign";
 	setAttr -s 18 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "ECB060F7-4537-65BD-DD37-C6BF7AB3DDD7";
+	rename -uid "E2A4957A-4345-1021-4218-1689D873CAF9";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "8C51DD69-4B74-2504-753C-C2BEA49D6989";
+	rename -uid "EAF6F49A-4276-81DE-1CA7-389FBF434BB1";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "51713EA2-48DB-AC67-5491-49B093C3AB53";
+	rename -uid "073B4EC2-47A1-A9FA-55D6-B693A96DD804";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "4B760D53-43C8-5620-01D8-50B0C9959C6A";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "44D52C52-4FE1-0FA2-3038-F0BFEA8B5DEE";
+	rename -uid "2BE119F8-4BD3-8907-A150-71818E453510";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "B4A6F314-4A3D-D2DA-BC58-808E92592FFD";
 	setAttr ".g" yes;
@@ -4655,11 +4655,11 @@ createNode reference -n "stage_fertigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"stage_fertigRN"
 		"stage_fertigRN" 0
-		"stage_fertigRN" 99
+		"stage_fertigRN" 103
 		2 "|stage_fertig:plane_canvasSize" "visibility" " 0"
 		2 "|stage_fertig:stage|stage_fertig:stageShape" "uvPivot" " -type \"double2\" 0.67152607440948486 0.48334154486656189"
 		
-		2 "stage_fertig:set1" "aiCustomAOVs" " -s 18"
+		2 "stage_fertig:set1" "aiCustomAOVs" " -s 19"
 		2 "stage_fertig:set1" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "stage_fertig:set1" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -4696,7 +4696,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:set1" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs" " -s 18"
+		2 "stage_fertig:set1" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs" " -s 19"
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -4733,7 +4735,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs" " -s 18"
+		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs" " -s 19"
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -4770,7 +4774,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs" " -s 18"
+		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs" " -s 19"
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -4806,6 +4812,8 @@ createNode reference -n "stage_fertigRN";
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[16].aovName" " -type \"string\" \"volume_direct\""
 		
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
+		
+		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
 		
 		5 4 "stage_fertigRN" "|stage_fertig:curtains|stage_fertig:plane_canvasSize2.rotateX" 
 		"stage_fertigRN.placeHolderList[1]" ""
@@ -4933,7 +4941,7 @@ createNode reference -n "Geige_RigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Geige_RigRN"
 		"Geige_RigRN" 0
-		"Geige_RigRN" 179
+		"Geige_RigRN" 185
 		2 "|Geige_Rig:Geige" "visibility" " 1"
 		2 "|Geige_Rig:Geige" "translate" " -type \"double3\" 5.28615613898187053 -10.02974595268447011 31.81977700260607378"
 		
@@ -4942,7 +4950,7 @@ createNode reference -n "Geige_RigRN";
 		2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low" 
 		"translate" " -type \"double3\" 3.12315837267231045 2.17448248438907665 9.04174171291828976"
 		
-		2 "Geige_Rig:inside_highSG" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:inside_highSG" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -4979,7 +4987,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "Geige_Rig:set1" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set1" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:set1" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		2 "Geige_Rig:set1" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
 		
@@ -5013,7 +5023,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set1" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "Geige_Rig:set2" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:set1" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set2" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:set2" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		2 "Geige_Rig:set2" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
 		
@@ -5047,7 +5059,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set2" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "Geige_Rig:set3" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:set2" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set3" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:set3" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		2 "Geige_Rig:set3" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
 		
@@ -5081,7 +5095,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set3" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "Geige_Rig:set5" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:set3" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set5" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:set5" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		2 "Geige_Rig:set5" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
 		
@@ -5115,7 +5131,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set5" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		2 "Geige_Rig:set6" "aiCustomAOVs" " -s 18"
+		2 "Geige_Rig:set5" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set6" "aiCustomAOVs" " -s 19"
 		2 "Geige_Rig:set6" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		2 "Geige_Rig:set6" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
 		
@@ -5149,12 +5167,8 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set6" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
 		
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
+		2 "Geige_Rig:set6" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
+		
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.instObjGroups" 
 		"Geige_Rig:set3.dagSetMembers" "-na"
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.instObjGroups" 
@@ -5181,6 +5195,12 @@ createNode reference -n "Geige_RigRN";
 		"Geige_Rig:set3.dagSetMembers" "-na"
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.instObjGroups" 
 		"Geige_Rig:set3.dagSetMembers" "-na"
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateX" "Geige_RigRN.placeHolderList[1]" 
 		""
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateY" "Geige_RigRN.placeHolderList[2]" 
@@ -5439,18 +5459,18 @@ createNode shadingEngine -n "pasted__aiStandardSurface1SG";
 	setAttr ".aovs[8].aov_name" -type "string" "specular";
 	setAttr ".aovs[9].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[10].aov_name" -type "string" "AO";
-	setAttr ".aovs[11].aov_name" -type "string" "volume";
 	setAttr ".aovs[12].aov_name" -type "string" "volume_opacity";
 	setAttr ".aovs[13].aov_name" -type "string" "sheen";
 	setAttr ".aovs[14].aov_name" -type "string" "transmission";
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0]","ai_aov_AO","aiCustomAOVs[10]"
-		,"ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity","aiCustomAOVs[12].aovName"
-		,"ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission","aiCustomAOVs[14].aovName"
-		,"ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct","aiCustomAOVs[16].aovName"
-		,"ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA","aiCustomAOVs[1]"
+		,"ai_aov_volume","aiCustomAOVs[11]","ai_aov_volume_opacity","aiCustomAOVs[12]","ai_aov_sheen"
+		,"aiCustomAOVs[13]","ai_aov_transmission","aiCustomAOVs[14]","ai_aov_volume_albedo"
+		,"aiCustomAOVs[15]","ai_aov_volume_direct","aiCustomAOVs[16]","ai_aov_volume_indirect"
+		,"aiCustomAOVs[17]","ai_aov_emission","aiCustomAOVs[18]","ai_aov_RGBA","aiCustomAOVs[1]"
 		,"ai_aov_Z","aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]","ai_aov_diffuse","aiCustomAOVs[4]"
 		,"ai_aov_direct","aiCustomAOVs[5]","ai_aov_indirect","aiCustomAOVs[6]","ai_aov_opacity"
 		,"aiCustomAOVs[7]","ai_aov_specular","aiCustomAOVs[8]","ai_aov_crypto_asset","aiCustomAOVs[9]"
@@ -5483,18 +5503,18 @@ createNode shadingEngine -n "pasted__aiStandardSurface2SG";
 	setAttr ".aovs[8].aov_name" -type "string" "specular";
 	setAttr ".aovs[9].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[10].aov_name" -type "string" "AO";
-	setAttr ".aovs[11].aov_name" -type "string" "volume";
 	setAttr ".aovs[12].aov_name" -type "string" "volume_opacity";
 	setAttr ".aovs[13].aov_name" -type "string" "sheen";
 	setAttr ".aovs[14].aov_name" -type "string" "transmission";
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0]","ai_aov_AO","aiCustomAOVs[10]"
-		,"ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity","aiCustomAOVs[12].aovName"
-		,"ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission","aiCustomAOVs[14].aovName"
-		,"ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct","aiCustomAOVs[16].aovName"
-		,"ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA","aiCustomAOVs[1]"
+		,"ai_aov_volume","aiCustomAOVs[11]","ai_aov_volume_opacity","aiCustomAOVs[12]","ai_aov_sheen"
+		,"aiCustomAOVs[13]","ai_aov_transmission","aiCustomAOVs[14]","ai_aov_volume_albedo"
+		,"aiCustomAOVs[15]","ai_aov_volume_direct","aiCustomAOVs[16]","ai_aov_volume_indirect"
+		,"aiCustomAOVs[17]","ai_aov_emission","aiCustomAOVs[18]","ai_aov_RGBA","aiCustomAOVs[1]"
 		,"ai_aov_Z","aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]","ai_aov_diffuse","aiCustomAOVs[4]"
 		,"ai_aov_direct","aiCustomAOVs[5]","ai_aov_indirect","aiCustomAOVs[6]","ai_aov_opacity"
 		,"aiCustomAOVs[7]","ai_aov_specular","aiCustomAOVs[8]","ai_aov_crypto_asset","aiCustomAOVs[9]"
@@ -5533,18 +5553,18 @@ createNode shadingEngine -n "pasted__aiStandardSurface3SG";
 	setAttr ".aovs[8].aov_name" -type "string" "specular";
 	setAttr ".aovs[9].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[10].aov_name" -type "string" "AO";
-	setAttr ".aovs[11].aov_name" -type "string" "volume";
 	setAttr ".aovs[12].aov_name" -type "string" "volume_opacity";
 	setAttr ".aovs[13].aov_name" -type "string" "sheen";
 	setAttr ".aovs[14].aov_name" -type "string" "transmission";
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0]","ai_aov_AO","aiCustomAOVs[10]"
-		,"ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity","aiCustomAOVs[12].aovName"
-		,"ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission","aiCustomAOVs[14].aovName"
-		,"ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct","aiCustomAOVs[16].aovName"
-		,"ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA","aiCustomAOVs[1]"
+		,"ai_aov_volume","aiCustomAOVs[11]","ai_aov_volume_opacity","aiCustomAOVs[12]","ai_aov_sheen"
+		,"aiCustomAOVs[13]","ai_aov_transmission","aiCustomAOVs[14]","ai_aov_volume_albedo"
+		,"aiCustomAOVs[15]","ai_aov_volume_direct","aiCustomAOVs[16]","ai_aov_volume_indirect"
+		,"aiCustomAOVs[17]","ai_aov_emission","aiCustomAOVs[18]","ai_aov_RGBA","aiCustomAOVs[1]"
 		,"ai_aov_Z","aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]","ai_aov_diffuse","aiCustomAOVs[4]"
 		,"ai_aov_direct","aiCustomAOVs[5]","ai_aov_indirect","aiCustomAOVs[6]","ai_aov_opacity"
 		,"aiCustomAOVs[7]","ai_aov_specular","aiCustomAOVs[8]","ai_aov_crypto_asset","aiCustomAOVs[9]"
@@ -5583,18 +5603,18 @@ createNode shadingEngine -n "pasted__aiStandardSurface4SG";
 	setAttr ".aovs[8].aov_name" -type "string" "specular";
 	setAttr ".aovs[9].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[10].aov_name" -type "string" "AO";
-	setAttr ".aovs[11].aov_name" -type "string" "volume";
 	setAttr ".aovs[12].aov_name" -type "string" "volume_opacity";
 	setAttr ".aovs[13].aov_name" -type "string" "sheen";
 	setAttr ".aovs[14].aov_name" -type "string" "transmission";
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0]","ai_aov_AO","aiCustomAOVs[10]"
-		,"ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity","aiCustomAOVs[12].aovName"
-		,"ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission","aiCustomAOVs[14].aovName"
-		,"ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct","aiCustomAOVs[16].aovName"
-		,"ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA","aiCustomAOVs[1]"
+		,"ai_aov_volume","aiCustomAOVs[11]","ai_aov_volume_opacity","aiCustomAOVs[12]","ai_aov_sheen"
+		,"aiCustomAOVs[13]","ai_aov_transmission","aiCustomAOVs[14]","ai_aov_volume_albedo"
+		,"aiCustomAOVs[15]","ai_aov_volume_direct","aiCustomAOVs[16]","ai_aov_volume_indirect"
+		,"aiCustomAOVs[17]","ai_aov_emission","aiCustomAOVs[18]","ai_aov_RGBA","aiCustomAOVs[1]"
 		,"ai_aov_Z","aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]","ai_aov_diffuse","aiCustomAOVs[4]"
 		,"ai_aov_direct","aiCustomAOVs[5]","ai_aov_indirect","aiCustomAOVs[6]","ai_aov_opacity"
 		,"aiCustomAOVs[7]","ai_aov_specular","aiCustomAOVs[8]","ai_aov_crypto_asset","aiCustomAOVs[9]"
@@ -5910,7 +5930,7 @@ createNode reference -n "notenblaetterRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"notenblaetterRN"
 		"notenblaetterRN" 0
-		"notenblaetterRN" 58
+		"notenblaetterRN" 59
 		0 "|notenblaetterRNfosterParent1|blatt_06" "|notenblaetter:notenblaetter" 
 		"-s -r "
 		0 "|notenblaetterRNfosterParent1|blatt_05" "|notenblaetter:notenblaetter" 
@@ -5941,7 +5961,7 @@ createNode reference -n "notenblaetterRN";
 		
 		2 "|notenblaetter:notenblaetter|notenblaetter:blatt_03" "rotate" " -type \"double3\" 0 66.20541895922258391 0"
 		
-		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs" " -s 18"
+		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs" " -s 19"
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"N\""
 		
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"RGBA\""
@@ -5977,6 +5997,8 @@ createNode reference -n "notenblaetterRN";
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[16].aovName" " -type \"string\" \"volume_direct\""
 		
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[17].aovName" " -type \"string\" \"volume_indirect\""
+		
+		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[18].aovName" " -type \"string\" \"emission\""
 		
 		5 3 "notenblaetterRN" "notenblaetter:notenblatt.memberWireframeColor" 
 		"notenblaetterRN.placeHolderList[1]" ""
@@ -6164,27 +6186,27 @@ createNode shadingEngine -n "aiAmbientOcclusion1SG";
 	setAttr ".aovs[8].aov_name" -type "string" "indirect";
 	setAttr ".aovs[9].aov_name" -type "string" "opacity";
 	setAttr ".aovs[10].aov_name" -type "string" "specular";
-	setAttr ".aovs[11].aov_name" -type "string" "volume";
 	setAttr ".aovs[12].aov_name" -type "string" "volume_opacity";
 	setAttr ".aovs[13].aov_name" -type "string" "sheen";
 	setAttr ".aovs[14].aov_name" -type "string" "transmission";
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_AO","aiCustomAOVs[0]","ai_aov_specular"
-		,"aiCustomAOVs[10]","ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity"
-		,"aiCustomAOVs[12].aovName","ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission"
-		,"aiCustomAOVs[14].aovName","ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct"
-		,"aiCustomAOVs[16].aovName","ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_N"
-		,"aiCustomAOVs[1]","ai_aov_RGBA","aiCustomAOVs[2]","ai_aov_Z","aiCustomAOVs[3]","ai_aov_albedo"
-		,"aiCustomAOVs[4]","ai_aov_crypto_asset","aiCustomAOVs[5]","ai_aov_diffuse","aiCustomAOVs[6]"
-		,"ai_aov_direct","aiCustomAOVs[7]","ai_aov_indirect","aiCustomAOVs[8]","ai_aov_opacity"
-		,"aiCustomAOVs[9]"} ;
+		,"aiCustomAOVs[10]","ai_aov_volume","aiCustomAOVs[11]","ai_aov_volume_opacity","aiCustomAOVs[12]"
+		,"ai_aov_sheen","aiCustomAOVs[13]","ai_aov_transmission","aiCustomAOVs[14]","ai_aov_volume_albedo"
+		,"aiCustomAOVs[15]","ai_aov_volume_direct","aiCustomAOVs[16]","ai_aov_volume_indirect"
+		,"aiCustomAOVs[17]","ai_aov_emission","aiCustomAOVs[18]","ai_aov_N","aiCustomAOVs[1]"
+		,"ai_aov_RGBA","aiCustomAOVs[2]","ai_aov_Z","aiCustomAOVs[3]","ai_aov_albedo","aiCustomAOVs[4]"
+		,"ai_aov_crypto_asset","aiCustomAOVs[5]","ai_aov_diffuse","aiCustomAOVs[6]","ai_aov_direct"
+		,"aiCustomAOVs[7]","ai_aov_indirect","aiCustomAOVs[8]","ai_aov_opacity","aiCustomAOVs[9]"
+		} ;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "0D39511D-4533-BA9C-0954-5F96196BFCA9";
-createNode aiAOV -n "aiAOV_volume";
-	rename -uid "5C6A8F72-426F-D827-8B56-9A99C85EAB75";
-	setAttr ".aovn" -type "string" "volume";
+createNode aiAOV -n "aiAOV_emission";
+	rename -uid "148019F4-45A5-9807-EF7E-5EB34A245B58";
+	setAttr ".aovn" -type "string" "emission";
 	setAttr ".aovt" 5;
 select -ne :time1;
 	setAttr -av -k on ".cch";
@@ -6279,7 +6301,7 @@ select -ne :initialShadingGroup;
 	setAttr -cb on ".fo";
 	setAttr -cb on ".epo";
 	setAttr ".ro" yes;
-	setAttr -s 18 ".aovs";
+	setAttr -s 19 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "N";
 	setAttr ".aovs[1].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[2].aov_name" -type "string" "Z";
@@ -6298,18 +6320,19 @@ select -ne :initialShadingGroup;
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr -k on ".ai_surface_shader";
 	setAttr -k on ".ai_volume_shader";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0].aovName","ai_aov_AO"
 		,"aiCustomAOVs[10].aovName","ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity"
 		,"aiCustomAOVs[12].aovName","ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission"
 		,"aiCustomAOVs[14].aovName","ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct"
-		,"aiCustomAOVs[16].aovName","ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA"
-		,"aiCustomAOVs[1].aovName","ai_aov_Z","aiCustomAOVs[2].aovName","ai_aov_albedo","aiCustomAOVs[3].aovName"
-		,"ai_aov_diffuse","aiCustomAOVs[4].aovName","ai_aov_direct","aiCustomAOVs[5].aovName"
-		,"ai_aov_indirect","aiCustomAOVs[6].aovName","ai_aov_opacity","aiCustomAOVs[7].aovName"
-		,"ai_aov_specular","aiCustomAOVs[8].aovName","ai_aov_crypto_asset","aiCustomAOVs[9].aovName"
-		} ;
+		,"aiCustomAOVs[16].aovName","ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_emission"
+		,"aiCustomAOVs[18].aovName","ai_aov_RGBA","aiCustomAOVs[1].aovName","ai_aov_Z","aiCustomAOVs[2].aovName"
+		,"ai_aov_albedo","aiCustomAOVs[3].aovName","ai_aov_diffuse","aiCustomAOVs[4].aovName"
+		,"ai_aov_direct","aiCustomAOVs[5].aovName","ai_aov_indirect","aiCustomAOVs[6].aovName"
+		,"ai_aov_opacity","aiCustomAOVs[7].aovName","ai_aov_specular","aiCustomAOVs[8].aovName"
+		,"ai_aov_crypto_asset","aiCustomAOVs[9].aovName"} ;
 select -ne :initialParticleSE;
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr -av -k on ".cch";
@@ -6324,7 +6347,7 @@ select -ne :initialParticleSE;
 	setAttr -cb on ".fo";
 	setAttr -cb on ".epo";
 	setAttr ".ro" yes;
-	setAttr -s 18 ".aovs";
+	setAttr -s 19 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "N";
 	setAttr ".aovs[1].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[2].aov_name" -type "string" "Z";
@@ -6343,18 +6366,19 @@ select -ne :initialParticleSE;
 	setAttr ".aovs[15].aov_name" -type "string" "volume_albedo";
 	setAttr ".aovs[16].aov_name" -type "string" "volume_direct";
 	setAttr ".aovs[17].aov_name" -type "string" "volume_indirect";
+	setAttr ".aovs[18].aov_name" -type "string" "emission";
 	setAttr -k on ".ai_surface_shader";
 	setAttr -k on ".ai_volume_shader";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_N","aiCustomAOVs[0].aovName","ai_aov_AO"
 		,"aiCustomAOVs[10].aovName","ai_aov_volume","aiCustomAOVs[11].aovName","ai_aov_volume_opacity"
 		,"aiCustomAOVs[12].aovName","ai_aov_sheen","aiCustomAOVs[13].aovName","ai_aov_transmission"
 		,"aiCustomAOVs[14].aovName","ai_aov_volume_albedo","aiCustomAOVs[15].aovName","ai_aov_volume_direct"
-		,"aiCustomAOVs[16].aovName","ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_RGBA"
-		,"aiCustomAOVs[1].aovName","ai_aov_Z","aiCustomAOVs[2].aovName","ai_aov_albedo","aiCustomAOVs[3].aovName"
-		,"ai_aov_diffuse","aiCustomAOVs[4].aovName","ai_aov_direct","aiCustomAOVs[5].aovName"
-		,"ai_aov_indirect","aiCustomAOVs[6].aovName","ai_aov_opacity","aiCustomAOVs[7].aovName"
-		,"ai_aov_specular","aiCustomAOVs[8].aovName","ai_aov_crypto_asset","aiCustomAOVs[9].aovName"
-		} ;
+		,"aiCustomAOVs[16].aovName","ai_aov_volume_indirect","aiCustomAOVs[17].aovName","ai_aov_emission"
+		,"aiCustomAOVs[18].aovName","ai_aov_RGBA","aiCustomAOVs[1].aovName","ai_aov_Z","aiCustomAOVs[2].aovName"
+		,"ai_aov_albedo","aiCustomAOVs[3].aovName","ai_aov_diffuse","aiCustomAOVs[4].aovName"
+		,"ai_aov_direct","aiCustomAOVs[5].aovName","ai_aov_indirect","aiCustomAOVs[6].aovName"
+		,"ai_aov_opacity","aiCustomAOVs[7].aovName","ai_aov_specular","aiCustomAOVs[8].aovName"
+		,"ai_aov_crypto_asset","aiCustomAOVs[9].aovName"} ;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr -av -k on ".cch";
@@ -6708,7 +6732,7 @@ connectAttr "aiAOV_opacity.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_specular.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_crypto_asset.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_AO.msg" ":defaultArnoldRenderOptions.aovs" -na;
-connectAttr "aiAOV_volume.msg" ":defaultArnoldRenderOptions.aovs" -na;
+connectAttr "aiAOV_emission.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "pasted__aiStandardSurface1SG.msg" "pasted__materialInfo1.sg";
 connectAttr "pasted__aiStandardSurface1.msg" "pasted__materialInfo1.m";
 connectAttr "pasted__file1.msg" "pasted__materialInfo1.t" -na;
@@ -6935,8 +6959,8 @@ connectAttr "aiAmbientOcclusion1.out" "aiAmbientOcclusion1SG.ss";
 connectAttr "aiAmbientOcclusion1SG.msg" "materialInfo1.sg";
 connectAttr "aiAmbientOcclusion1.msg" "materialInfo1.m";
 connectAttr "aiAmbientOcclusion1.msg" "materialInfo1.t" -na;
-connectAttr ":defaultArnoldDriver.msg" "aiAOV_volume.out[0].drvr";
-connectAttr ":defaultArnoldFilter.msg" "aiAOV_volume.out[0].ftr";
+connectAttr ":defaultArnoldDriver.msg" "aiAOV_emission.out[0].drvr";
+connectAttr ":defaultArnoldFilter.msg" "aiAOV_emission.out[0].ftr";
 connectAttr "sequencer1.msg" ":sequenceManager1.seqts" -na;
 connectAttr "trackInfoManager1.msg" ":sequenceManager1.tim";
 connectAttr "pasted__aiStandardSurface1SG.pa" ":renderPartition.st" -na;

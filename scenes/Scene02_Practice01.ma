@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Scene02_Practice01.ma
-//Last modified: Thu, Jun 15, 2023 05:09:24 PM
+//Last modified: Thu, Jun 15, 2023 05:19:04 PM
 //Codeset: 1252
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
@@ -24,7 +24,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22621)";
-fileInfo "UUID" "30AEA2F5-4E71-5084-32EF-52B87A88FB72";
+fileInfo "UUID" "1F8A0234-4779-7481-DE5D-49AF94DC87EC";
 createNode transform -s -n "persp";
 	rename -uid "539E143C-40B0-FB15-755D-3D8AFB875474";
 	setAttr ".v" no;
@@ -382,20 +382,20 @@ createNode aiAreaLight -n "notenständer_light1Shape" -p "notenständer_light1";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "A037A3AF-45E2-119A-ED10-EFB02BE8E30E";
+	rename -uid "1A390CDF-47EB-A758-4F80-D3A90E9FC3B1";
 	setAttr -s 18 ".lnk";
 	setAttr -s 115 ".ign";
 	setAttr -s 18 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "EB1F39B6-4F0F-29D4-2903-EC97C57617CE";
+	rename -uid "1D6B4535-45B9-4977-B18C-799E8B159B6D";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "69E6523F-41D5-FFE7-6024-4F9839CCF477";
+	rename -uid "561CA785-4671-D5C3-0194-F4A6E7C54C56";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "A1A1DD9B-42EB-2D55-8CAB-98B914A2567B";
+	rename -uid "2864A6EA-47A3-A20F-58DF-BBA780EB8D58";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "D538D237-4B69-3249-5193-E9A3A8F3762E";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "4B1BA8D9-4358-B4D2-34C2-C591C846E398";
+	rename -uid "8C7610AB-4B97-3ADE-EBE5-BEB463D5BAFB";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "2B7ABD1B-407B-488B-2F25-BA8769A9A0AE";
 	setAttr ".g" yes;
@@ -425,11 +425,11 @@ createNode reference -n "stage_fertigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"stage_fertigRN"
 		"stage_fertigRN" 0
-		"stage_fertigRN" 117
+		"stage_fertigRN" 121
 		2 "|stage_fertig:plane_canvasSize" "visibility" " 0"
 		2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1" "translate" " -type \"double3\" 0 0 51.49736090395071386"
 		
-		2 "stage_fertig:set1" "aiCustomAOVs" " -s 11"
+		2 "stage_fertig:set1" "aiCustomAOVs" " -s 12"
 		2 "stage_fertig:set1" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "stage_fertig:set1" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -452,7 +452,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:set1" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
 		
-		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs" " -s 11"
+		2 "stage_fertig:set1" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs" " -s 12"
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -475,7 +477,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
 		
-		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs" " -s 11"
+		2 "stage_fertig:aiStandardSurface1SG" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs" " -s 12"
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -498,7 +502,9 @@ createNode reference -n "stage_fertigRN";
 		
 		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
 		
-		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs" " -s 11"
+		2 "stage_fertig:aiStandardSurface2SG" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs" " -s 12"
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -520,6 +526,8 @@ createNode reference -n "stage_fertigRN";
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		
 		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
+		
+		2 "stage_fertig:aiStandardSurface3SG" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
 		
 		5 4 "stage_fertigRN" "|stage_fertig:curtains|stage_fertig:plane_canvasSize2.translateX" 
 		"stage_fertigRN.placeHolderList[1]" ""
@@ -561,9 +569,9 @@ createNode reference -n "stage_fertigRN";
 		"stage_fertigRN.placeHolderList[19]" ""
 		5 4 "stage_fertigRN" "|stage_fertig:curtains|stage_fertig:plane_canvasSize3.scaleZ" 
 		"stage_fertigRN.placeHolderList[20]" ""
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -571,49 +579,49 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -621,9 +629,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -631,9 +639,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -643,9 +651,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -660,7 +668,7 @@ lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "895D829F-49BA-1B03-49C7-9897964CB793";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".version" -type "string" "4.2.4";
 	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=ShotShape7;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
@@ -721,8 +729,8 @@ createNode reference -n "Geige_RigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Geige_RigRN"
 		"Geige_RigRN" 0
-		"Geige_RigRN" 158
-		2 "Geige_Rig:inside_highSG" "aiCustomAOVs" " -s 11"
+		"Geige_RigRN" 164
+		2 "Geige_Rig:inside_highSG" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -745,7 +753,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
 		
-		2 "Geige_Rig:set1" "aiCustomAOVs" " -s 11"
+		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set1" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:set1" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:set1" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -765,7 +775,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set1" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		2 "Geige_Rig:set1" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
-		2 "Geige_Rig:set2" "aiCustomAOVs" " -s 11"
+		2 "Geige_Rig:set1" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set2" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:set2" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:set2" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -785,7 +797,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set2" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		2 "Geige_Rig:set2" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
-		2 "Geige_Rig:set3" "aiCustomAOVs" " -s 11"
+		2 "Geige_Rig:set2" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set3" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:set3" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:set3" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -805,7 +819,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set3" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		2 "Geige_Rig:set3" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
-		2 "Geige_Rig:set5" "aiCustomAOVs" " -s 11"
+		2 "Geige_Rig:set3" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set5" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:set5" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:set5" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -825,7 +841,9 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set5" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		2 "Geige_Rig:set5" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
-		2 "Geige_Rig:set6" "aiCustomAOVs" " -s 11"
+		2 "Geige_Rig:set5" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
+		2 "Geige_Rig:set6" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:set6" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "Geige_Rig:set6" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -845,6 +863,8 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set6" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		2 "Geige_Rig:set6" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
+		2 "Geige_Rig:set6" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\""
+		
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateY" "Geige_RigRN.placeHolderList[1]" 
 		""
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateZ" "Geige_RigRN.placeHolderList[2]" 
@@ -909,111 +929,111 @@ createNode reference -n "Geige_RigRN";
 		"Geige_RigRN.placeHolderList[31]" ""
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.visibility" 
 		"Geige_RigRN.placeHolderList[32]" ""
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0;
@@ -1263,7 +1283,7 @@ createNode shadingEngine -n "aiStandardSurface1SG";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr ".ihi" 0;
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1275,11 +1295,13 @@ createNode shadingEngine -n "aiStandardSurface1SG";
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0]","ai_aov_N"
-		,"aiCustomAOVs[10]","ai_aov_Z","aiCustomAOVs[1]","ai_aov_albedo","aiCustomAOVs[2]"
-		,"ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct","aiCustomAOVs[4]","ai_aov_indirect"
-		,"aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]","ai_aov_specular","aiCustomAOVs[7]"
-		,"ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO","aiCustomAOVs[9]"} ;
+		,"aiCustomAOVs[10]","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z","aiCustomAOVs[1]"
+		,"ai_aov_albedo","aiCustomAOVs[2]","ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct"
+		,"aiCustomAOVs[4]","ai_aov_indirect","aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]"
+		,"ai_aov_specular","aiCustomAOVs[7]","ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO"
+		,"aiCustomAOVs[9]"} ;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "395064B4-4A57-9647-4016-BBA155C0ACA0";
 createNode file -n "file1";
@@ -1296,7 +1318,7 @@ createNode shadingEngine -n "aiStandardSurface2SG";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr ".ihi" 0;
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1308,11 +1330,13 @@ createNode shadingEngine -n "aiStandardSurface2SG";
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0]","ai_aov_N"
-		,"aiCustomAOVs[10]","ai_aov_Z","aiCustomAOVs[1]","ai_aov_albedo","aiCustomAOVs[2]"
-		,"ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct","aiCustomAOVs[4]","ai_aov_indirect"
-		,"aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]","ai_aov_specular","aiCustomAOVs[7]"
-		,"ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO","aiCustomAOVs[9]"} ;
+		,"aiCustomAOVs[10]","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z","aiCustomAOVs[1]"
+		,"ai_aov_albedo","aiCustomAOVs[2]","ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct"
+		,"aiCustomAOVs[4]","ai_aov_indirect","aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]"
+		,"ai_aov_specular","aiCustomAOVs[7]","ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO"
+		,"aiCustomAOVs[9]"} ;
 createNode materialInfo -n "materialInfo2";
 	rename -uid "825B995F-463C-E271-8BC8-FFA2C1AE0C0A";
 createNode file -n "file2";
@@ -1335,7 +1359,7 @@ createNode shadingEngine -n "aiStandardSurface3SG";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr ".ihi" 0;
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1347,11 +1371,13 @@ createNode shadingEngine -n "aiStandardSurface3SG";
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0]","ai_aov_N"
-		,"aiCustomAOVs[10]","ai_aov_Z","aiCustomAOVs[1]","ai_aov_albedo","aiCustomAOVs[2]"
-		,"ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct","aiCustomAOVs[4]","ai_aov_indirect"
-		,"aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]","ai_aov_specular","aiCustomAOVs[7]"
-		,"ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO","aiCustomAOVs[9]"} ;
+		,"aiCustomAOVs[10]","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z","aiCustomAOVs[1]"
+		,"ai_aov_albedo","aiCustomAOVs[2]","ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct"
+		,"aiCustomAOVs[4]","ai_aov_indirect","aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]"
+		,"ai_aov_specular","aiCustomAOVs[7]","ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO"
+		,"aiCustomAOVs[9]"} ;
 createNode materialInfo -n "materialInfo3";
 	rename -uid "9C77C43E-4303-DF2E-0519-2192E7D5A187";
 createNode file -n "file4";
@@ -1374,7 +1400,7 @@ createNode shadingEngine -n "aiStandardSurface4SG";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr ".ihi" 0;
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1386,11 +1412,13 @@ createNode shadingEngine -n "aiStandardSurface4SG";
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0]","ai_aov_N"
-		,"aiCustomAOVs[10]","ai_aov_Z","aiCustomAOVs[1]","ai_aov_albedo","aiCustomAOVs[2]"
-		,"ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct","aiCustomAOVs[4]","ai_aov_indirect"
-		,"aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]","ai_aov_specular","aiCustomAOVs[7]"
-		,"ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO","aiCustomAOVs[9]"} ;
+		,"aiCustomAOVs[10]","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z","aiCustomAOVs[1]"
+		,"ai_aov_albedo","aiCustomAOVs[2]","ai_aov_diffuse","aiCustomAOVs[3]","ai_aov_direct"
+		,"aiCustomAOVs[4]","ai_aov_indirect","aiCustomAOVs[5]","ai_aov_opacity","aiCustomAOVs[6]"
+		,"ai_aov_specular","aiCustomAOVs[7]","ai_aov_crypto_asset","aiCustomAOVs[8]","ai_aov_AO"
+		,"aiCustomAOVs[9]"} ;
 createNode materialInfo -n "materialInfo4";
 	rename -uid "9B3B4AF8-4859-528A-8217-6184F142562C";
 createNode file -n "file6";
@@ -1686,7 +1714,7 @@ createNode reference -n "notenblaetterRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"notenblaetterRN"
 		"notenblaetterRN" 0
-		"notenblaetterRN" 20
+		"notenblaetterRN" 21
 		2 "|notenblaetter:notenblaetter" "translate" " -type \"double3\" 3.06465468252253892 -30.25532847819206239 38.37627745917455968"
 		
 		2 "|notenblaetter:notenblaetter" "scale" " -type \"double3\" 0.21171961432526012 0.21171961432526012 0.21171961432526012"
@@ -1703,7 +1731,7 @@ createNode reference -n "notenblaetterRN";
 		
 		2 "|notenblaetter:notenblaetter|notenblaetter:blatt_03" "rotate" " -type \"double3\" 0 -43.13508128595345426 0"
 		
-		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs" " -s 11"
+		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs" " -s 12"
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[1].aovName" " -type \"string\" \"Z\""
@@ -1724,7 +1752,9 @@ createNode reference -n "notenblaetterRN";
 		
 		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[9].aovName" " -type \"string\" \"AO\""
 		
-		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\"";
+		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[10].aovName" " -type \"string\" \"N\""
+		
+		2 "notenblaetter:aiStandardSurface1SG" "aiCustomAOVs[11].aovName" " -type \"string\" \"emission\"";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode aiAOV -n "aiAOV_RGBA";
@@ -1778,7 +1808,7 @@ createNode shadingEngine -n "aiAmbientOcclusion1SG";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr ".ihi" 0;
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "AO";
 	setAttr ".aovs[1].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[2].aov_name" -type "string" "Z";
@@ -1790,11 +1820,13 @@ createNode shadingEngine -n "aiAmbientOcclusion1SG";
 	setAttr ".aovs[8].aov_name" -type "string" "opacity";
 	setAttr ".aovs[9].aov_name" -type "string" "specular";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_AO","aiCustomAOVs[0]","ai_aov_N","aiCustomAOVs[10]"
-		,"ai_aov_RGBA","aiCustomAOVs[1]","ai_aov_Z","aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]"
-		,"ai_aov_crypto_asset","aiCustomAOVs[4]","ai_aov_diffuse","aiCustomAOVs[5]","ai_aov_direct"
-		,"aiCustomAOVs[6]","ai_aov_indirect","aiCustomAOVs[7]","ai_aov_opacity","aiCustomAOVs[8]"
-		,"ai_aov_specular","aiCustomAOVs[9]"} ;
+		,"ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_RGBA","aiCustomAOVs[1]","ai_aov_Z"
+		,"aiCustomAOVs[2]","ai_aov_albedo","aiCustomAOVs[3]","ai_aov_crypto_asset","aiCustomAOVs[4]"
+		,"ai_aov_diffuse","aiCustomAOVs[5]","ai_aov_direct","aiCustomAOVs[6]","ai_aov_indirect"
+		,"aiCustomAOVs[7]","ai_aov_opacity","aiCustomAOVs[8]","ai_aov_specular","aiCustomAOVs[9]"
+		} ;
 createNode materialInfo -n "materialInfo5";
 	rename -uid "278B5534-47D0-D783-0C3B-B4A46EEFF0E7";
 createNode aiAOV -n "aiAOV_N";
@@ -1804,6 +1836,10 @@ createNode aiAOV -n "aiAOV_N";
 createNode aiAOVFilter -n "aiAOVFilter2";
 	rename -uid "B4C47622-4AF1-1ADA-CA44-38AA819968DD";
 	setAttr ".ai_translator" -type "string" "closest";
+createNode aiAOV -n "aiAOV_emission";
+	rename -uid "13FDBEFD-43D9-5E65-1921-20B5162FDD3C";
+	setAttr ".aovn" -type "string" "emission";
+	setAttr ".aovt" 5;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -k on ".fzn";
@@ -1894,7 +1930,7 @@ select -ne :initialShadingGroup;
 	setAttr -cb on ".fo";
 	setAttr -cb on ".epo";
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1906,14 +1942,16 @@ select -ne :initialShadingGroup;
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr -k on ".ai_surface_shader";
 	setAttr -k on ".ai_volume_shader";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0].aovName","ai_aov_N"
-		,"aiCustomAOVs[10].aovName","ai_aov_Z","aiCustomAOVs[1].aovName","ai_aov_albedo","aiCustomAOVs[2].aovName"
-		,"ai_aov_diffuse","aiCustomAOVs[3].aovName","ai_aov_direct","aiCustomAOVs[4].aovName"
-		,"ai_aov_indirect","aiCustomAOVs[5].aovName","ai_aov_opacity","aiCustomAOVs[6].aovName"
-		,"ai_aov_specular","aiCustomAOVs[7].aovName","ai_aov_crypto_asset","aiCustomAOVs[8].aovName"
-		,"ai_aov_AO","aiCustomAOVs[9].aovName"} ;
+		,"aiCustomAOVs[10].aovName","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z"
+		,"aiCustomAOVs[1].aovName","ai_aov_albedo","aiCustomAOVs[2].aovName","ai_aov_diffuse"
+		,"aiCustomAOVs[3].aovName","ai_aov_direct","aiCustomAOVs[4].aovName","ai_aov_indirect"
+		,"aiCustomAOVs[5].aovName","ai_aov_opacity","aiCustomAOVs[6].aovName","ai_aov_specular"
+		,"aiCustomAOVs[7].aovName","ai_aov_crypto_asset","aiCustomAOVs[8].aovName","ai_aov_AO"
+		,"aiCustomAOVs[9].aovName"} ;
 select -ne :initialParticleSE;
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	setAttr -av -k on ".cch";
@@ -1928,7 +1966,7 @@ select -ne :initialParticleSE;
 	setAttr -cb on ".fo";
 	setAttr -cb on ".epo";
 	setAttr ".ro" yes;
-	setAttr -s 11 ".aovs";
+	setAttr -s 12 ".aovs";
 	setAttr ".aovs[0].aov_name" -type "string" "RGBA";
 	setAttr ".aovs[1].aov_name" -type "string" "Z";
 	setAttr ".aovs[2].aov_name" -type "string" "albedo";
@@ -1940,14 +1978,16 @@ select -ne :initialParticleSE;
 	setAttr ".aovs[8].aov_name" -type "string" "crypto_asset";
 	setAttr ".aovs[9].aov_name" -type "string" "AO";
 	setAttr ".aovs[10].aov_name" -type "string" "N";
+	setAttr ".aovs[11].aov_name" -type "string" "emission";
 	setAttr -k on ".ai_surface_shader";
 	setAttr -k on ".ai_volume_shader";
 	setAttr ".aal" -type "attributeAlias" {"ai_aov_RGBA","aiCustomAOVs[0].aovName","ai_aov_N"
-		,"aiCustomAOVs[10].aovName","ai_aov_Z","aiCustomAOVs[1].aovName","ai_aov_albedo","aiCustomAOVs[2].aovName"
-		,"ai_aov_diffuse","aiCustomAOVs[3].aovName","ai_aov_direct","aiCustomAOVs[4].aovName"
-		,"ai_aov_indirect","aiCustomAOVs[5].aovName","ai_aov_opacity","aiCustomAOVs[6].aovName"
-		,"ai_aov_specular","aiCustomAOVs[7].aovName","ai_aov_crypto_asset","aiCustomAOVs[8].aovName"
-		,"ai_aov_AO","aiCustomAOVs[9].aovName"} ;
+		,"aiCustomAOVs[10].aovName","ai_aov_emission","aiCustomAOVs[11].aovName","ai_aov_Z"
+		,"aiCustomAOVs[1].aovName","ai_aov_albedo","aiCustomAOVs[2].aovName","ai_aov_diffuse"
+		,"aiCustomAOVs[3].aovName","ai_aov_direct","aiCustomAOVs[4].aovName","ai_aov_indirect"
+		,"aiCustomAOVs[5].aovName","ai_aov_opacity","aiCustomAOVs[6].aovName","ai_aov_specular"
+		,"aiCustomAOVs[7].aovName","ai_aov_crypto_asset","aiCustomAOVs[8].aovName","ai_aov_AO"
+		,"aiCustomAOVs[9].aovName"} ;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr -av -k on ".cch";
@@ -2231,6 +2271,7 @@ connectAttr "aiAOV_specular.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_crypto_asset.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_AO.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr "aiAOV_N.msg" ":defaultArnoldRenderOptions.aovs" -na;
+connectAttr "aiAOV_emission.msg" ":defaultArnoldRenderOptions.aovs" -na;
 connectAttr ":timeEditor.cmp[0]" "Composition1.cmp";
 connectAttr "file1.oc" "aiStandardSurface1.base_color";
 connectAttr "aiStandardSurface1.out" "aiStandardSurface1SG.ss";
@@ -2441,6 +2482,8 @@ connectAttr "aiAmbientOcclusion1.msg" "materialInfo5.m";
 connectAttr "aiAmbientOcclusion1.msg" "materialInfo5.t" -na;
 connectAttr ":defaultArnoldDriver.msg" "aiAOV_N.out[0].drvr";
 connectAttr "aiAOVFilter2.msg" "aiAOV_N.out[0].ftr";
+connectAttr ":defaultArnoldDriver.msg" "aiAOV_emission.out[0].drvr";
+connectAttr ":defaultArnoldFilter.msg" "aiAOV_emission.out[0].ftr";
 connectAttr "aiStandardSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface2SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface3SG.pa" ":renderPartition.st" -na;
