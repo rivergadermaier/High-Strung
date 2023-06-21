@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
-//Name: Scene06_Performance02.ma
-//Last modified: Tue, Jun 20, 2023 03:23:19 PM
+//Name: Scene06_Performance02_v2.ma
+//Last modified: Wed, Jun 21, 2023 05:16:24 PM
 //Codeset: 1252
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
@@ -18,25 +18,26 @@ requires -nodeType "timeSliderBookmark" "timeSliderBookmark" "Version 1.0, unsup
 requires -nodeType "aiOptions" -nodeType "aiAOV" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter"
 		 -nodeType "aiAreaLight" -nodeType "aiAmbientOcclusion" -nodeType "aiStandardSurface"
 		 -nodeType "aiAtmosphereVolume" -nodeType "cryptomatte" "mtoa" "5.1.2";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
-fileInfo "osv" "Windows 10 Pro N v2009 (Build: 19045)";
-fileInfo "UUID" "00257412-42B9-CCB1-20B6-298718DC1AC1";
+fileInfo "osv" "Windows 10 Pro v2009 (Build: 19045)";
+fileInfo "UUID" "1313C5F6-4792-BF2E-08C5-78BAE3968A10";
 createNode transform -s -n "persp";
 	rename -uid "37C5FE8C-4A08-816E-EFA9-E2BCB9C23993";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -13.016055891463779 -7.7330868592850344 59.254231943944845 ;
-	setAttr ".r" -type "double3" -10.799999999999383 2.0000000000002363 2.4863229456536666e-17 ;
+	setAttr ".t" -type "double3" -4.5671485195883825 -0.54149393532299328 130.48421164261828 ;
+	setAttr ".r" -type "double3" -7.7999999999998293 361.59999999997461 1.2428887560791789e-17 ;
 	setAttr ".rpt" -type "double3" 3.5223043107672939e-15 -2.9897324802534104e-16 1.0643737403186561e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "F9EF8120-45F2-69B4-2154-96900ED0A24B";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 24.185780478176031;
+	setAttr ".coi" 103.69076904029487;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -366,7 +367,7 @@ createNode lookAt -n "cameraAim_360";
 	rename -uid "15D71206-42CA-5662-E9D7-87A1989572E5";
 	setAttr ".smd" 7;
 	setAttr ".a" -type "double3" 0 0 -1 ;
-	setAttr ".db" 28.609011886819182;
+	setAttr ".db" 24.558613525831269;
 	setAttr ".tws" -1.2074182697257333e-06;
 createNode transform -n "camera_360" -p "cameraAim_360";
 	rename -uid "6D6C9B3A-4493-7B3C-6D68-B6A751141BAE";
@@ -380,11 +381,13 @@ createNode camera -n "camera_Shape360" -p "camera_360";
 	setAttr ".rnd" no;
 	setAttr ".cap" -type "double2" 1.41732 0.94488 ;
 	setAttr ".ff" 0;
-	setAttr ".coi" 28.609011886819182;
+	setAttr ".ovr" 1.3;
+	setAttr ".coi" 24.558613525831269;
 	setAttr -l on ".ow" 30;
 	setAttr ".imn" -type "string" "camera1";
 	setAttr ".den" -type "string" "camera1_depth";
 	setAttr ".man" -type "string" "camera1_mask";
+	setAttr ".dr" yes;
 createNode transform -n "aim_360" -p "cameraAim_360";
 	rename -uid "F2E55978-4742-3CF3-2575-4EB0722506D0";
 	setAttr ".drp" yes;
@@ -699,7 +702,7 @@ createNode camera -n "ubercamShape" -p "ubercam";
 	setAttr -av ".ptsc";
 	setAttr -av ".ff";
 	setAttr -av ".ffo";
-	setAttr -av ".ovr";
+	setAttr -av ".ovr" 1.3;
 	setAttr -av ".pze";
 	setAttr -av ".rpz";
 	setAttr -av ".hpn";
@@ -720,7 +723,7 @@ createNode camera -n "ubercamShape" -p "ubercam";
 	setAttr -av ".dgo";
 	setAttr -av ".dgm";
 	setAttr -av ".dfg";
-	setAttr -av ".dr";
+	setAttr -av ".dr" yes;
 	setAttr -av ".dsa";
 	setAttr -av ".dst";
 	setAttr -av ".dfc";
@@ -825,6 +828,7 @@ createNode aiAreaLight -n "pasted__aiAreaLightShape1" -p "pasted__aiAreaLight1";
 	setAttr ".rcsh" no;
 	setAttr ".sc" -type "float3" 0.67559999 0.65609998 0.7604 ;
 	setAttr ".ai_exposure" 13;
+	setAttr ".ai_samples" 3;
 	setAttr ".ai_specular" 0;
 	setAttr ".ai_volume" 0;
 	setAttr ".ai_aov" -type "string" "frontLight";
@@ -843,6 +847,7 @@ createNode aiAreaLight -n "pasted__aiAreaLightShape2" -p "pasted__aiAreaLight2";
 	setAttr ".rcsh" no;
 	setAttr ".sc" -type "float3" 1 0.75 0.75 ;
 	setAttr ".ai_exposure" 13;
+	setAttr ".ai_samples" 3;
 	setAttr ".ai_volume" 0;
 	setAttr ".ai_aov" -type "string" "BG_light";
 	setAttr ".ai_translator" -type "string" "quad";
@@ -861,46 +866,8 @@ createNode spotLight -n "pasted__spotLightShape1" -p "pasted__spotLight1";
 	setAttr ".col" 9.9999997473787516e-06;
 	setAttr ".ca" 25.388728970741294;
 	setAttr ".pa" -1.7950000000000002;
-createNode transform -n "pasted__spotLight2" -p "pasted__Lights";
-	rename -uid "FCDD1267-4FDA-7082-FE1D-1988FA188B67";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -44.550811260411194 38.409881769766535 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.577208340132728 -3.0599954608182869 34.612146773176242 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape2" -p "pasted__spotLight2";
-	rename -uid "27295F3D-465F-31B9-559E-68ACA598BE07";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 12.000000000000002;
-	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 12.5;
-createNode transform -n "pasted__spotLight3" -p "pasted__Lights";
-	rename -uid "BBFF109A-429F-513E-E09F-8CB4F333412A";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" 45.170007170874179 38.409881769766535 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.601052928349446 3.094210207391622 -35.056345237192026 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape3" -p "pasted__spotLight3";
-	rename -uid "FD56EDD6-4100-634F-2E56-468B3E798407";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 12.000000000000002;
-	setAttr ".pa" -0.769;
-	setAttr ".ai_exposure" 12.5;
-createNode transform -n "spotLight1" -p "pasted__Lights";
-	rename -uid "F2A26047-42A3-97A0-664F-74A89496DC5F";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" 47.967877495168096 -29.277466981009283 30.431231442047064 ;
-	setAttr ".r" -type "double3" 61.489815315288602 71.19096585924872 50.550271616786809 ;
-	setAttr ".s" -type "double3" 28.281247484744714 28.281247484744714 28.281247484744714 ;
-createNode spotLight -n "spotLightShape1" -p "spotLight1";
-	rename -uid "1EC98D6B-4504-2EE1-53D6-A2B56D1E4C79";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.67135596 0.37800002 ;
-	setAttr ".ca" 11.543456559435176;
-	setAttr ".ai_exposure" 12.5;
+	setAttr ".ai_samples" 3;
+	setAttr ".ai_volume_samples" 3;
 createNode transform -n "pasted__spotLight4" -p "pasted__Lights";
 	rename -uid "A260A0CD-4A84-98AF-C9B0-AF90B4B3852E";
 	setAttr ".t" -type "double3" -21.187543828156464 38.409881769766535 29.263766116791288 ;
@@ -913,6 +880,9 @@ createNode spotLight -n "pasted__spotLightShape4" -p "pasted__spotLight4";
 	setAttr ".col" 9.9999997473787516e-06;
 	setAttr ".ca" 15.004774620354858;
 	setAttr ".pa" -1.7948718029910167;
+	setAttr ".ai_cast_shadows" no;
+	setAttr ".ai_samples" 3;
+	setAttr ".ai_volume_samples" 3;
 createNode transform -n "pasted__spotLight5" -p "pasted__Lights";
 	rename -uid "94E8C39B-4401-FEE2-CAAD-D2AED99766F8";
 	setAttr ".t" -type "double3" 21.008426192500693 38.409881769766535 29.263766116791288 ;
@@ -925,6 +895,8 @@ createNode spotLight -n "pasted__spotLightShape5" -p "pasted__spotLight5";
 	setAttr ".col" 9.9999997473787516e-06;
 	setAttr ".ca" 15.004774620354858;
 	setAttr ".pa" -1.7950000000000002;
+	setAttr ".ai_samples" 3;
+	setAttr ".ai_volume_samples" 3;
 createNode transform -n "aiAreaLight1" -p "pasted__Lights";
 	rename -uid "70D8B1A6-4C2F-FABB-705F-98BB220C7B3D";
 createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
@@ -935,111 +907,12 @@ createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
 	setAttr ".rcsh" no;
 	setAttr ".sc" -type "float3" 0.47530943 0.28200001 1 ;
 	setAttr ".ai_exposure" 10;
+	setAttr ".ai_samples" 3;
 	setAttr ".ai_volume" 0;
 	setAttr ".ai_aov" -type "string" "basicLight";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
-createNode transform -n "aiAreaLight2" -p "pasted__Lights";
-	rename -uid "DEA42EED-47EC-ECAF-D2C9-2DAB27D8BA2C";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -10.650263412547593 -17.900642896242413 29.296815060275943 ;
-	setAttr ".r" -type "double3" -4.7999999999997991 -72.400000000000745 3.9445329777667802e-15 ;
-	setAttr ".s" -type "double3" 1.632700005816305 5.8054843693363294 5.8054843693363294 ;
-createNode aiAreaLight -n "aiAreaLightShape2" -p "aiAreaLight2";
-	rename -uid "49FA0D4F-4655-CF06-58CF-B482F90BE420";
-	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
-	setAttr -k off ".v";
-	setAttr ".csh" no;
-	setAttr ".rcsh" no;
-	setAttr ".sc" -type "float3" 1 0.7899 0.57099998 ;
-	setAttr ".ai_exposure" 7;
-	setAttr ".ai_volume" 0;
-	setAttr ".ai_translator" -type "string" "quad";
-	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
-		} ;
-createNode transform -n "pasted__spotLight6" -p "pasted__Lights";
-	rename -uid "C70A9252-4FC4-5187-5F5B-0B95A0C54D60";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" 45.170007170874179 -27.307568734882246 29.263766116791288 ;
-	setAttr ".r" -type "double3" -91.999184915051401 4.9919362819820199 -111.85832649241307 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape6" -p "pasted__spotLight6";
-	rename -uid "7446C9DC-4B3C-CB64-1284-05A846C8300E";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.81553566 0.56400001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 15.004774620354858;
-	setAttr ".pa" -0.769;
-	setAttr ".ai_exposure" 13.5;
-createNode transform -n "spotLight2" -p "pasted__Lights";
-	rename -uid "A504183B-44D6-C5CB-C400-2F8FEACD638A";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -48.276511688302257 -29.277466981009283 30.431231442047064 ;
-	setAttr ".r" -type "double3" 49.684352723091585 -57.695419193655425 -45.281524431126599 ;
-	setAttr ".s" -type "double3" 28.281247484744714 28.281247484744714 28.281247484744714 ;
-createNode spotLight -n "spotLightShape2" -p "spotLight2";
-	rename -uid "A338EB72-40C5-E033-3CB8-BA92653E20B9";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.67135596 0.37800002 ;
-	setAttr ".ca" 11.543456559435176;
-	setAttr ".ai_exposure" 12.5;
-createNode transform -n "pasted__spotLight8" -p "pasted__Lights";
-	rename -uid "38F64AC1-4FCF-ADAF-1DC9-E2B151561B4C";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -52.278813267516718 40.090782068198557 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.753879018544694 -3.3009795246681346 37.795641323176753 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape8" -p "pasted__spotLight8";
-	rename -uid "3D6FDFD4-4E17-CE3D-1E40-EFA5A7A25909";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 12.000000000000002;
-	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 13.5;
-createNode transform -n "pasted__spotLight9" -p "pasted__Lights";
-	rename -uid "ADE698A2-4D77-7404-9846-4082F616A5E0";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" 52.613079073652237 40.090782068198557 29.263766116791288 ;
-	setAttr ".r" -type "double3" -276.48461014615958 16.549015291865629 140.33709593672756 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape9" -p "pasted__spotLight9";
-	rename -uid "79449941-48FD-686E-734A-30A371793094";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 12.000000000000002;
-	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 13.5;
-createNode transform -n "pasted__spotLight10" -p "pasted__Lights";
-	rename -uid "4A432401-4C69-D82A-61C7-63834D523146";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -52.278813267516718 40.090782068198557 29.263766116791288 ;
-	setAttr ".r" -type "double3" -85.75387901854468 -3.3009795246681417 41.887497111642254 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape10" -p "pasted__spotLight10";
-	rename -uid "D782D63A-4C4F-16D6-E666-F08F28B99CBB";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 18.466;
-	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 14;
-createNode transform -n "pasted__spotLight11" -p "pasted__Lights";
-	rename -uid "E34434FD-49E1-A5E4-C13F-E8AE02D2481F";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" 52.613079073652237 40.090782068198557 29.263766116791288 ;
-	setAttr ".r" -type "double3" -276.48461014615953 16.54901529186558 135.62054327962963 ;
-	setAttr ".s" -type "double3" 15.866335339311734 15.866335339311734 45.354327602213814 ;
-createNode spotLight -n "pasted__spotLightShape11" -p "pasted__spotLight11";
-	rename -uid "1B0573A2-485D-8582-BB0E-8091529121B0";
-	setAttr -k off ".v";
-	setAttr ".cl" -type "float3" 1 0.7448808 0.39700001 ;
-	setAttr ".col" 9.9999997473787516e-06;
-	setAttr ".ca" 18.466092681274542;
-	setAttr ".pa" -0.76923076206674956;
-	setAttr ".ai_exposure" 14;
 createNode transform -n "aiAreaLight3" -p "pasted__Lights";
 	rename -uid "CE7D12DD-48C0-214F-AB54-A4B8B590CE37";
 createNode aiAreaLight -n "aiAreaLightShape3" -p "aiAreaLight3";
@@ -1049,13 +922,14 @@ createNode aiAreaLight -n "aiAreaLightShape3" -p "aiAreaLight3";
 	setAttr ".csh" no;
 	setAttr ".rcsh" no;
 	setAttr ".sc" -type "float3" 1 0.69869661 0.583 ;
+	setAttr ".ai_samples" 3;
 	setAttr ".ai_volume" 0;
 	setAttr ".ai_aov" -type "string" "basicLight";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
 createNode fosterParent -n "Bow_BottomCTRLRNfosterParent1";
-	rename -uid "6BCCDB80-4974-1435-F9E1-25A88A24CF40";
+	rename -uid "179726FA-4BBD-19BC-2212-388B19E28449";
 createNode mesh -n "metall_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	rename -uid "0B89EE8D-4B14-B479-D2F8-29A295EE4A26";
 	setAttr -k off ".v";
@@ -1067,6 +941,8 @@ createNode mesh -n "metall_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".dr" 3;
+	setAttr ".dsm" 2;
 createNode mesh -n "sehne_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	rename -uid "E60FC6DE-43F4-D132-85A2-9485B6617669";
 	setAttr -k off ".v";
@@ -1078,6 +954,8 @@ createNode mesh -n "sehne_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".dr" 3;
+	setAttr ".dsm" 2;
 createNode mesh -n "griff_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	rename -uid "F03DB1CB-4A1B-038C-980A-F9824C24E510";
 	setAttr -k off ".v";
@@ -1089,21 +967,23 @@ createNode mesh -n "griff_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".dr" 3;
+	setAttr ".dsm" 2;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "444A8C8C-4BFD-DB93-070E-99B1FCA28166";
+	rename -uid "2E1BF797-4A77-952F-F2BA-A49C84A3FFE5";
 	setAttr -s 53 ".lnk";
 	setAttr -s 391 ".ign";
 	setAttr -s 22 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "23A43268-4C3D-115E-D37D-37B4BC4BA551";
+	rename -uid "C12AB567-4D02-D941-89AA-FCAC80912C5D";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "A46A1862-469D-27F8-A370-1BB20FB2D43B";
+	rename -uid "7CA1EBFB-4212-213B-827A-8CBED26461A7";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "EADF5EBD-4478-BE9D-85A7-B4A191C51111";
+	rename -uid "E9E95D10-4F30-C461-FB45-71970D55CEC9";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "B34918BE-41F2-0950-DF76-819062BC127E";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "64383FDA-48D4-D6E7-CE27-6FBAD7C85C0A";
+	rename -uid "5F38140C-4123-C3AA-F127-21A51ED77560";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1D504B90-43B4-14D8-F7DB-9CA327FB6C2D";
 	setAttr ".g" yes;
@@ -1143,7 +1023,7 @@ createNode reference -n "stage_fertigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"stage_fertigRN"
 		"stage_fertigRN" 0
-		"stage_fertigRN" 203
+		"stage_fertigRN" 138
 		2 "|stage_fertig:plane_canvasSize" "visibility" " 0"
 		2 "|stage_fertig:stage|stage_fertig:stageShape" "aiVisibleInSpecularTransmission" 
 		" 1"
@@ -1324,69 +1204,29 @@ createNode reference -n "stage_fertigRN";
 		""
 		5 3 "stage_fertigRN" "stage_fertig:place2dTexture7.message" "stage_fertigRN.placeHolderList[30]" 
 		""
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
@@ -1394,25 +1234,11 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
@@ -1420,127 +1246,51 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight1|pasted__spotLightShape1.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight1|pasted__spotLightShape1.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight4|pasted__spotLightShape4.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight5|pasted__spotLightShape5.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|pasted__spotLight11|pasted__spotLightShape11.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|aiAreaLight2|aiAreaLightShape2.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|lighting|pasted__Lights|aiAreaLight3|aiAreaLightShape3.message" 
 		0;
@@ -1654,7 +1404,7 @@ createNode reference -n "Geige_RigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Geige_RigRN"
 		"Geige_RigRN" 0
-		"Geige_RigRN" 333
+		"Geige_RigRN" 202
 		2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape" 
 		"uvPivot" " -type \"double2\" 0.49411535263061523 0.30526250600814819"
 		2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low" 
@@ -1807,6 +1557,12 @@ createNode reference -n "Geige_RigRN";
 		
 		2 "Geige_Rig:set6" "aiCustomAOVs[12].aovName" " -type \"string\" \"emission\""
 		
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
+		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.instObjGroups" 
+		"Geige_Rig:set1.dagSetMembers" "-na"
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.instObjGroups" 
 		"Geige_Rig:set3.dagSetMembers" "-na"
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.instObjGroups" 
@@ -1833,12 +1589,6 @@ createNode reference -n "Geige_RigRN";
 		"Geige_Rig:set3.dagSetMembers" "-na"
 		3 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.instObjGroups" 
 		"Geige_Rig:set3.dagSetMembers" "-na"
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
-		3 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.instObjGroups" 
-		"Geige_Rig:set1.dagSetMembers" "-na"
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateX" "Geige_RigRN.placeHolderList[1]" 
 		""
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.translateY" "Geige_RigRN.placeHolderList[2]" 
@@ -1987,333 +1737,71 @@ createNode reference -n "Geige_RigRN";
 		5 0 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.instObjGroups" 
 		"Geige_Rig:set6.dagSetMembers" "Geige_RigRN.placeHolderList[81]" "Geige_RigRN.placeHolderList[82]" 
 		"Geige_Rig:set3.dsm"
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_low|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|aiAreaLight1|aiAreaLightShape1.message" 
 		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:body_high|Geige_Rig:body_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:saiten_high|Geige_Rig:saiten_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:griffbrett_high|Geige_Rig:griffbrett_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_01|Geige_Rig:wirbel_high_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_02|Geige_Rig:wirbel_high_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_03|Geige_Rig:wirbel_high_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:wirbel_high|Geige_Rig:wirbel_high_04|Geige_Rig:wirbel_high_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:kinnstuetze_high|Geige_Rig:kinnstuetze_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:hals_high|Geige_Rig:hals_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:metallplatte_high|Geige_Rig:metallplatte_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:saitenhalter_high|Geige_Rig:saitenhalter_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:schraube_high|Geige_Rig:schraube_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_high|Geige_Rig:inside_high|Geige_Rig:inside_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:griff_high|Geige_Rig:griff_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:sehne_high|Geige_Rig:sehne_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "link" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:bogen_high|Geige_Rig:metall_high|Geige_Rig:metall_highShape.message" "|lighting|pasted__Lights|pasted__spotLight10|pasted__spotLightShape10.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0;
@@ -2324,7 +1812,7 @@ createNode audio -n "Performance02";
 	setAttr ".o" 190;
 	setAttr ".ef" 1223.8220824829932;
 	setAttr ".se" 1033.8220824829932;
-	setAttr ".f" -type "string" "E:/High-Strung//sound/Performance02.wav";
+	setAttr ".f" -type "string" "C:/Users/River Robin/Desktop/High-Strung//sound/Performance02.wav";
 createNode script -n "uiConfigurationScriptNode";
 	rename -uid "8CC0B0B7-46C3-B6D6-9896-B2AC9182976F";
 	setAttr ".b" -type "string" (
@@ -2338,10 +1826,10 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n"
 		+ "            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n"
 		+ "            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n"
-		+ "            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n"
+		+ "            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|ubercam\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n"
 		+ "            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n"
-		+ "            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 0\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n"
-		+ "            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1319\n            -height 483\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 0\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 0\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n"
+		+ "            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1319\n            -height 450\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n"
 		+ "            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print 999\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n"
 		+ "            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n"
@@ -2370,18 +1858,18 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n"
 		+ "                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n"
 		+ "            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1319\\n    -height 483\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1319\\n    -height 483\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|ubercam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1319\\n    -height 450\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|ubercam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1319\\n    -height 450\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ttimeControl -e -displaySound 1 -sound Performance02 $gPlayBackSlider;\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "65F42BF2-4E10-9FDB-00D0-AF9DDF08536E";
-	setAttr ".b" -type "string" "playbackOptions -min -48 -max 1200 -ast -48 -aet 1200 ";
+	setAttr ".b" -type "string" "playbackOptions -min -41 -max 1200 -ast -48 -aet 1200 ";
 	setAttr ".st" 6;
 createNode animCurveTL -n "bogenCTRL_middle_translateX";
 	rename -uid "6BA32818-475D-45B4-F51F-15905FA964CA";
 	setAttr ".tan" 18;
-	setAttr -s 176 ".ktv[0:175]"  159 0 173 -4.6324615857615328 187 -9.0010716129472588
+	setAttr -s 177 ".ktv[0:176]"  154 0 159 0 173 -4.6324615857615328 187 -9.0010716129472588
 		 203 -9.0010716129472588 218 -8.886273833403548 222 -8.886273833403548 232 -7.4830736450482789
 		 236 -7.985680655002275 240 -8.5249936997679541 247 -7.1613023567702854 254 -8.6281585418509987
 		 256 -8.2189242757273586 258 -7.5925701663107459 261 -7.041188955449841 269 -8.6756498921871259
@@ -2426,7 +1914,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateX";
 		 947 -7.6012279891203249 951 -8.1532677550865085 956 -8.8418071036569916 960 -9.4276228812187792
 		 964 -9.9640722972303344 973 -10.740630017010689 978 -10.740630017010689 987 -12.942270313988207
 		 1005 -6.3223399626291279;
-	setAttr -s 176 ".kit[0:175]"  3 28 3 3 3 3 3 3 
+	setAttr -s 177 ".kit[1:176]"  3 28 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2437,7 +1925,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateX";
 		18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
 		18 18 18 3 18 18 18 18 18 18 18 18 18 3 3 3 3 
 		18 18 18 18 3 18 18 18 18 18 18 3 3 3 3;
-	setAttr -s 176 ".kot[0:175]"  3 18 3 3 3 3 3 3 
+	setAttr -s 177 ".kot[1:176]"  3 18 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2451,7 +1939,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateX";
 createNode animCurveTL -n "bogenCTRL_middle_translateY";
 	rename -uid "864A308F-4476-A657-A922-01B985EA13DD";
 	setAttr ".tan" 18;
-	setAttr -s 176 ".ktv[0:175]"  159 0 173 2.5182107159483764 187 1.7093197427783196
+	setAttr -s 177 ".ktv[0:176]"  154 0 159 0 173 2.5182107159483764 187 1.7093197427783196
 		 203 1.7093197427783196 218 1.3166764983153918 222 1.3166764983153918 232 1.9518723946014251
 		 236 1.6868965963706035 240 1.6689686397280799 247 1.6717608095176022 254 1.6669707230329305
 		 256 1.6470983526283891 258 1.8576056913987844 261 2.4522722684106011 269 1.3347050784436127
@@ -2496,7 +1984,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateY";
 		 947 2.1997735087848649 951 1.7717472775336562 956 1.3167693148804906 960 0.98576479590732613
 		 964 0.72393165125385828 973 0.38058153492855029 978 0.38058153492855029 987 3.7072021826408399
 		 1005 3.2782565204220795;
-	setAttr -s 176 ".kit[0:175]"  3 28 3 3 3 3 3 3 
+	setAttr -s 177 ".kit[1:176]"  3 28 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2507,7 +1995,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateY";
 		18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
 		18 18 18 3 18 18 18 18 18 18 18 18 18 3 3 3 3 
 		18 18 18 18 3 18 18 18 18 18 18 3 3 3 3;
-	setAttr -s 176 ".kot[0:175]"  3 18 3 3 3 3 3 3 
+	setAttr -s 177 ".kot[1:176]"  3 18 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2521,52 +2009,53 @@ createNode animCurveTL -n "bogenCTRL_middle_translateY";
 createNode animCurveTL -n "bogenCTRL_middle_translateZ";
 	rename -uid "622E341C-43CE-26BA-E4CD-5B88DFB300D9";
 	setAttr ".tan" 18;
-	setAttr -s 176 ".ktv[0:175]"  159 0 173 -0.29095557755927531 187 -0.058226350674739788
-		 203 -0.058226350674739788 218 0.026777615586962428 222 0.026777615586962428 232 1.065801035233803
-		 236 0.69363713548905215 240 0.29429362863748199 247 1.3040620524894166 254 0.21790346856055259
-		 256 0.52092793374598001 258 0.9847224757341182 261 1.3930020612074006 269 0.18273769133263199
-		 274 0.51714560246257302 277 0.8204691483489891 279 1.0299090635064247 282 1.3232656001306233
-		 284 1.4874046039043074 286 1.608118097469343 288 1.6720362479944131 289 1.5623708402771013
-		 290 1.363655976329305 291 1.1323300829117127 292 0.84330382974553952 293 0.55943531277823888
-		 295 0.18493247027760187 298 0.41113249175612743 299 0.52847994857808844 300 0.67011379121062242
-		 302 0.9695256014434418 305 1.3764376293673342 308 1.7465668963392686 310 1.9440887358455332
-		 312 2.0849844496994985 314 2.1629116274839664 315 2.0614753070322105 316 1.8637233708547627
-		 317 1.6089971009661035 318 1.3261520813161156 319 1.0461974600944921 321 0.6407314079341988
-		 328 1.6543636537922646 331 1.4733599732005207 333 1.2695385820905916 336 0.8831727537974855
-		 337 0.7390538060598435 338 0.58930488907153245 340 0.2771694463173574 343 -0.16181050919407614
-		 346 -0.50367649032183803 348 -0.60769118592334215 351 -0.46070797382554535 353 -0.27349942827811169
-		 354 -0.15763875643248848 358 0.37606508195849464 360 0.62937091630016051 361 0.74179909520576481
-		 364 1.1327231193654312 367 1.4767683277940149 370 1.7622952565637728 374 1.9899836128328028
-		 378 1.430582312834727 379 1.2301194663389625 381 0.77246955577027432 383 0.33347606812184361
-		 385 -0.05338604311861217 388 -0.3806308299431071 394 0.30837132006659768 400 1.0014934919903926
-		 408 0.64280309158165483 416 -0.010432607799404359 425 -0.49991447361965369 431 -0.022285896056746801
-		 439 1.1356056804504631 451 2.4248459154810256 464 1.052839518858345 470 0.28145875434383127
-		 476 -0.1746314163934426 488 1.2492503147697034 502 -0.25138382819511002 515 1.7661621126265059
-		 518 1.3762345231740416 519 1.1772251029655294 521 0.77329314893133971 523 0.44251022696227871
-		 526 0.18025565549790423 528 0.30836601835759303 529 0.42592159905390348 530 0.58771900359382312
-		 531 0.77292224843874568 532 0.9624932066096985 533 1.1822162526588271 534 1.4092354994934431
-		 535 1.6175207406517964 536 1.7971078668447127 538 2.028049054290848 551 -0.43504336450092679
-		 559 0.45414773040690898 566 1.6422458099758648 575 2.6014951432097888 578 2.187635907001594
-		 580 1.7009628994558001 582 1.1541476627752254 585 0.33858199195113203 586 0.092247550596761707
-		 587 -0.11596923023219052 589 -0.35646682588230277 595 0.92225192459984728 602 2.5319231943503975
-		 608 1.334436349418147 614 0.13573977475548479 621 1.5396038919462174 627 2.6526481983203878
-		 665 -1.2354493937443869 679 0.97421303525187941 690 -0.09811948260109099 703 1.4809508958086797
-		 725 -1.0286876404929519 732 -0.082821617244811296 740 1.7933566958370679 747 3.4216064669688961
-		 754 4.3411996719291173 761 3.4524797966706036 769 1.610375500970235 776 0.058570792302688357
-		 780 -0.62771031621620788 783 -0.86064766042638263 786 -0.65469935419955094 789 -0.23828742312049378
-		 791 0.097671520511533827 793 0.44204969378736059 796 0.94658651440848507 799 1.4486303854842186
-		 803 2.0139923246374098 806 2.3121732441051015 809 2.4639560735300545 813 2.2060212147327087
-		 815 1.988990338996568 819 1.4094447276741091 821 1.1183108104026038 822 0.98476983103960936
-		 824 0.64732092737681568 825 0.47261468105526905 827 0.12232331684628278 829 -0.19174385592676368
-		 835 -0.78840646616692656 839 -0.55444050987489235 843 -0.11178162742536168 846 0.27773029318604153
-		 848 0.52893275678131024 850 0.75213050893018152 852 0.99232353176178667 854 1.2212097467782173
-		 857 1.5096505775720797 860 1.7337407644832035 864 1.9105954991804164 885 -0.24668617177213617
-		 897 1.3525485476948909 911 -0.17521434355247867 918 0.23869524802046743 924 0.7645033518050206
-		 931 1.3143500083866946 934 1.4769227165084653 937 1.5516139942208795 942 1.3819498661533263
-		 947 1.0494376150650466 951 0.7067815601421974 956 0.26590999667692977 960 -0.11877984460552482
-		 964 -0.47811052734806064 973 -1.0043739020590945 978 -1.0043739020590945 987 -2.0368340401656786
-		 1005 6.7154077472839306;
-	setAttr -s 176 ".kit[0:175]"  3 28 3 3 3 3 3 3 
+	setAttr -s 182 ".ktv[0:181]"  9 1.1913053309546349 39 -0.1963596133579586
+		 69 1.2760405492794273 99 -0.51247949418606886 129 1.4470246886143414 154 0 159 0
+		 173 -0.29095557755927531 187 -0.058226350674739788 203 -0.058226350674739788 218 0.026777615586962428
+		 222 0.026777615586962428 232 1.065801035233803 236 0.69363713548905215 240 0.29429362863748199
+		 247 1.3040620524894166 254 0.21790346856055259 256 0.52092793374598001 258 0.9847224757341182
+		 261 1.3930020612074006 269 0.18273769133263199 274 0.51714560246257302 277 0.8204691483489891
+		 279 1.0299090635064247 282 1.3232656001306233 284 1.4874046039043074 286 1.608118097469343
+		 288 1.6720362479944131 289 1.5623708402771013 290 1.363655976329305 291 1.1323300829117127
+		 292 0.84330382974553952 293 0.55943531277823888 295 0.18493247027760187 298 0.41113249175612743
+		 299 0.52847994857808844 300 0.67011379121062242 302 0.9695256014434418 305 1.3764376293673342
+		 308 1.7465668963392686 310 1.9440887358455332 312 2.0849844496994985 314 2.1629116274839664
+		 315 2.0614753070322105 316 1.8637233708547627 317 1.6089971009661035 318 1.3261520813161156
+		 319 1.0461974600944921 321 0.6407314079341988 328 1.6543636537922646 331 1.4733599732005207
+		 333 1.2695385820905916 336 0.8831727537974855 337 0.7390538060598435 338 0.58930488907153245
+		 340 0.2771694463173574 343 -0.16181050919407614 346 -0.50367649032183803 348 -0.60769118592334215
+		 351 -0.46070797382554535 353 -0.27349942827811169 354 -0.15763875643248848 358 0.37606508195849464
+		 360 0.62937091630016051 361 0.74179909520576481 364 1.1327231193654312 367 1.4767683277940149
+		 370 1.7622952565637728 374 1.9899836128328028 378 1.430582312834727 379 1.2301194663389625
+		 381 0.77246955577027432 383 0.33347606812184361 385 -0.05338604311861217 388 -0.3806308299431071
+		 394 0.30837132006659768 400 1.0014934919903926 408 0.64280309158165483 416 -0.010432607799404359
+		 425 -0.49991447361965369 431 -0.022285896056746801 439 1.1356056804504631 451 2.4248459154810256
+		 464 1.052839518858345 470 0.28145875434383127 476 -0.1746314163934426 488 1.2492503147697034
+		 502 -0.25138382819511002 515 1.7661621126265059 518 1.3762345231740416 519 1.1772251029655294
+		 521 0.77329314893133971 523 0.44251022696227871 526 0.18025565549790423 528 0.30836601835759303
+		 529 0.42592159905390348 530 0.58771900359382312 531 0.77292224843874568 532 0.9624932066096985
+		 533 1.1822162526588271 534 1.4092354994934431 535 1.6175207406517964 536 1.7971078668447127
+		 538 2.028049054290848 551 -0.43504336450092679 559 0.45414773040690898 566 1.6422458099758648
+		 575 2.6014951432097888 578 2.187635907001594 580 1.7009628994558001 582 1.1541476627752254
+		 585 0.33858199195113203 586 0.092247550596761707 587 -0.11596923023219052 589 -0.35646682588230277
+		 595 0.92225192459984728 602 2.5319231943503975 608 1.334436349418147 614 0.13573977475548479
+		 621 1.5396038919462174 627 2.6526481983203878 665 -1.2354493937443869 679 0.97421303525187941
+		 690 -0.09811948260109099 703 1.4809508958086797 725 -1.0286876404929519 732 -0.082821617244811296
+		 740 1.7933566958370679 747 3.4216064669688961 754 4.3411996719291173 761 3.4524797966706036
+		 769 1.610375500970235 776 0.058570792302688357 780 -0.62771031621620788 783 -0.86064766042638263
+		 786 -0.65469935419955094 789 -0.23828742312049378 791 0.097671520511533827 793 0.44204969378736059
+		 796 0.94658651440848507 799 1.4486303854842186 803 2.0139923246374098 806 2.3121732441051015
+		 809 2.4639560735300545 813 2.2060212147327087 815 1.988990338996568 819 1.4094447276741091
+		 821 1.1183108104026038 822 0.98476983103960936 824 0.64732092737681568 825 0.47261468105526905
+		 827 0.12232331684628278 829 -0.19174385592676368 835 -0.78840646616692656 839 -0.55444050987489235
+		 843 -0.11178162742536168 846 0.27773029318604153 848 0.52893275678131024 850 0.75213050893018152
+		 852 0.99232353176178667 854 1.2212097467782173 857 1.5096505775720797 860 1.7337407644832035
+		 864 1.9105954991804164 885 -0.24668617177213617 897 1.3525485476948909 911 -0.17521434355247867
+		 918 0.23869524802046743 924 0.7645033518050206 931 1.3143500083866946 934 1.4769227165084653
+		 937 1.5516139942208795 942 1.3819498661533263 947 1.0494376150650466 951 0.7067815601421974
+		 956 0.26590999667692977 960 -0.11877984460552482 964 -0.47811052734806064 973 -1.0043739020590945
+		 978 -1.0043739020590945 987 -2.0368340401656786 1005 6.7154077472839306;
+	setAttr -s 182 ".kit[6:181]"  3 28 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2577,7 +2066,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateZ";
 		18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
 		18 18 18 3 18 18 18 18 18 18 18 18 18 3 3 3 3 
 		18 18 18 18 3 18 18 18 18 18 18 3 3 3 3;
-	setAttr -s 176 ".kot[0:175]"  3 18 3 3 3 3 3 3 
+	setAttr -s 182 ".kot[6:181]"  3 18 3 3 3 3 3 3 
 		3 3 3 18 18 3 3 18 18 18 18 18 18 3 18 18 18 
 		18 18 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 
 		3 3 18 18 18 18 18 18 18 18 3 18 18 18 18 18 18 
@@ -2591,17 +2080,23 @@ createNode animCurveTL -n "bogenCTRL_middle_translateZ";
 createNode animCurveTU -n "bogenCTRL_middle_visibility";
 	rename -uid "B1C2A413-4B4B-A275-BF87-30ABABDFCD35";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 1 203 1 218 1 222 1 232 1 240 1 247 1
-		 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1 451 1
-		 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1 679 1
-		 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1 978 1
-		 1005 1;
-	setAttr -s 50 ".kit[49]"  9;
-	setAttr -s 50 ".kot[49]"  5;
+	setAttr -s 51 ".ktv[0:50]"  154 1 187 1 203 1 218 1 222 1 232 1 240 1
+		 247 1 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1
+		 451 1 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1
+		 679 1 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1
+		 978 1 1005 1;
+	setAttr -s 51 ".kit[0:50]"  9 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 9;
+	setAttr -s 51 ".kot[0:50]"  5 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 5;
 createNode animCurveTA -n "bogenCTRL_middle_rotateX";
 	rename -uid "6A046D3E-413F-7F6E-FFE1-CFA1AD737BB6";
 	setAttr ".tan" 3;
-	setAttr -s 51 ".ktv[0:50]"  159 0 187 -19.991344787507344 203 -19.991344787507344
+	setAttr -s 52 ".ktv[0:51]"  154 0 159 0 187 -19.991344787507344 203 -19.991344787507344
 		 218 -19.991344787507344 222 -19.991344787507344 232 -19.991344787507344 240 -0.10679555284371253
 		 247 -0.10679555284371253 254 -0.10679555284371253 261 -28.648044253156129 269 -28.648044253156129
 		 288 -12.66358926132752 295 -25.332771150086892 314 -43 321 -26.667491321049937 328 -26.667491321049937
@@ -2614,10 +2109,18 @@ createNode animCurveTA -n "bogenCTRL_middle_rotateX";
 		 783 -10.474327341216448 809 -33.299374809382641 835 -8.362460361859279 864 -33.026848909500472
 		 885 -33.026848909500472 897 -33.026848909500472 911 -33.026848909500472 937 -44.160742532753005
 		 973 -33.693775058682093 978 -33.693775058682093 1005 -159.93907172124221;
+	setAttr -s 52 ".kit[0:51]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3;
+	setAttr -s 52 ".kot[0:51]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3;
 createNode animCurveTA -n "bogenCTRL_middle_rotateY";
 	rename -uid "3020D6C4-410C-1191-D7C4-848036ADC372";
 	setAttr ".tan" 3;
-	setAttr -s 51 ".ktv[0:50]"  159 0 187 53.48127368038984 203 53.48127368038984
+	setAttr -s 52 ".ktv[0:51]"  154 0 159 0 187 53.48127368038984 203 53.48127368038984
 		 218 53.48127368038984 222 53.48127368038984 232 53.48127368038984 240 53.481273680389855
 		 247 53.481273680389855 254 53.481273680389855 261 53.481273680389947 269 53.481273680389947
 		 288 63.508245238646538 295 53.481273680389911 314 53.481273680389911 321 53.481273680389933
@@ -2630,79 +2133,121 @@ createNode animCurveTA -n "bogenCTRL_middle_rotateY";
 		 754 42.560022918190519 783 52.315427679003385 809 52.315427679003406 835 52.315427679003434
 		 864 52.315427679003413 885 52.315427679003413 897 52.315427679003413 911 52.315427679003413
 		 937 52.315427679003434 973 52.315427679003513 978 52.315427679003513 1005 8.6373935794769352;
-	setAttr -s 51 ".kit[40:50]"  1 3 3 3 3 3 3 3 
-		3 3 3;
-	setAttr -s 51 ".kot[40:50]"  1 3 3 3 3 3 3 3 
-		3 3 3;
-	setAttr -s 51 ".kix[40:50]"  1.2165722845432647 1.0833333333333357 1.0833333333333286 
+	setAttr -s 52 ".kit[0:51]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 
+		3 3 3 3 3 3 3 3 3 3;
+	setAttr -s 52 ".kot[0:51]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 
+		3 3 3 3 3 3 3 3 3 3;
+	setAttr -s 52 ".kix[41:51]"  1.2165722845432647 1.0833333333333357 1.0833333333333286 
 		1.2083333333333357 0.875 0.5 0.5833333333333357 1.0833333333333286 1.5 0.2083333333333357 
 		1.125;
-	setAttr -s 51 ".kiy[40:50]"  0.18725162954069674 0 0 0 0 0 0 0 0 0 0;
-	setAttr -s 51 ".kox[40:50]"  1.0920421129625995 1.0833333333333286 1.2083333333333357 
+	setAttr -s 52 ".kiy[41:51]"  0.18725162954069674 0 0 0 0 0 0 0 0 0 0;
+	setAttr -s 52 ".kox[41:51]"  1.0920421129625995 1.0833333333333286 1.2083333333333357 
 		0.875 0.5 0.5833333333333357 1.0833333333333286 1.5 0.2083333333333357 1.125 1.125;
-	setAttr -s 51 ".koy[40:50]"  0.16808429953860574 0 0 0 0 0 0 0 0 0 0;
+	setAttr -s 52 ".koy[41:51]"  0.16808429953860574 0 0 0 0 0 0 0 0 0 0;
 createNode animCurveTA -n "bogenCTRL_middle_rotateZ";
 	rename -uid "3F37B5DA-40AF-5E4B-C749-349E62107965";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 0 203 0 218 0 222 0 232 0 240 0 247 0
-		 254 0 261 0 269 0 288 35.151487038268442 295 0 314 0 321 0 328 0 348 0 374 0 388 0
-		 400 0 425 0 451 -22.004231718872106 476 0 488 0 502 0 515 0 526 -18.449961546615473
+	setAttr -s 51 ".ktv[0:50]"  154 0 187 0 203 0 218 0 222 0 232 0 240 0
+		 247 0 254 0 261 0 269 0 288 35.151487038268442 295 0 314 0 321 0 328 0 348 0 374 0
+		 388 0 400 0 425 0 451 -22.004231718872106 476 0 488 0 502 0 515 0 526 -18.449961546615473
 		 538 -9.1761290508200553 551 -9.1761290508200553 575 20.830339680310075 589 -14.267844568324797
 		 602 -14.267844568324797 614 -14.267844568324797 627 -14.267844568324797 665 -30.430410826319108
 		 679 -30.430410826319108 690 -30.430410826319108 703 -20.326151119784882 725 -28.087206403398365
 		 754 17.222795291452208 783 -12.789459035676009 809 -12.789459035676007 835 -12.789459035676057
 		 864 -12.789459035676073 885 -12.789459035676073 897 -12.789459035676073 911 -12.789459035676073
 		 937 -12.78945903567609 973 -12.78945903567614 978 -12.78945903567614 1005 -161.831286121734;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3;
 createNode animCurveTU -n "bogenCTRL_middle_scaleX";
 	rename -uid "EAA25CF9-48B0-E9AA-C14E-9C9805B0C28C";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 1 203 1 218 1 222 1 232 1 240 1 247 1
-		 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1 451 1
-		 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1 679 1
-		 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1 978 1
-		 1005 1;
-	setAttr -s 50 ".kit[49]"  18;
-	setAttr -s 50 ".kot[49]"  18;
+	setAttr -s 51 ".ktv[0:50]"  154 1 187 1 203 1 218 1 222 1 232 1 240 1
+		 247 1 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1
+		 451 1 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1
+		 679 1 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1
+		 978 1 1005 1;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
 createNode animCurveTU -n "bogenCTRL_middle_scaleY";
 	rename -uid "6C463F88-4FBA-B696-B69B-73B68BA3755F";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 1 203 1 218 1 222 1 232 1 240 1 247 1
-		 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1 451 1
-		 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1 679 1
-		 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1 978 1
-		 1005 1;
-	setAttr -s 50 ".kit[49]"  18;
-	setAttr -s 50 ".kot[49]"  18;
+	setAttr -s 51 ".ktv[0:50]"  154 1 187 1 203 1 218 1 222 1 232 1 240 1
+		 247 1 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1
+		 451 1 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1
+		 679 1 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1
+		 978 1 1005 1;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
 createNode animCurveTU -n "bogenCTRL_middle_scaleZ";
 	rename -uid "5B6F6C90-4084-A76D-B825-6BAAE55E4966";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 1 203 1 218 1 222 1 232 1 240 1 247 1
-		 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1 451 1
-		 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1 679 1
-		 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1 978 1
-		 1005 1;
-	setAttr -s 50 ".kit[49]"  18;
-	setAttr -s 50 ".kot[49]"  18;
+	setAttr -s 51 ".ktv[0:50]"  154 1 187 1 203 1 218 1 222 1 232 1 240 1
+		 247 1 254 1 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 400 1 425 1
+		 451 1 476 1 488 1 502 1 515 1 526 1 538 1 551 1 575 1 589 1 602 1 614 1 627 1 665 1
+		 679 1 690 1 703 1 725 1 754 1 783 1 809 1 835 1 864 1 885 1 897 1 911 1 937 1 973 1
+		 978 1 1005 1;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
 createNode animCurveTU -n "bogenCTRL_middle_Bend";
 	rename -uid "33120531-45E7-6425-4267-5CA155240D06";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 0 203 0 218 0 222 0 232 0 240 0 247 0
-		 254 0 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 400 0 425 0 451 0
-		 476 0 488 0 502 0 515 0 526 0 538 0 551 0 575 0 589 0 602 0 614 0 627 0 665 0 679 0
-		 690 0 703 0 725 0 754 0 783 0 809 0 835 0 864 0 885 0 897 0 911 0 937 0 973 0 978 0
-		 1005 0;
-	setAttr -s 50 ".kit[49]"  18;
-	setAttr -s 50 ".kot[49]"  18;
+	setAttr -s 51 ".ktv[0:50]"  154 0 187 0 203 0 218 0 222 0 232 0 240 0
+		 247 0 254 0 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 400 0 425 0
+		 451 0 476 0 488 0 502 0 515 0 526 0 538 0 551 0 575 0 589 0 602 0 614 0 627 0 665 0
+		 679 0 690 0 703 0 725 0 754 0 783 0 809 0 835 0 864 0 885 0 897 0 911 0 937 0 973 0
+		 978 0 1005 0;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
 createNode animCurveTU -n "bogenCTRL_middle_squashNstretch";
 	rename -uid "5C38DCEC-42DE-A36A-CFFC-C6AD98DF20BA";
 	setAttr ".tan" 3;
-	setAttr -s 50 ".ktv[0:49]"  187 0 203 0 218 0 222 0 232 0 240 0 247 0
-		 254 0 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 400 0 425 0 451 0
-		 476 0 488 0 502 0 515 0 526 0 538 0 551 0 575 0 589 0 602 0 614 0 627 0 665 0 679 0
-		 690 0 703 0 725 0 754 0 783 0 809 0 835 0 864 0 885 0 897 0 911 0 937 0 973 0 978 0
-		 1005 0;
-	setAttr -s 50 ".kit[49]"  18;
-	setAttr -s 50 ".kot[49]"  18;
+	setAttr -s 51 ".ktv[0:50]"  154 0 187 0 203 0 218 0 222 0 232 0 240 0
+		 247 0 254 0 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 400 0 425 0
+		 451 0 476 0 488 0 502 0 515 0 526 0 538 0 551 0 575 0 589 0 602 0 614 0 627 0 665 0
+		 679 0 690 0 703 0 725 0 754 0 783 0 809 0 835 0 864 0 885 0 897 0 911 0 937 0 973 0
+		 978 0 1005 0;
+	setAttr -s 51 ".kit[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
+	setAttr -s 51 ".kot[0:50]"  18 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+		3 3 3 3 3 3 3 3 18;
 createNode animCurveTU -n "plane_canvasSize2_visibility";
 	rename -uid "24176E5C-4A14-F113-EBE2-D0ACF6E8D4DF";
 	setAttr ".tan" 9;
@@ -2806,27 +2351,29 @@ createNode animCurveTU -n "plane_canvasSize3_scaleZ";
 createNode animCurveTU -n "geigeCTRL_bottom_visibility";
 	rename -uid "1B91C8A5-4098-EE81-D27D-77A157919F28";
 	setAttr ".tan" 3;
-	setAttr -s 2 ".ktv[0:1]"  187 1 992 1;
-	setAttr -s 2 ".kit[1]"  9;
-	setAttr -s 2 ".kot[1]"  5;
+	setAttr -s 3 ".ktv[0:2]"  154 1 187 1 992 1;
+	setAttr -s 3 ".kit[0:2]"  9 3 9;
+	setAttr -s 3 ".kot[0:2]"  5 3 5;
 createNode animCurveTL -n "geigeCTRL_bottom_translateX";
 	rename -uid "7848348E-4448-C991-7520-23BDC3A43113";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  187 0 992 0 1029 -4.7881331339040738;
-	setAttr -s 3 ".kit[0:2]"  3 28 28;
-	setAttr -s 3 ".kot[0:2]"  3 28 28;
+	setAttr -s 4 ".ktv[0:3]"  154 0 187 0 992 0 1029 -4.7881331339040738;
+	setAttr -s 4 ".kit[0:3]"  18 3 28 28;
+	setAttr -s 4 ".kot[0:3]"  18 3 28 28;
 createNode animCurveTL -n "geigeCTRL_bottom_translateY";
 	rename -uid "A6A2D03F-42FB-5E76-309A-71B1E6D8CAB6";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  187 0 992 0 1029 -2.6559930738572977;
-	setAttr -s 3 ".kit[0:2]"  3 28 28;
-	setAttr -s 3 ".kot[0:2]"  3 28 28;
+	setAttr -s 4 ".ktv[0:3]"  154 0 187 0 992 0 1029 -2.6559930738572977;
+	setAttr -s 4 ".kit[0:3]"  18 3 28 28;
+	setAttr -s 4 ".kot[0:3]"  18 3 28 28;
 createNode animCurveTL -n "geigeCTRL_bottom_translateZ";
 	rename -uid "D6896EE9-4578-61AA-8577-6393C203B4BE";
-	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  187 0 992 0 1029 -0.84897370539946593;
-	setAttr -s 3 ".kit[0:2]"  3 28 28;
-	setAttr -s 3 ".kot[0:2]"  3 28 28;
+	setAttr ".tan" 18;
+	setAttr -s 9 ".ktv[0:8]"  4 1.3918300710606442 34 0.12210240681156392
+		 64 1.3358747475127615 94 0.15964166680466008 124 1.1911251408224075 154 0 187 0 992 0
+		 1029 -0.84897370539946593;
+	setAttr -s 9 ".kit[6:8]"  3 28 28;
+	setAttr -s 9 ".kot[6:8]"  3 28 28;
 createNode animCurveTA -n "geigeCTRL_bottom_rotateX";
 	rename -uid "E44EC85A-4C27-708F-AC19-59B22056FBB8";
 	setAttr ".tan" 3;
@@ -2850,22 +2397,22 @@ createNode animCurveTA -n "geigeCTRL_bottom_rotateZ";
 	setAttr -s 4 ".kot[2:3]"  28 28;
 createNode animCurveTU -n "geigeCTRL_bottom_scaleX";
 	rename -uid "38B3F20B-41CF-CDE6-4CBC-AAACD63DF5A9";
-	setAttr ".tan" 3;
-	setAttr -s 2 ".ktv[0:1]"  187 1 992 1;
-	setAttr -s 2 ".kit[1]"  28;
-	setAttr -s 2 ".kot[1]"  28;
+	setAttr ".tan" 18;
+	setAttr -s 3 ".ktv[0:2]"  154 1 187 1 992 1;
+	setAttr -s 3 ".kit[1:2]"  3 28;
+	setAttr -s 3 ".kot[1:2]"  3 28;
 createNode animCurveTU -n "geigeCTRL_bottom_scaleY";
 	rename -uid "682D16EA-4E08-2880-C2AF-368887F4AD86";
-	setAttr ".tan" 3;
-	setAttr -s 2 ".ktv[0:1]"  187 1 992 1;
-	setAttr -s 2 ".kit[1]"  28;
-	setAttr -s 2 ".kot[1]"  28;
+	setAttr ".tan" 18;
+	setAttr -s 3 ".ktv[0:2]"  154 1 187 1 992 1;
+	setAttr -s 3 ".kit[1:2]"  3 28;
+	setAttr -s 3 ".kot[1:2]"  3 28;
 createNode animCurveTU -n "geigeCTRL_bottom_scaleZ";
 	rename -uid "2687044F-442E-45E6-4AAD-B286CBD5CC13";
-	setAttr ".tan" 3;
-	setAttr -s 2 ".ktv[0:1]"  187 1 992 1;
-	setAttr -s 2 ".kit[1]"  28;
-	setAttr -s 2 ".kot[1]"  28;
+	setAttr ".tan" 18;
+	setAttr -s 3 ".ktv[0:2]"  154 1 187 1 992 1;
+	setAttr -s 3 ".kit[1:2]"  3 28;
+	setAttr -s 3 ".kot[1:2]"  3 28;
 createNode materialInfo -n "pasted__materialInfo1";
 	rename -uid "C845E283-48A0-9E68-9621-8BA65D1EC5D6";
 createNode shadingEngine -n "pasted__aiStandardSurface1SG";
@@ -2899,13 +2446,13 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface1";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file1";
 	rename -uid "06AFA97D-4D5E-1EDA-CF2D-12817105E2D1";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch01.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch01.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture1";
 	rename -uid "B2AC42C5-4480-856D-B939-90808CAD95EB";
 createNode file -n "pasted__file2";
 	rename -uid "7810FA61-485F-A70B-8014-59B00DC57758";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch01 alpha.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch01 alpha.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture2";
 	rename -uid "B5508008-4610-15AC-0640-A88E649FA707";
@@ -2942,13 +2489,13 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface2";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file3";
 	rename -uid "E7132A14-44C9-4A7A-0FC4-4D9C5836F0EB";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch03.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch03.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture3";
 	rename -uid "45C0D563-4AFC-4F06-5255-BD810D650171";
 createNode file -n "pasted__file4";
 	rename -uid "EC8C3CBB-4857-16DF-9D4D-5A9E0BDE8663";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch03_alpha.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch03_alpha.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture4";
 	rename -uid "5EFBBB78-4236-95A8-2C1D-23AD130680CD";
@@ -2985,7 +2532,7 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface3";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file5";
 	rename -uid "AC85C258-47AD-D8C4-FE84-3A925ADF8E9C";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch02.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/Sketches/first perf sketch02.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture5";
 	rename -uid "EA15C947-4355-3F69-80A8-0C98BD2710E8";
@@ -3004,7 +2551,7 @@ createNode animCurveTU -n "Geige_scaleX";
 	setAttr ".tan" 18;
 	setAttr -s 32 ".ktv[0:31]"  0 1 154 1 222 1 232 1 239 1 247 1 254 1
 		 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 401 1 425 1 451 1 703 1
-		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 939 1 980 1;
+		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 941 1 980 1;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3013,7 +2560,7 @@ createNode animCurveTU -n "Geige_scaleY";
 	setAttr ".tan" 18;
 	setAttr -s 32 ".ktv[0:31]"  0 1 154 1 222 1 232 1 239 1 247 1 254 1
 		 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 401 1 425 1 451 1 703 1
-		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 939 1 980 1;
+		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 941 1 980 1;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3022,7 +2569,7 @@ createNode animCurveTU -n "Geige_scaleZ";
 	setAttr ".tan" 18;
 	setAttr -s 32 ".ktv[0:31]"  0 1 154 1 222 1 232 1 239 1 247 1 254 1
 		 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 401 1 425 1 451 1 703 1
-		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 939 1 980 1;
+		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 941 1 980 1;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3031,40 +2578,40 @@ createNode animCurveTU -n "Geige_visibility";
 	setAttr ".tan" 9;
 	setAttr -s 32 ".ktv[0:31]"  0 1 154 1 222 1 232 1 239 1 247 1 254 1
 		 261 1 269 1 288 1 295 1 314 1 321 1 328 1 348 1 374 1 388 1 401 1 425 1 451 1 703 1
-		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 939 1 980 1;
+		 725 1 754 1 783 1 809 1 835 1 864 1 884 1 897 1 911 1 941 1 980 1;
 	setAttr -s 32 ".kot[0:31]"  5 5 5 5 5 5 5 5 
 		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
 		5 5 5 5 5 5 5;
 createNode animCurveTL -n "Geige_translateX";
 	rename -uid "DAE56335-47C3-1B08-A0C3-219157254940";
 	setAttr ".tan" 18;
-	setAttr -s 35 ".ktv[0:34]"  0 5.9848834376296312 38 6.025 76 5.985 115 6.025
-		 154 5.9848834376296312 222 5.9848834376296312 232 5.9848834376296312 239 5.9848834376296312
-		 247 5.9848834376296312 254 5.9848834376296312 261 5.9848834376296312 269 5.9848834376296312
-		 288 5.9848834376296312 295 5.9848834376296312 314 5.9848834376296312 321 5.9848834376296312
-		 328 5.9848834376296312 348 5.9848834376296312 374 5.9848834376296312 388 5.9848834376296312
-		 401 5.9848834376296312 425 5.9848834376296312 451 5.9848834376296312 703 5.9848834376296312
-		 725 5.9848834376296312 754 5.9848834376296312 783 5.9848834376296312 809 5.9848834376296312
-		 835 5.9848834376296312 864 5.9848834376296312 884 5.9848834376296312 897 5.9848834376296312
-		 911 5.9848834376296312 939 5.9848834376296312 980 5.9848834376296312;
-	setAttr -s 35 ".kit[0:34]"  28 28 28 28 28 18 18 18 
+	setAttr -s 31 ".ktv[0:30]"  154 5.9848834376296312 222 5.9848834376296312
+		 232 5.9848834376296312 239 5.9848834376296312 247 5.9848834376296312 254 5.9848834376296312
+		 261 5.9848834376296312 269 5.9848834376296312 288 5.9848834376296312 295 5.9848834376296312
+		 314 5.9848834376296312 321 5.9848834376296312 328 5.9848834376296312 348 5.9848834376296312
+		 374 5.9848834376296312 388 5.9848834376296312 401 5.9848834376296312 425 5.9848834376296312
+		 451 5.9848834376296312 703 5.9848834376296312 725 5.9848834376296312 754 5.9848834376296312
+		 783 5.9848834376296312 809 5.9848834376296312 835 5.9848834376296312 864 5.9848834376296312
+		 884 5.9848834376296312 897 5.9848834376296312 911 5.9848834376296312 941 5.9848834376296312
+		 980 5.9848834376296312;
+	setAttr -s 31 ".kit[0:30]"  28 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
-		18 18 18 18 18 18 18 18 18 18;
+		18 18 18 18 18 18;
 createNode animCurveTL -n "Geige_translateY";
 	rename -uid "C471A8E6-4A6A-137F-CB4B-CB95BE4124C9";
 	setAttr ".tan" 18;
-	setAttr -s 35 ".ktv[0:34]"  0 -15.582677595359231 38 -15.4 76 -15.583
-		 115 -15.4 154 -15.582677595359231 222 -15.582677595359231 232 -15.582677595359231
-		 239 -15.582677595359231 247 -15.582677595359231 254 -15.582677595359231 261 -15.582677595359231
-		 269 -15.582677595359231 288 -15.582677595359231 295 -15.582677595359231 314 -15.582677595359231
-		 321 -15.582677595359231 328 -15.582677595359231 348 -15.582677595359231 374 -15.582677595359231
-		 388 -15.582677595359231 401 -15.582677595359231 425 -15.582677595359231 451 -15.582677595359231
-		 703 -15.582677595359231 725 -15.582677595359231 754 -15.582677595359231 783 -15.582677595359231
-		 809 -15.582677595359231 835 -15.582677595359231 864 -15.582677595359231 884 -15.582677595359231
-		 897 -15.582677595359231 911 -15.582677595359231 939 -15.582677595359231 980 -15.582677595359231;
-	setAttr -s 35 ".kit[0:34]"  28 28 28 28 28 18 18 18 
+	setAttr -s 31 ".ktv[0:30]"  154 -15.582677595359231 222 -15.582677595359231
+		 232 -15.582677595359231 239 -15.582677595359231 247 -15.582677595359231 254 -15.582677595359231
+		 261 -15.582677595359231 269 -15.582677595359231 288 -15.582677595359231 295 -15.582677595359231
+		 314 -15.582677595359231 321 -15.582677595359231 328 -15.582677595359231 348 -15.582677595359231
+		 374 -15.582677595359231 388 -15.582677595359231 401 -15.582677595359231 425 -15.582677595359231
+		 451 -15.582677595359231 703 -15.582677595359231 725 -15.582677595359231 754 -15.582677595359231
+		 783 -15.582677595359231 809 -15.582677595359231 835 -15.582677595359231 864 -15.582677595359231
+		 884 -15.582677595359231 897 -15.582677595359231 911 -15.582677595359231 941 -15.582677595359231
+		 980 -15.582677595359231;
+	setAttr -s 31 ".kit[0:30]"  28 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
-		18 18 18 18 18 18 18 18 18 18;
+		18 18 18 18 18 18;
 createNode animCurveTL -n "Geige_translateZ";
 	rename -uid "601B3CF3-49BA-6F32-0A66-4DAB31BA5C16";
 	setAttr ".tan" 18;
@@ -3076,7 +2623,7 @@ createNode animCurveTL -n "Geige_translateZ";
 		 425 27.909341399001097 451 27.909341399001097 703 27.909341399001097 725 27.909341399001097
 		 754 27.909341399001097 783 27.909341399001097 809 27.909341399001097 835 27.909341399001097
 		 864 27.909341399001097 884 27.909341399001097 897 27.909341399001097 911 27.909341399001097
-		 939 27.909341399001097 980 27.909341399001097;
+		 941 27.909341399001097 980 27.909341399001097;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3088,9 +2635,9 @@ createNode animCurveTA -n "Geige_rotateX";
 		 269 83.511595987679883 288 99.449594934968957 295 90 314 97.832252253054847 321 93.132972320763187
 		 328 98.895207543733065 348 82.30379640574742 374 95.569054763087635 388 90.124685743328484
 		 401 96.51154843224262 425 87.256738747440977 451 100.25317855798259 703 97.164731921249754
-		 725 93.093106957066965 754 104.13098889200764 783 89.746038288761042 809 94.133140913516527
-		 835 88.042552764490779 864 96.630108898116006 884 89.113262810393906 897 95.999434823866906
-		 911 90.675002178397094 939 101.66699689410819 980 85.923360437581962;
+		 725 93.093106957066965 754 104.13098889200764 783 86.843510394521772 809 94.133140913516527
+		 835 88.042552764490779 864 99.653575454615293 884 91.048281406553443 897 95.999434823866906
+		 911 90.675002178397094 941 105.77929841466661 980 80.552015713759687;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3099,7 +2646,7 @@ createNode animCurveTA -n "Geige_rotateY";
 	setAttr ".tan" 18;
 	setAttr -s 32 ".ktv[0:31]"  0 0 154 0 222 0 232 0 239 0 247 0 254 0
 		 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 401 0 425 0 451 0 703 0
-		 725 0 754 0 783 0 809 0 835 0 864 0 884 0 897 0 911 0 939 0 980 0;
+		 725 0 754 0 783 0 809 0 835 0 864 0 884 0 897 0 911 0 941 0 980 0;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3108,7 +2655,7 @@ createNode animCurveTA -n "Geige_rotateZ";
 	setAttr ".tan" 18;
 	setAttr -s 32 ".ktv[0:31]"  0 0 154 0 222 0 232 0 239 0 247 0 254 0
 		 261 0 269 0 288 0 295 0 314 0 321 0 328 0 348 0 374 0 388 0 401 0 425 0 451 0 703 0
-		 725 0 754 0 783 0 809 0 835 0 864 0 884 0 897 0 911 0 939 0 980 0;
+		 725 0 754 0 783 0 809 0 835 0 864 0 884 0 897 0 911 0 941 0 980 0;
 	setAttr -s 32 ".kit[0:31]"  28 28 18 18 18 18 18 18 
 		18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 
 		18 18 18 18 18 18 18;
@@ -3308,13 +2855,13 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface4";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file6";
 	rename -uid "2B3B9DBC-4B25-B151-0CAC-F2897AFB88DD";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/s3_l3.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/s3_l3.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture6";
 	rename -uid "B234AA00-40D3-CA61-4E98-1894EC18AB97";
 createNode file -n "pasted__file7";
 	rename -uid "6F58D06C-49B0-41F1-D13A-C39167E42B57";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/s3_l3_alpha.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/s3_l3_alpha.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture7";
 	rename -uid "99DABE27-49D3-98F8-45DD-68AF323DB456";
@@ -3351,13 +2898,13 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface5";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file8";
 	rename -uid "092E7CF5-449A-8714-7687-84A91D6E0CA2";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/s3_l2.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/s3_l2.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture8";
 	rename -uid "5F901788-458E-3BAE-E313-0DA23E519DE9";
 createNode file -n "pasted__file9";
 	rename -uid "BFBCFCC7-4179-D29E-3C2D-6DAB0DFA88E8";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/s3_l2_alpha.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/s3_l2_alpha.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture9";
 	rename -uid "05D8022E-4A8D-F8C0-0101-859FA1A590AA";
@@ -3394,7 +2941,7 @@ createNode aiStandardSurface -n "pasted__aiStandardSurface6";
 	setAttr ".internal_reflections" no;
 createNode file -n "pasted__file10";
 	rename -uid "FF1AB564-4303-11E1-0260-4AA98E8C60A3";
-	setAttr ".ftn" -type "string" "E:/High-Strung//assets/2D Planes/First Performance/s6_l1.png";
+	setAttr ".ftn" -type "string" "C:/Users/River Robin/Desktop/High-Strung//assets/2D Planes/First Performance/s6_l1.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "pasted__place2dTexture10";
 	rename -uid "168947F7-4715-A1F1-D02E-20B4E1211B2D";
@@ -3549,7 +3096,7 @@ createNode reference -n "Bow_BottomCTRLRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Bow_BottomCTRLRN"
 		"Bow_BottomCTRLRN" 0
-		"Bow_BottomCTRLRN" 183
+		"Bow_BottomCTRLRN" 111
 		0 "|Bow_BottomCTRLRNfosterParent1|griff_lowShapeDeformed" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low" 
 		"-s -r "
 		0 "|Bow_BottomCTRLRNfosterParent1|sehne_lowShapeDeformed" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low" 
@@ -3719,12 +3266,12 @@ createNode reference -n "Bow_BottomCTRLRN";
 		
 		2 "Bow_BottomCTRL:metall_lowSG" "aiCustomAOVs[12].aovName" " -type \"string\" \"emission\""
 		
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape.instObjGroups" 
+		"Bow_BottomCTRL:metall_lowSG.dagSetMembers" "-na"
 		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape.instObjGroups" 
 		"Bow_BottomCTRL:griff_lowSG.dagSetMembers" "-na"
 		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape.instObjGroups" 
 		"Bow_BottomCTRL:sehne_lowSG.dagSetMembers" "-na"
-		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape.instObjGroups" 
-		"Bow_BottomCTRL:metall_lowSG.dagSetMembers" "-na"
 		5 1 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape.instObjGroups" 
 		"Bow_BottomCTRLRN.placeHolderList[1]" "Bow_BottomCTRL:metall_lowSG.dsm"
 		5 1 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape.instObjGroups" 
@@ -3759,195 +3306,51 @@ createNode reference -n "Bow_BottomCTRLRN";
 		"Bow_BottomCTRLRN.placeHolderList[16]" ""
 		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.visibility" 
 		"Bow_BottomCTRLRN.placeHolderList[17]" ""
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:body_low|Bow_BottomCTRL:body_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saiten_low|Bow_BottomCTRL:saiten_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:griffbrett_low|Bow_BottomCTRL:griffbrett_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_01|Bow_BottomCTRL:wirbel_low_01Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_02|Bow_BottomCTRL:wirbel_low_02Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_03|Bow_BottomCTRL:wirbel_low_03Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:wirbel_low|Bow_BottomCTRL:wirbel_low_04|Bow_BottomCTRL:wirbel_low_04Shape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:hals_low|Bow_BottomCTRL:hals_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:kinnstuetze_low|Bow_BottomCTRL:kinnstuetze_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:metallplatte_low|Bow_BottomCTRL:metallplatte_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:saitenhalter_low|Bow_BottomCTRL:saitenhalter_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight2|pasted__spotLightShape2.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight2|pasted__aiAreaLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight3|pasted__spotLightShape3.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight2|spotLightShape2.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|spotLight1|spotLightShape1.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight8|pasted__spotLightShape8.message" 
-		0
-		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__spotLight9|pasted__spotLightShape9.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom|Bow_BottomCTRL:geige_pivotBottom|Bow_BottomCTRL:schraube_low|Bow_BottomCTRL:schraube_lowShape.message" "|lighting|pasted__Lights|pasted__aiAreaLight1|pasted__aiAreaLightShape1.message" 
 		0;
@@ -3991,31 +3394,32 @@ createNode animCurveTU -n "bogenCTRL_bottom_visibility";
 createNode animCurveTL -n "bogenCTRL_bottom_translateX";
 	rename -uid "4EA3D6BE-4907-5162-2CDB-DCB230623828";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  978 -6.1199474278603496 992 -5.5069282360549954
+	setAttr -s 3 ".ktv[0:2]"  978 -6.1419063755870749 992 -5.5069282360549954
 		 1029 -6.1219122329622895;
 createNode animCurveTL -n "bogenCTRL_bottom_translateY";
 	rename -uid "1F044E5E-436D-20D7-414E-1FA4BC0E8502";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  978 2.7725361919580176 992 3.3591914488857522
+	setAttr -s 3 ".ktv[0:2]"  978 2.9925730295267621 992 3.3591914488857522
 		 1029 2.7706558866473521;
 createNode animCurveTL -n "bogenCTRL_bottom_translateZ";
 	rename -uid "BA2C1D30-4BBF-A13A-2041-2587892B5B11";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  978 -3.9376733356882343 992 -3.576197227036817
+	setAttr -s 3 ".ktv[0:2]"  978 -4.2016251820188719 992 -3.576197227036817
 		 1029 -3.9388319129595533;
 createNode animCurveTA -n "bogenCTRL_bottom_rotateX";
 	rename -uid "5699087E-4FD6-F40B-61D6-6B9F8DCF9A9A";
 	setAttr ".tan" 28;
-	setAttr -s 4 ".ktv[0:3]"  978 -33.694 992 -34.154239287221415 1018 -166.61650020242928
+	setAttr -s 4 ".ktv[0:3]"  978 -38 992 -34.154239287221415 1018 -166.61650020242928
 		 1029 -178.20913618752448;
 createNode animCurveTA -n "bogenCTRL_bottom_rotateY";
 	rename -uid "8DC208DB-402D-0190-AB8D-AC8C34471D1F";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  978 52.315 992 52.135757585601311 1029 -3.9671181211882018;
+	setAttr -s 3 ".ktv[0:2]"  978 53.377691868842554 992 52.135757585601311
+		 1029 -3.9671181211882018;
 createNode animCurveTA -n "bogenCTRL_bottom_rotateZ";
 	rename -uid "188780A4-44B6-A9AE-2784-CAB525C053E3";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  978 -12.789000000000001 992 -13.613651719407953
+	setAttr -s 3 ".ktv[0:2]"  978 -14.174528389607966 992 -13.613651719407953
 		 1029 -271.7296398940972;
 createNode animCurveTU -n "bogenCTRL_bottom_scaleX";
 	rename -uid "DFF771C4-4F74-C6EE-1317-1484F4E6617A";
@@ -4195,8 +3599,8 @@ createNode animCurveTU -n "aiAreaLight1_scaleZ";
 createNode animCurveTU -n "aiAreaLight1_visibility";
 	rename -uid "32DC7855-4E5B-10FC-24DA-A98D747E7BF4";
 	setAttr ".tan" 9;
-	setAttr -s 2 ".ktv[0:1]"  601 1 672 1;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 3 ".ktv[0:2]"  601 1 672 1 677 1;
+	setAttr -s 3 ".kot[0:2]"  5 5 5;
 createNode animCurveTL -n "aiAreaLight3_translateX";
 	rename -uid "FBA05C59-4F2D-AC77-A8C0-7C8F2BCCE569";
 	setAttr ".tan" 18;
@@ -4278,8 +3682,8 @@ select -ne :time1;
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr ".o" 1200;
-	setAttr -av -k on ".unw" 1200;
+	setAttr ".o" 857;
+	setAttr -av -k on ".unw" 857;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -4342,7 +3746,7 @@ select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 	setAttr -s 4 ".r";
 select -ne :lightList1;
-	setAttr -s 17 ".l";
+	setAttr -s 7 ".l";
 select -ne :defaultTextureList1;
 	setAttr -s 46 ".tx";
 select -ne :initialShadingGroup;
@@ -4545,7 +3949,7 @@ select -ne :defaultResolution;
 	setAttr -av -k on ".isu";
 	setAttr -av -k on ".pdu";
 select -ne :defaultLightSet;
-	setAttr -s 17 ".dsm";
+	setAttr -s 7 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -4594,6 +3998,8 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".bswa";
 	setAttr -k on ".shml";
 	setAttr -k on ".hwel";
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "plane_canvasSize2_visibility1.o" "stage_fertigRN.phl[1]";
 connectAttr "plane_canvasSize2_translateX.o" "stage_fertigRN.phl[2]";
 connectAttr "plane_canvasSize2_translateY.o" "stage_fertigRN.phl[3]";
@@ -4821,45 +4227,12 @@ relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__a
 relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape5.message";
 relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape5.message";
 relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape5.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape3.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape3.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape3.message";
-relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "BG_planeShape.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "spotLightShape2.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "BG_planeShape.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "spotLightShape1.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape8.message";
-relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "pasted__spotLightShape9.message";
-relationship "ignore" ":lightLinker1" "BG_planeShape.message" "pasted__spotLightShape9.message";
-relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "pasted__spotLightShape9.message";
-relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__spotLightShape9.message";
-relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__spotLightShape9.message";
-relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__spotLightShape9.message";
 relationship "ignore" ":lightLinker1" "BG_planeShape.message" "aiAreaLightShape1.message";
 relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "aiAreaLightShape1.message";
 relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "aiAreaLightShape1.message";
 relationship "ignore" ":lightLinker1" "sehne_lowShapeDeformed.message" "pasted__aiAreaLightShape1.message";
 relationship "ignore" ":lightLinker1" "metall_lowShapeDeformed.message" "pasted__aiAreaLightShape1.message";
 relationship "ignore" ":lightLinker1" "griff_lowShapeDeformed.message" "pasted__aiAreaLightShape1.message";
-relationship "ignore" ":lightLinker1" "BG_planeShape.message" "aiAreaLightShape2.message";
-relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "aiAreaLightShape2.message";
-relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "aiAreaLightShape2.message";
 relationship "ignore" ":lightLinker1" "front_plane_goldShape.message" "aiAreaLightShape3.message";
 relationship "ignore" ":lightLinker1" "mid_plane_cloudsShape.message" "aiAreaLightShape3.message";
 relationship "ignore" ":lightLinker1" "BG_planeShape.message" "aiAreaLightShape3.message";
@@ -5236,19 +4609,9 @@ connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "pasted__aiAreaLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "pasted__aiAreaLightShape2.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape2.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape3.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape4.ltd" ":lightList1.l" -na;
 connectAttr "pasted__spotLightShape5.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape6.ltd" ":lightList1.l" -na;
-connectAttr "spotLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "spotLightShape2.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape8.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape9.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape10.ltd" ":lightList1.l" -na;
-connectAttr "pasted__spotLightShape11.ltd" ":lightList1.l" -na;
 connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "aiAreaLightShape2.ltd" ":lightList1.l" -na;
 connectAttr "aiAreaLightShape3.ltd" ":lightList1.l" -na;
 connectAttr "pasted__file1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "pasted__file2.msg" ":defaultTextureList1.tx" -na;
@@ -5264,18 +4627,8 @@ connectAttr "pHelixShape1.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "pasted__aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight1.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight2.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight3.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight4.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pasted__spotLight5.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight6.iog" ":defaultLightSet.dsm" -na;
-connectAttr "spotLight1.iog" ":defaultLightSet.dsm" -na;
-connectAttr "spotLight2.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight8.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight9.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight10.iog" ":defaultLightSet.dsm" -na;
-connectAttr "pasted__spotLight11.iog" ":defaultLightSet.dsm" -na;
 connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
-connectAttr "aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
 connectAttr "aiAreaLight3.iog" ":defaultLightSet.dsm" -na;
-// End of Scene06_Performance02.ma
+// End of Scene06_Performance02_v2.ma
