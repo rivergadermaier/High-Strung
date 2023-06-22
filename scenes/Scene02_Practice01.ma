@@ -1,41 +1,46 @@
 //Maya ASCII 2023 scene
 //Name: Scene02_Practice01.ma
-//Last modified: Thu, Jun 22, 2023 04:30:56 PM
+//Last modified: Thu, Jun 22, 2023 05:58:14 PM
 //Codeset: 1252
 file -rdi 1 -ns "stage_fertig" -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
 file -rdi 1 -ns "Geige_Rig" -rfn "Geige_RigRN" -op "v=0;" -typ "mayaAscii" "E:/High-Strung//scenes/Geige_Rig.ma";
 file -rdi 1 -ns "notenblaetter" -rfn "notenblaetterRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/simon/Desktop/Digital Arts Hagenberg/4. Semester/2. SemProj HIGH STRUNG/High-Strung//scenes/notenblaetter.ma";
+file -rdi 1 -ns "Bow_BottomCTRL" -rfn "Bow_BottomCTRLRN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/River Robin/Desktop/High-Strung//scenes/Bow_BottomCTRL.ma";
 file -r -ns "stage_fertig" -dr 1 -rfn "stage_fertigRN" -op "v=0;" -typ "mayaAscii"
 		 "E:/High-Strung//scenes/stage_fertig.ma";
 file -r -ns "Geige_Rig" -dr 1 -rfn "Geige_RigRN" -op "v=0;" -typ "mayaAscii" "E:/High-Strung//scenes/Geige_Rig.ma";
 file -r -ns "notenblaetter" -dr 1 -rfn "notenblaetterRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/simon/Desktop/Digital Arts Hagenberg/4. Semester/2. SemProj HIGH STRUNG/High-Strung//scenes/notenblaetter.ma";
+file -r -ns "Bow_BottomCTRL" -dr 1 -rfn "Bow_BottomCTRLRN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/River Robin/Desktop/High-Strung//scenes/Bow_BottomCTRL.ma";
 requires maya "2023";
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOV" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter"
 		 -nodeType "aiSkyDomeLight" -nodeType "aiAreaLight" -nodeType "aiAmbientOcclusion"
 		 -nodeType "aiStandardSurface" -nodeType "aiAtmosphereVolume" -nodeType "cryptomatte"
 		 "mtoa" "5.1.2";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Windows 10 Pro v2009 (Build: 19045)";
-fileInfo "UUID" "9F604040-42FB-BF21-280D-348BA0BC8E24";
+fileInfo "UUID" "FA815D2C-4C6E-B5D3-6B96-E08046443C3F";
 createNode transform -s -n "persp";
 	rename -uid "539E143C-40B0-FB15-755D-3D8AFB875474";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 7.1503478401100935 28.682238360427874 157.53827426178935 ;
-	setAttr ".r" -type "double3" -15.938352728920576 -0.59999999999928144 -2.1122029065849016e-16 ;
+	setAttr ".t" -type "double3" 2.116742746888213 79.985859415848964 212.44323033290792 ;
+	setAttr ".r" -type "double3" -27.338352728983761 0.59999999999972886 -3.2304279747769092e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "C01235FC-47F2-FA1D-CDDE-1A9B73D664F6";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 172.74548044490047;
+	setAttr ".coi" 205.57498969630242;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -94,7 +99,7 @@ createNode camera -n "ShotShape7" -p "Shot7";
 	rename -uid "A228B214-48BC-B298-600C-A69795D829F2";
 	setAttr -k off ".v";
 	setAttr ".fl" 34.999999999999993;
-	setAttr -l on ".coi" 18.947120232043606;
+	setAttr -l on ".coi" 0.79602041512848598;
 	setAttr -l on ".ow";
 	setAttr ".imn" -type "string" "persp1";
 	setAttr ".den" -type "string" "persp1_depth";
@@ -381,21 +386,36 @@ createNode aiAreaLight -n "notenständer_light1Shape" -p "notenständer_light1";
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" {"exposure","aiExposure","normalize","aiNormalize"
 		} ;
+createNode fosterParent -n "Bow_BottomCTRLRNfosterParent1";
+	rename -uid "9CF9165B-4C92-A30D-5AD7-C192AF1F5E0D";
+createNode mesh -n "griff_lowShapeDeformed" -p "Bow_BottomCTRLRNfosterParent1";
+	rename -uid "72CD89CC-4BD0-369C-494E-529EFAFA400B";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcol" yes;
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".dr" 3;
+	setAttr ".dsm" 2;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "490E1363-40C8-5D4F-35F1-348AA8002D65";
-	setAttr -s 18 ".lnk";
+	rename -uid "D7BF310F-4B96-B856-5716-45A139DBBC8B";
+	setAttr -s 27 ".lnk";
 	setAttr -s 115 ".ign";
-	setAttr -s 18 ".slnk";
+	setAttr -s 27 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "23771F15-436C-ADE7-6D42-2AA2269E374D";
+	rename -uid "DD6FA2B2-4BA6-C982-E9A2-69ABA947EE65";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "43AEF2D2-40B3-5F3A-CB83-5198019D4B95";
+	rename -uid "A43C9C1A-40EC-2200-FB00-08B7B2FBA8C2";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "EE1C8FD3-4F20-1F39-7BC0-368972D8F1DC";
+	rename -uid "C99B860D-4E21-C930-0CCE-65BA6D9EB4C7";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "D538D237-4B69-3249-5193-E9A3A8F3762E";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "944B2AE2-4D15-D250-E433-4E9CDB70F936";
+	rename -uid "0F6BA9C3-41C5-7641-8B6B-47AC08530F08";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "2B7ABD1B-407B-488B-2F25-BA8769A9A0AE";
 	setAttr ".g" yes;
@@ -609,9 +629,9 @@ createNode reference -n "stage_fertigRN";
 		""
 		5 3 "stage_fertigRN" "stage_fertig:place2dTexture9.message" "stage_fertigRN.placeHolderList[25]" 
 		""
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -619,49 +639,49 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:plane_canvasSize|stage_fertig:plane_canvasSizeShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:stageShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrungShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:verziehrung|stage_fertig:verziehrung_cubes|stage_fertig:verziehrung_cubesShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:pillars|stage_fertig:pillarsShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:vorbau|stage_fertig:vorbauShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -669,9 +689,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:stage|stage_fertig:dach|stage_fertig:dachShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -679,9 +699,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize1|stage_fertig:plane_canvasSize1Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -691,9 +711,9 @@ createNode reference -n "stage_fertigRN";
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize2|stage_fertig:plane_canvasSize2Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|spotLight1|spotLightShape1.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|stage_fertig:curtains|stage_fertig:plane_canvasSize3|stage_fertig:plane_canvasSize3Shape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
 		0
@@ -709,6 +729,8 @@ createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "895D829F-49BA-1B03-49C7-9897964CB793";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr -s 11 ".aovs";
+	setAttr ".AA_samples" 5;
+	setAttr ".GI_specular_samples" 3;
 	setAttr ".version" -type "string" "4.2.4";
 	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=ShotShape7;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
@@ -725,7 +747,7 @@ createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 	setAttr ".ai_translator" -type "string" "maya";
 createNode partition -s -n "creasePartition";
 	rename -uid "D94EFE65-412A-FA80-77D7-85B08A9F876E";
-	setAttr -s 2 ".st";
+	setAttr -s 3 ".st";
 createNode audio -n "Practice01";
 	rename -uid "B5737086-445E-2899-DAD7-7DAC2899F79C";
 	setAttr ".o" 140;
@@ -734,7 +756,7 @@ createNode audio -n "Practice01";
 	setAttr ".f" -type "string" "C:/Users/River Robin/Desktop/High-Strung//sound/Practice01.wav";
 createNode reference -n "Geige_RigRN";
 	rename -uid "C28F7C0E-43A3-1EA0-7931-6288F9F61FDF";
-	setAttr -s 32 ".phl";
+	setAttr -s 51 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -767,10 +789,29 @@ createNode reference -n "Geige_RigRN";
 	setAttr ".phl[30]" 0;
 	setAttr ".phl[31]" 0;
 	setAttr ".phl[32]" 0;
+	setAttr ".phl[33]" 0;
+	setAttr ".phl[34]" 0;
+	setAttr ".phl[35]" 0;
+	setAttr ".phl[36]" 0;
+	setAttr ".phl[37]" 0;
+	setAttr ".phl[38]" 0;
+	setAttr ".phl[39]" 0;
+	setAttr ".phl[40]" 0;
+	setAttr ".phl[41]" 0;
+	setAttr ".phl[42]" 0;
+	setAttr ".phl[43]" 0;
+	setAttr ".phl[44]" 0;
+	setAttr ".phl[45]" 0;
+	setAttr ".phl[46]" 0;
+	setAttr ".phl[47]" 0;
+	setAttr ".phl[48]" 0;
+	setAttr ".phl[49]" 0;
+	setAttr ".phl[50]" 0;
+	setAttr ".phl[51]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Geige_RigRN"
 		"Geige_RigRN" 0
-		"Geige_RigRN" 168
+		"Geige_RigRN" 187
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs" " -s 12"
 		2 "Geige_Rig:inside_highSG" "aiCustomAOVs[0].aovName" " -type \"string\" \"RGBA\""
 		
@@ -931,155 +972,193 @@ createNode reference -n "Geige_RigRN";
 		""
 		5 4 "Geige_RigRN" "|Geige_Rig:Geige.scaleZ" "Geige_RigRN.placeHolderList[10]" 
 		""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.Bend" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle.visibility" 
 		"Geige_RigRN.placeHolderList[11]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.squashNstretch" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.worldMesh" 
 		"Geige_RigRN.placeHolderList[12]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateX" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.Bend" 
 		"Geige_RigRN.placeHolderList[13]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateZ" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.Bend" 
 		"Geige_RigRN.placeHolderList[14]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateY" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.squashNstretch" 
 		"Geige_RigRN.placeHolderList[15]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateY" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.squashNstretch" 
 		"Geige_RigRN.placeHolderList[16]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateX" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateX" 
 		"Geige_RigRN.placeHolderList[17]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateZ" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateX" 
 		"Geige_RigRN.placeHolderList[18]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleX" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateZ" 
 		"Geige_RigRN.placeHolderList[19]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleY" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateZ" 
 		"Geige_RigRN.placeHolderList[20]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleZ" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateY" 
 		"Geige_RigRN.placeHolderList[21]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.visibility" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.translateY" 
 		"Geige_RigRN.placeHolderList[22]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateX" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateY" 
 		"Geige_RigRN.placeHolderList[23]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateY" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateY" 
 		"Geige_RigRN.placeHolderList[24]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateZ" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateX" 
 		"Geige_RigRN.placeHolderList[25]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateX" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateX" 
 		"Geige_RigRN.placeHolderList[26]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateY" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateZ" 
 		"Geige_RigRN.placeHolderList[27]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateZ" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateZ" 
 		"Geige_RigRN.placeHolderList[28]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleX" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.rotateOrder" 
 		"Geige_RigRN.placeHolderList[29]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleY" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleX" 
 		"Geige_RigRN.placeHolderList[30]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleZ" 
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleX" 
 		"Geige_RigRN.placeHolderList[31]" ""
-		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.visibility" 
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleY" 
 		"Geige_RigRN.placeHolderList[32]" ""
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleY" 
+		"Geige_RigRN.placeHolderList[33]" ""
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleZ" 
+		"Geige_RigRN.placeHolderList[34]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.scaleZ" 
+		"Geige_RigRN.placeHolderList[35]" ""
+		5 3 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.visibility" 
+		"Geige_RigRN.placeHolderList[36]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogenCTRL_middle.visibility" 
+		"Geige_RigRN.placeHolderList[37]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateX" 
+		"Geige_RigRN.placeHolderList[38]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateY" 
+		"Geige_RigRN.placeHolderList[39]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.translateZ" 
+		"Geige_RigRN.placeHolderList[40]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateX" 
+		"Geige_RigRN.placeHolderList[41]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateY" 
+		"Geige_RigRN.placeHolderList[42]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.rotateZ" 
+		"Geige_RigRN.placeHolderList[43]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleX" 
+		"Geige_RigRN.placeHolderList[44]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleY" 
+		"Geige_RigRN.placeHolderList[45]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.scaleZ" 
+		"Geige_RigRN.placeHolderList[46]" ""
+		5 4 "Geige_RigRN" "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geigeCTRL_bottom.visibility" 
+		"Geige_RigRN.placeHolderList[47]" ""
+		5 2 "Geige_RigRN" "Geige_Rig:set1.dagSetMembers" "Geige_RigRN.placeHolderList[48]" 
+		"Bow_BottomCTRL:metall_lowSG.dsm"
+		5 2 "Geige_RigRN" "Geige_Rig:set1.dagSetMembers" "Geige_RigRN.placeHolderList[49]" 
+		"Bow_BottomCTRL:sehne_lowSG.dsm"
+		5 2 "Geige_RigRN" "Geige_Rig:set1.dagSetMembers" "Geige_RigRN.placeHolderList[50]" 
+		"Bow_BottomCTRL:griff_lowSG.dsm"
+		5 4 "Geige_RigRN" "Geige_Rig:set1.dagSetMembers" "Geige_RigRN.placeHolderList[51]" 
+		""
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:substance_objects|Geige_Rig:geige_low|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:griff_low|Geige_Rig:griff_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:sehne_low|Geige_Rig:sehne_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|violin_light|violin_lightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:bogen_ctrlMiddle|Geige_Rig:bogen_LP_pivotMiddle|Geige_Rig:metall_low|Geige_Rig:metall_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:body_low|Geige_Rig:body_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saiten_low|Geige_Rig:saiten_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:griffbrett_low|Geige_Rig:griffbrett_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_01|Geige_Rig:wirbel_low_01Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_02|Geige_Rig:wirbel_low_02Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_03|Geige_Rig:wirbel_low_03Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:wirbel_low|Geige_Rig:wirbel_low_04|Geige_Rig:wirbel_low_04Shape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:hals_low|Geige_Rig:hals_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:kinnstuetze_low|Geige_Rig:kinnstuetze_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:metallplatte_low|Geige_Rig:metallplatte_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:saitenhalter_low|Geige_Rig:saitenhalter_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:inside_low|Geige_Rig:inside_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0
-		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
-		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|pasted__BG_Light|pasted__BG_LightShape.message" 
+		0
+		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|notenständer_light1|notenständer_light1Shape.message" 
 		0
 		7 "ignore" ":lightLinker1" 2 "|Geige_Rig:Geige|Geige_Rig:geige_ctrlBottom|Geige_Rig:geige_pivotBottom|Geige_Rig:schraube_low|Geige_Rig:schraube_lowShape.message" "|Stage_Lighting|notenständer_light|notenständer_lightShape.message" 
 		0;
@@ -1098,9 +1177,9 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n"
 		+ "            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n"
 		+ "            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n"
-		+ "            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 792\n            -height 690\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n"
+		+ "            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|Shot7\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n"
 		+ "            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n"
-		+ "            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 0\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n"
+		+ "            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 0\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 0\n            -cameras 0\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n"
 		+ "            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 792\n            -height 690\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n"
 		+ "            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print 999\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n"
@@ -1123,25 +1202,25 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n"
-		+ "            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n"
-		+ "            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n"
-		+ "                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n"
-		+ "                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n"
-		+ "                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
-		+ "                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 792\\n    -height 690\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 792\\n    -height 690\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n"
+		+ "                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n"
+		+ "                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n"
+		+ "                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n"
+		+ "            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Shot7\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 792\\n    -height 690\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|Shot7\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 0\\n    -cameras 0\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 792\\n    -height 690\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ttimeControl -e -displaySound 1 -sound Practice01 $gPlayBackSlider;\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "37FA0095-46CF-59D1-2901-ADA4A8DAC288";
-	setAttr ".b" -type "string" "playbackOptions -min 0 -max 411 -ast 0 -aet 411 ";
+	setAttr ".b" -type "string" "playbackOptions -min 0 -max 430 -ast 0 -aet 430 ";
 	setAttr ".st" 6;
 createNode animCurveTL -n "bogenCTRL_middle_translateX";
 	rename -uid "7FE55ADC-49D5-0DD3-E53D-25B526CB9565";
 	setAttr ".tan" 28;
-	setAttr -s 80 ".ktv[0:79]"  90 0 140 -10.410500979366207 159 -6.8613691553901637
+	setAttr -s 80 ".ktv[0:79]"  100 0 140 -10.410500979366207 159 -6.8613691553901637
 		 160 -7.3714961148416887 161 -8.0939023875616929 162 -8.4709843899544914 164 -9.0169769226290377
 		 166 -8.6595125337520837 168 -7.9540549862726682 169 -7.5616430961008341 174 -5.9762609096640746
 		 176 -7.7803364484767261 179 -10.914156855236044 191 -7.1777269634011391 193 -7.5302953113625932
@@ -1165,7 +1244,7 @@ createNode animCurveTL -n "bogenCTRL_middle_translateX";
 createNode animCurveTL -n "bogenCTRL_middle_translateY";
 	rename -uid "BF11CBA2-42E3-F37F-9002-198101DD667E";
 	setAttr ".tan" 28;
-	setAttr -s 81 ".ktv[0:80]"  90 0 114 4.5421793056070747 140 0.59962148421943107
+	setAttr -s 81 ".ktv[0:80]"  100 0 114 4.5421793056070747 140 0.59962148421943107
 		 159 3.2763068751782609 160 2.97194430054159 161 2.4996721424659625 162 2.2683535675125692
 		 164 1.7658074080003581 166 2.1639088340541157 168 2.846879181535706 169 3.1627102433939509
 		 174 4.1649170187919351 176 3.0109036663989057 179 0.10235252807852017 191 3.1701306185197087
@@ -1189,38 +1268,51 @@ createNode animCurveTL -n "bogenCTRL_middle_translateY";
 createNode animCurveTL -n "bogenCTRL_middle_translateZ";
 	rename -uid "F3343D9C-45E0-30D2-B3A2-C7A69F3ACDFF";
 	setAttr ".tan" 28;
-	setAttr -s 80 ".ktv[0:79]"  90 0 140 -1.9963070259545004 159 1.8170473941589906
-		 160 1.2492900465656327 161 0.45536036400191138 162 0.037227865087305426 164 -0.52721502441513513
-		 166 -0.17456466415290028 168 0.54650339883889232 169 0.96326723544584203 174 2.713985592962628
-		 176 0.72508249237900024 179 -2.5087437315132637 191 1.444756309358723 193 1.1020065955354337
-		 194 0.81345869781774549 195 0.48266873838613883 196 0.095536718395259956 198 -0.73686661329220993
-		 199 -1.0432442049651243 200 -1.1865880306567707 206 0.99333915253762806 211 -1.0484004372030959
-		 217 1.1526579684194707 218 1.0211103802896591 220 0.35686082114694406 221 -0.0023100167722376291
-		 222 -0.36961904287004071 223 -0.68123359296030273 225 -1.0077702257147696 228 -0.82208230766473034
-		 231 -0.50659100381068578 238 0.36444045488188448 244 1.1090537959433016 251 1.6142337095947088
-		 253 1.4801181522059998 254 1.3650475707619607 257 0.83902629952709917 260 0.18284284804730011
-		 262 -0.11231147526213947 263 -0.28324984866424985 266 -0.97621443389716478 270 -2.4573733971732823
-		 272 -2.2920200773158803 275 -1.7268454517004015 277 -1.2777254310930142 280 -0.59742156697991211
-		 282 -0.1514630957100348 285 0.42203823321730072 287 0.71673663684260625 291 1.0164046640390774
-		 293 0.67757331389676145 294 0.40081919218073936 295 0.12014071281956774 297 -0.58468989953174566
-		 298 -0.87501710054580073 299 -1.0176057729339043 320 2.2266870560502077 330 -0.34026449761090588
-		 342 1.7588580048448064 343 1.7506993090010023 344 1.7190894480111281 345 1.6438094377496486
-		 346 1.5096053222040813 347 1.3230252558231732 349 0.82761939227802761 351 0.22622307553625476
-		 353 -0.41008214017004518 362 -2.6811417289244832 364 -2.4091706253700647 366 -1.8745888839917768
-		 369 -0.8261610437740825 372 0.29153651487603538 375 1.2491401201143821 378 2.0304315919344282
-		 379 2.2077383072435399 381 2.3971221429773615 382 2.3971221429773615 395 0.34927192414952501
-		 410 0;
+	setAttr -s 82 ".ktv[0:81]"  40 -0.0023639469511227418 70 -2.8010344905874831
+		 100 0 140 -1.9963070259545004 159 1.8170473941589906 160 1.2492900465656327 161 0.45536036400191138
+		 162 0.037227865087305426 164 -0.52721502441513513 166 -0.17456466415290028 168 0.54650339883889232
+		 169 0.96326723544584203 174 2.713985592962628 176 0.72508249237900024 179 -2.5087437315132637
+		 191 1.444756309358723 193 1.1020065955354337 194 0.81345869781774549 195 0.48266873838613883
+		 196 0.095536718395259956 198 -0.73686661329220993 199 -1.0432442049651243 200 -1.1865880306567707
+		 206 0.99333915253762806 211 -1.0484004372030959 217 1.1526579684194707 218 1.0211103802896591
+		 220 0.35686082114694406 221 -0.0023100167722376291 222 -0.36961904287004071 223 -0.68123359296030273
+		 225 -1.0077702257147696 228 -0.82208230766473034 231 -0.50659100381068578 238 0.36444045488188448
+		 244 1.1090537959433016 251 1.6142337095947088 253 1.4801181522059998 254 1.3650475707619607
+		 257 0.83902629952709917 260 0.18284284804730011 262 -0.11231147526213947 263 -0.28324984866424985
+		 266 -0.97621443389716478 270 -2.4573733971732823 272 -2.2920200773158803 275 -1.7268454517004015
+		 277 -1.2777254310930142 280 -0.59742156697991211 282 -0.1514630957100348 285 0.42203823321730072
+		 287 0.71673663684260625 291 1.0164046640390774 293 0.67757331389676145 294 0.40081919218073936
+		 295 0.12014071281956774 297 -0.58468989953174566 298 -0.87501710054580073 299 -1.0176057729339043
+		 320 2.2266870560502077 330 -0.34026449761090588 342 1.7588580048448064 343 1.7506993090010023
+		 344 1.7190894480111281 345 1.6438094377496486 346 1.5096053222040813 347 1.3230252558231732
+		 349 0.82761939227802761 351 0.22622307553625476 353 -0.41008214017004518 362 -2.6811417289244832
+		 364 -2.4091706253700647 366 -1.8745888839917768 369 -0.8261610437740825 372 0.29153651487603538
+		 375 1.2491401201143821 378 2.0304315919344282 379 2.2077383072435399 381 2.3971221429773615
+		 382 2.3971221429773615 395 0.34927192414952501 410 0;
+	setAttr -s 82 ".kit[0:81]"  18 18 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28;
+	setAttr -s 82 ".kot[0:81]"  18 18 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 
+		28 28 28 28 28 28;
 createNode animCurveTU -n "bogenCTRL_middle_visibility";
 	rename -uid "3C24A758-4F26-CB73-FECF-B2AEE245B920";
 	setAttr ".tan" 9;
-	setAttr -s 21 ".ktv[0:20]"  140 1 159 1 164 1 179 1 191 1 200 1 206 1
-		 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1 382 1;
-	setAttr -s 21 ".kot[0:20]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5;
+	setAttr -s 22 ".ktv[0:21]"  100 1 140 1 159 1 164 1 179 1 191 1 200 1
+		 206 1 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1
+		 382 1;
+	setAttr -s 22 ".kot[0:21]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5;
 createNode animCurveTA -n "bogenCTRL_middle_rotateX";
 	rename -uid "2DBD17FD-4F8D-FA02-9FC2-39A24880B766";
 	setAttr ".tan" 28;
-	setAttr -s 26 ".ktv[0:25]"  90 0 140 -34.237814125696673 159 -34.237814125696673
+	setAttr -s 26 ".ktv[0:25]"  100 0 140 -34.237814125696673 159 -34.237814125696673
 		 164 -48.150172618787714 174 -36.452170986411964 179 -36.452170986411964 191 -36.452170986411964
 		 200 -16.951986895525312 206 -16.951986895525312 211 -16.951986895525312 217 -16.951986895525312
 		 225 -35.682670558583773 251 -48.378287339276952 263 -32.556740393304722 270 -32.285723153952418
@@ -1230,7 +1322,7 @@ createNode animCurveTA -n "bogenCTRL_middle_rotateX";
 createNode animCurveTA -n "bogenCTRL_middle_rotateY";
 	rename -uid "3B0828CE-457E-4D4F-BD6B-739DC674BC75";
 	setAttr ".tan" 28;
-	setAttr -s 24 ".ktv[0:23]"  90 0 140 37.946444633605665 159 37.946444633605665
+	setAttr -s 24 ".ktv[0:23]"  100 0 140 37.946444633605665 159 37.946444633605665
 		 164 37.946444633605665 179 37.946444633605665 191 37.946444633605665 200 37.946444633605665
 		 206 37.946444633605665 211 37.946444633605665 217 37.946444633605665 225 37.946444633605715
 		 251 37.946444633605715 263 37.946444633605715 270 37.946444633605715 291 36.639463232956416
@@ -1240,7 +1332,7 @@ createNode animCurveTA -n "bogenCTRL_middle_rotateY";
 createNode animCurveTA -n "bogenCTRL_middle_rotateZ";
 	rename -uid "A52869C7-4F93-F2AF-1704-C8A90B9C7456";
 	setAttr ".tan" 28;
-	setAttr -s 24 ".ktv[0:23]"  90 0 140 -10.993161535138631 159 -10.993161535138631
+	setAttr -s 24 ".ktv[0:23]"  100 0 140 -10.993161535138631 159 -10.993161535138631
 		 164 -10.993161535138631 179 -10.993161535138631 191 -10.993161535138631 200 -10.993161535138631
 		 206 -10.993161535138631 211 -10.993161535138631 217 -10.993161535138631 225 -10.993161535138688
 		 251 -10.993161535138688 263 -10.993161535138688 270 -10.993161535138688 291 -9.0801378679880571
@@ -1250,28 +1342,53 @@ createNode animCurveTA -n "bogenCTRL_middle_rotateZ";
 createNode animCurveTU -n "bogenCTRL_middle_scaleX";
 	rename -uid "DDC22235-4E7B-3C4B-74BD-6B9422868E4A";
 	setAttr ".tan" 28;
-	setAttr -s 21 ".ktv[0:20]"  140 1 159 1 164 1 179 1 191 1 200 1 206 1
-		 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1 382 1;
+	setAttr -s 22 ".ktv[0:21]"  100 1 140 1 159 1 164 1 179 1 191 1 200 1
+		 206 1 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1
+		 382 1;
+	setAttr -s 22 ".kit[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
+	setAttr -s 22 ".kot[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
 createNode animCurveTU -n "bogenCTRL_middle_scaleY";
 	rename -uid "BFCB0DE8-43F4-10F2-23DD-B69F4F52A92E";
 	setAttr ".tan" 28;
-	setAttr -s 21 ".ktv[0:20]"  140 1 159 1 164 1 179 1 191 1 200 1 206 1
-		 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1 382 1;
+	setAttr -s 22 ".ktv[0:21]"  100 1 140 1 159 1 164 1 179 1 191 1 200 1
+		 206 1 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1
+		 382 1;
+	setAttr -s 22 ".kit[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
+	setAttr -s 22 ".kot[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
 createNode animCurveTU -n "bogenCTRL_middle_scaleZ";
 	rename -uid "46512FB5-4AA8-6A62-563B-938B7C1DBC4D";
 	setAttr ".tan" 28;
-	setAttr -s 21 ".ktv[0:20]"  140 1 159 1 164 1 179 1 191 1 200 1 206 1
-		 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1 382 1;
+	setAttr -s 22 ".ktv[0:21]"  100 1 140 1 159 1 164 1 179 1 191 1 200 1
+		 206 1 211 1 217 1 225 1 251 1 263 1 270 1 291 1 299 1 320 1 330 1 342 1 362 1 381 1
+		 382 1;
+	setAttr -s 22 ".kit[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
+	setAttr -s 22 ".kot[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
 createNode animCurveTU -n "bogenCTRL_middle_Bend";
 	rename -uid "1B9E910C-4113-D908-54CC-3084E50EA992";
 	setAttr ".tan" 28;
-	setAttr -s 21 ".ktv[0:20]"  140 0 159 0 164 0 179 0 191 0 200 0 206 0
-		 211 0 217 0 225 0 251 0 263 0 270 0 291 0 299 0 320 0 330 0 342 0 362 0 381 0 382 0;
+	setAttr -s 22 ".ktv[0:21]"  100 0 140 0 159 0 164 0 179 0 191 0 200 0
+		 206 0 211 0 217 0 225 0 251 0 263 0 270 0 291 0 299 0 320 0 330 0 342 0 362 0 381 0
+		 382 0;
+	setAttr -s 22 ".kit[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
+	setAttr -s 22 ".kot[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
 createNode animCurveTU -n "bogenCTRL_middle_squashNstretch";
 	rename -uid "A609E8D4-4399-F098-4FF9-3EA8C006D28E";
 	setAttr ".tan" 28;
-	setAttr -s 21 ".ktv[0:20]"  140 0 159 0 164 0 179 0 191 0 200 0 206 0
-		 211 0 217 0 225 0 251 0 263 0 270 0 291 0 299 0 320 0 330 0 342 0 362 0 381 0 382 0;
+	setAttr -s 22 ".ktv[0:21]"  100 0 140 0 159 0 164 0 179 0 191 0 200 0
+		 206 0 211 0 217 0 225 0 251 0 263 0 270 0 291 0 299 0 320 0 330 0 342 0 362 0 381 0
+		 382 0;
+	setAttr -s 22 ".kit[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
+	setAttr -s 22 ".kot[0:21]"  18 28 28 28 28 28 28 28 
+		28 28 28 28 28 28 28 28 28 28 28 28 28 28;
 createNode timeEditor -s -n "timeEditor";
 	rename -uid "121FC042-4C5A-4375-5A81-C49AFA5CC6FD";
 	setAttr ".ac" 0;
@@ -1282,9 +1399,10 @@ createNode animCurveTA -n "Geige_rotateX";
 	setAttr ".tan" 28;
 	setAttr -s 22 ".ktv[0:21]"  90 90 140 90 159 97.941201672010919 164 93.639449176393526
 		 175 100.63230916576738 179 90 192 98.222123012637525 199 92.962958061433739 205 97.606999923183352
-		 211 95.305040646833461 217 98.81973849582775 225 93.381113845566759 251 101.34882740194263
-		 265 90 269 90 290 99.779151643024989 299 92.623537048644437 320 101.32577681233984
-		 331 93.519748335568593 341 96.480753598891766 362 87.125886911035465 383 95;
+		 211 95.305040646833461 217 98.81973849582775 225 93.381113845566759 251 106.42564949287484
+		 265 85.163450807253781 269 85.713226296324464 290 96.574087191678885 299 84.808084099967289
+		 320 94.915647909647618 331 85.545547980619531 341 96.480753598891766 362 73.767178277824968
+		 383 90;
 createNode animCurveTA -n "Geige_rotateY";
 	rename -uid "B8A7CB57-4FDA-41F8-D9C4-44BCEA1B8683";
 	setAttr ".tan" 28;
@@ -1305,8 +1423,8 @@ createNode animCurveTL -n "Geige_translateX";
 createNode animCurveTL -n "Geige_translateY";
 	rename -uid "25F3C9FA-4B6F-1C31-C160-9090374836F1";
 	setAttr ".tan" 28;
-	setAttr -s 5 ".ktv[0:4]"  50 -9.4921029884339259 70 -9.368 90 -9.4951215834099099
-		 140 -9.4951215834099099 383 -9.4951215834099099;
+	setAttr -s 3 ".ktv[0:2]"  90 -9.4951215834099099 140 -9.4951215834099099
+		 383 -9.4951215834099099;
 createNode animCurveTL -n "Geige_translateZ";
 	rename -uid "2C5F2810-4A89-34BC-B973-F487389DCC5C";
 	setAttr ".tan" 28;
@@ -1563,20 +1681,27 @@ createNode animCurveTU -n "plane_canvasSize2_scaleZ";
 createNode animCurveTU -n "geigeCTRL_bottom_visibility";
 	rename -uid "D9423C45-4906-8273-9269-97ADEFBAC0A4";
 	setAttr ".tan" 9;
-	setAttr -s 2 ".ktv[0:1]"  140 1 382 1;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 3 ".ktv[0:2]"  90 1 140 1 382 1;
+	setAttr -s 3 ".kot[0:2]"  5 5 5;
 createNode animCurveTL -n "geigeCTRL_bottom_translateX";
 	rename -uid "4CB915F5-4302-8CB0-732A-91A2F1A7F7CF";
 	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 0 382 0;
+	setAttr -s 3 ".ktv[0:2]"  90 0 140 0 382 0;
+	setAttr -s 3 ".kit[0:2]"  18 28 28;
+	setAttr -s 3 ".kot[0:2]"  18 28 28;
 createNode animCurveTL -n "geigeCTRL_bottom_translateY";
 	rename -uid "BD2B2B72-4B22-0C09-3111-C69CFFDC7F61";
 	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 0 382 0;
+	setAttr -s 3 ".ktv[0:2]"  90 0 140 0 382 0;
+	setAttr -s 3 ".kit[0:2]"  18 28 28;
+	setAttr -s 3 ".kot[0:2]"  18 28 28;
 createNode animCurveTL -n "geigeCTRL_bottom_translateZ";
 	rename -uid "98146E46-4A8B-35FC-F5E8-82A4F948B484";
-	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 0 382 0;
+	setAttr ".tan" 18;
+	setAttr -s 5 ".ktv[0:4]"  30 -0.046883388882235089 60 -1.7258073287409035
+		 90 0 140 0 382 0;
+	setAttr -s 5 ".kit[3:4]"  28 28;
+	setAttr -s 5 ".kot[3:4]"  28 28;
 createNode animCurveTA -n "geigeCTRL_bottom_rotateX";
 	rename -uid "DA6F0EE7-41A8-2C1C-4B72-18AF8480417B";
 	setAttr ".tan" 28;
@@ -1595,27 +1720,33 @@ createNode animCurveTA -n "geigeCTRL_bottom_rotateZ";
 createNode animCurveTU -n "geigeCTRL_bottom_scaleX";
 	rename -uid "90F755B0-48CB-87E1-E30E-20AF968E1CA8";
 	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 1 382 1;
+	setAttr -s 3 ".ktv[0:2]"  90 1 140 1 382 1;
+	setAttr -s 3 ".kit[0:2]"  18 28 28;
+	setAttr -s 3 ".kot[0:2]"  18 28 28;
 createNode animCurveTU -n "geigeCTRL_bottom_scaleY";
 	rename -uid "120A1BAF-420F-35CA-C11F-9B8445065DCA";
 	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 1 382 1;
+	setAttr -s 3 ".ktv[0:2]"  90 1 140 1 382 1;
+	setAttr -s 3 ".kit[0:2]"  18 28 28;
+	setAttr -s 3 ".kot[0:2]"  18 28 28;
 createNode animCurveTU -n "geigeCTRL_bottom_scaleZ";
 	rename -uid "4FFECFDA-447F-3155-5505-1DADEE3141AF";
 	setAttr ".tan" 28;
-	setAttr -s 2 ".ktv[0:1]"  140 1 382 1;
+	setAttr -s 3 ".ktv[0:2]"  90 1 140 1 382 1;
+	setAttr -s 3 ".kit[0:2]"  18 28 28;
+	setAttr -s 3 ".kot[0:2]"  18 28 28;
 createNode animCurveTL -n "Shot7_translateX";
 	rename -uid "2F3A399E-4DB4-3BD9-2C4D-11BCB6A9A00B";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  0 0.102 160 0.102 321 -26.542067391418541;
+	setAttr -s 3 ".ktv[0:2]"  0 0.102 160 0.102 365 -16.994132456657475;
 createNode animCurveTL -n "Shot7_translateY";
 	rename -uid "363E41DA-439A-69E8-EF73-1FA856B5B8A9";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  0 3.306 160 3.306 321 -6;
+	setAttr -s 3 ".ktv[0:2]"  0 3.306 160 3.306 365 -7.4087528219628513;
 createNode animCurveTL -n "Shot7_translateZ";
 	rename -uid "3660BE38-4FB7-6CBC-FF73-77B7EE0C5D35";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  0 168.202 160 168.202 321 101.98181629277011;
+	setAttr -s 3 ".ktv[0:2]"  0 168.202 160 168.202 365 69.543669158181075;
 createNode animCurveTU -n "Shot7_visibility";
 	rename -uid "16C0CE90-47F7-A530-E463-46852CE33C52";
 	setAttr ".tan" 9;
@@ -1624,11 +1755,11 @@ createNode animCurveTU -n "Shot7_visibility";
 createNode animCurveTA -n "Shot7_rotateX";
 	rename -uid "0E1C0903-4248-16F0-BA67-0DBB40DF591B";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  0 0 160 0 321 0;
+	setAttr -s 3 ".ktv[0:2]"  0 0 160 0 365 0;
 createNode animCurveTA -n "Shot7_rotateY";
 	rename -uid "91B144CC-4E4C-FE1C-0F8E-4FB6617CC928";
 	setAttr ".tan" 28;
-	setAttr -s 3 ".ktv[0:2]"  0 0 160 0 321 -14;
+	setAttr -s 3 ".ktv[0:2]"  0 0 160 0 365 -14;
 createNode animCurveTA -n "Shot7_rotateZ";
 	rename -uid "5EFA61E4-40E5-2778-AA5D-698CDF2C0186";
 	setAttr ".tan" 28;
@@ -1897,14 +2028,441 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].ni[4].x" 178.57142639160156;
 	setAttr ".tgi[0].ni[4].y" 348.57144165039062;
 	setAttr ".tgi[0].ni[4].nvs" 2387;
+createNode animLayer -n "BaseAnimation";
+	rename -uid "74F4989D-441A-F104-8778-65A24CDC70E6";
+	setAttr ".pref" yes;
+	setAttr ".slct" yes;
+	setAttr ".ovrd" yes;
+createNode animLayer -n "BogenRotation";
+	rename -uid "919D2140-485F-43C2-4997-DC87EF7965DA";
+	setAttr -s 12 ".dsm";
+	setAttr -s 10 ".bnds";
+createNode animBlendNodeBoolean -n "bogenCTRL_middle_visibility_BogenRotation";
+	rename -uid "5D38314D-42B0-9357-98FD-66A031A39ECE";
+	setAttr ".o" yes;
+createNode animBlendNodeAdditiveDL -n "bogenCTRL_middle_translateX_BogenRotation";
+	rename -uid "8D6574C6-48C7-2124-CAFE-8A9029E6DFC8";
+createNode animBlendNodeAdditiveDL -n "bogenCTRL_middle_translateY_BogenRotation";
+	rename -uid "BA8B5833-43D5-9602-5E27-339B54A663B3";
+createNode animBlendNodeAdditiveDL -n "bogenCTRL_middle_translateZ_BogenRotation";
+	rename -uid "38E6694A-4BD4-6CAF-92FC-4893F2AD4727";
+	setAttr ".o" -0.0023639469511227418;
+createNode animBlendNodeAdditiveRotation -n "bogenCTRL_middle_rotate_BogenRotation";
+	rename -uid "027B5A2A-41B4-52F0-6DD0-9E80D5BE6AF2";
+createNode animBlendNodeAdditiveScale -n "bogenCTRL_middle_scaleX_BogenRotation";
+	rename -uid "E7F66318-45CE-A75D-85F7-24A18CFC250B";
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveScale -n "bogenCTRL_middle_scaleY_BogenRotation";
+	rename -uid "DEE0A6D8-4D32-52CC-550C-FB8977B0B8BA";
+	setAttr ".o" 1;
+createNode animBlendNodeAdditiveScale -n "bogenCTRL_middle_scaleZ_BogenRotation";
+	rename -uid "E56EACA1-4BC0-5246-433C-15A0927D775C";
+	setAttr ".o" 1;
+createNode animBlendNodeAdditive -n "bogenCTRL_middle_Bend_BogenRotation";
+	rename -uid "E08299B4-4886-5538-F13B-B6815F19B509";
+createNode animBlendNodeAdditive -n "bogenCTRL_middle_squashNstretch_BogenRotation";
+	rename -uid "54EC2FDF-4927-27C7-AC39-17A7FCBEA1A3";
+createNode animCurveTA -n "bogenCTRL_middle_rotate_BogenRotation_inputBX";
+	rename -uid "40A57295-4518-44FB-9946-1AAFE1EFBFC8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  140 0 159 -6.5186004707332126 164 0 270 0
+		 291 20.777919331643854 299 0 363 0 380 -9.8770083272354174 410 0;
+	setAttr -s 9 ".kit[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kot[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kix[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[2:8]"  0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".koy[2:8]"  0 0 0 0 0 0 0;
+createNode animCurveTA -n "bogenCTRL_middle_rotate_BogenRotation_inputBY";
+	rename -uid "E55ACFEA-4329-1D5A-2C43-D2A19CE38911";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  140 0 159 -7.3354907163372971 164 0 270 0
+		 291 16.567235833932532 299 0 363 0 380 -13.394064188482655 410 0;
+	setAttr -s 9 ".kit[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kot[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kix[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[2:8]"  0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".koy[2:8]"  0 0 0 0 0 0 0;
+createNode animCurveTA -n "bogenCTRL_middle_rotate_BogenRotation_inputBZ";
+	rename -uid "10764234-4F05-4A9B-E7B8-E7A459BAF3DC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  140 0 159 -11.52359740019272 164 0 270 0
+		 291 28.817076464746936 299 0 363 0 380 -18.801215318218411 410 0;
+	setAttr -s 9 ".kit[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kot[2:8]"  1 18 18 1 18 18 1;
+	setAttr -s 9 ".kix[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[2:8]"  0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[2:8]"  1 1 1 1 1 1 1;
+	setAttr -s 9 ".koy[2:8]"  0 0 0 0 0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_visibility_BogenRotation_inputB";
+	rename -uid "E614ECAC-496C-B5FF-22C2-35BDE6EF1612";
+	setAttr ".tan" 5;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 1 164 1 270 1 291 1 299 1 363 1 410 1;
+	setAttr -s 7 ".kit[0:6]"  9 9 9 9 1 9 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+createNode animCurveTL -n "bogenCTRL_middle_translateX_BogenRotation_inputB";
+	rename -uid "5932C09E-4F8E-8475-A2BB-B9A2BEE09980";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 0 164 0 270 0 291 0 299 0 363 0 410 0;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTL -n "bogenCTRL_middle_translateY_BogenRotation_inputB";
+	rename -uid "E0DCFCFE-43BD-9F9A-BA79-80954528C77A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 0 164 0 270 0 291 0 299 0 363 0 410 0;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTL -n "bogenCTRL_middle_translateZ_BogenRotation_inputB";
+	rename -uid "7E3EE329-4ECE-A8E2-D35B-9A98DDCEF444";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 0 164 0 270 0 291 0 299 0 363 0 410 0;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_scaleX_BogenRotation_inputB";
+	rename -uid "B3D914D4-49DA-4498-6924-55B46C2136DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 1 164 1 270 1 291 1 299 1 363 1 410 1;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_scaleY_BogenRotation_inputB";
+	rename -uid "13186D37-430C-280B-0FD6-7684AF611D25";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 1 164 1 270 1 291 1 299 1 363 1 410 1;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_scaleZ_BogenRotation_inputB";
+	rename -uid "9781B247-4DD2-2472-7016-2EBA640B064E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 1 164 1 270 1 291 1 299 1 363 1 410 1;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_Bend_BogenRotation_inputB";
+	rename -uid "87D9521C-4A24-E33B-6775-74BB3404492D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 0 164 0 270 0 291 0 299 0 363 0 410 0;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode animCurveTU -n "bogenCTRL_middle_squashNstretch_BogenRotation_inputB";
+	rename -uid "A5FBD79E-4865-E265-096E-24836BC29D45";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  140 0 164 0 270 0 291 0 299 0 363 0 410 0;
+	setAttr -s 7 ".kit[4:6]"  1 18 1;
+	setAttr -s 7 ".kot[4:6]"  1 18 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[4:6]"  1 1 1;
+	setAttr -s 7 ".koy[4:6]"  0 0 0;
+createNode reference -n "Bow_BottomCTRLRN";
+	rename -uid "2719D07C-4035-3569-8926-82B636ED5E7F";
+	setAttr ".fn[0]" -type "string" "C:/Users/River Robin/Desktop/High-Strung//scenes/Bow_BottomCTRL.ma";
+	setAttr -s 29 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
+	setAttr ".phl[3]" 0;
+	setAttr ".phl[4]" 0;
+	setAttr ".phl[5]" 0;
+	setAttr ".phl[6]" 0;
+	setAttr ".phl[7]" 0;
+	setAttr ".phl[8]" 0;
+	setAttr ".phl[9]" 0;
+	setAttr ".phl[10]" 0;
+	setAttr ".phl[11]" 0;
+	setAttr ".phl[12]" 0;
+	setAttr ".phl[13]" 0;
+	setAttr ".phl[14]" 0;
+	setAttr ".phl[15]" 0;
+	setAttr ".phl[16]" 0;
+	setAttr ".phl[17]" 0;
+	setAttr ".phl[18]" 0;
+	setAttr ".phl[19]" 0;
+	setAttr ".phl[20]" 0;
+	setAttr ".phl[21]" 0;
+	setAttr ".phl[22]" 0;
+	setAttr ".phl[23]" 0;
+	setAttr ".phl[24]" 0;
+	setAttr ".phl[25]" 0;
+	setAttr ".phl[26]" 0;
+	setAttr ".phl[27]" 0;
+	setAttr ".phl[28]" 0;
+	setAttr ".phl[29]" 0;
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"Bow_BottomCTRLRN"
+		"Bow_BottomCTRLRN" 0
+		"Bow_BottomCTRLRN" 50
+		0 "|Bow_BottomCTRLRNfosterParent1|griff_lowShapeDeformed" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low" 
+		"-s -r "
+		1 |Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom 
+		"blendParent1" "blendParent1" " -ci 1 -k 1 -dv 1 -smn 0 -smx 1 -at \"double\""
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom" "translate" 
+		" -type \"double3\" -7.84372012014755438 -6.57007074151400339 40.11308213803468448"
+		
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom" 
+		"blendParent1" " -k 1"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape" 
+		"intermediateObject" " 1"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape" 
+		"displayColors" " 1"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape" 
+		"dispResolution" " 3"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape" 
+		"displaySmoothMesh" " 2"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape" 
+		"dispResolution" " 3"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape" 
+		"displaySmoothMesh" " 2"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom|Bow_BottomCTRL:bogenCTRL_bottomShape" 
+		"inPlace" " 0"
+		2 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:geige_ctrlBottom" "visibility" 
+		" 0"
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateX" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateX" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateY" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateY" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateZ" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateZ" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateX" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateX" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateY" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateY" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateZ" 
+		"|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateZ" 
+		""
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape.instObjGroups" 
+		"Bow_BottomCTRL:sehne_lowSG.dagSetMembers" "-na"
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape.instObjGroups" 
+		"Bow_BottomCTRL:metall_lowSG.dagSetMembers" "-na"
+		3 "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape.instObjGroups" 
+		"Bow_BottomCTRL:griff_lowSG.dagSetMembers" "-na"
+		5 1 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:metall_low|Bow_BottomCTRL:metall_lowShape.instObjGroups" 
+		"Bow_BottomCTRLRN.placeHolderList[1]" "Bow_BottomCTRL:metall_lowSG.dsm"
+		5 1 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:sehne_low|Bow_BottomCTRL:sehne_lowShape.instObjGroups" 
+		"Bow_BottomCTRLRN.placeHolderList[2]" "Bow_BottomCTRL:sehne_lowSG.dsm"
+		5 1 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape.instObjGroups" 
+		"Bow_BottomCTRLRN.placeHolderList[3]" "Bow_BottomCTRL:griff_lowSG.dsm"
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateX" 
+		"Bow_BottomCTRLRN.placeHolderList[4]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateY" 
+		"Bow_BottomCTRLRN.placeHolderList[5]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.translateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[6]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateX" 
+		"Bow_BottomCTRLRN.placeHolderList[7]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateY" 
+		"Bow_BottomCTRLRN.placeHolderList[8]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.rotateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[9]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.visibility" 
+		"Bow_BottomCTRLRN.placeHolderList[10]" ""
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.blendParent1" 
+		"Bow_BottomCTRLRN.placeHolderList[11]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom.blendParent1" 
+		"Bow_BottomCTRLRN.placeHolderList[12]" ""
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:griff_low|Bow_BottomCTRL:griff_lowShape.worldMesh" 
+		"Bow_BottomCTRLRN.placeHolderList[13]" ""
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateX" 
+		"Bow_BottomCTRLRN.placeHolderList[14]" "Bow_BottomCTRL:bogen_LP_pivotBottom.tx"
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateY" 
+		"Bow_BottomCTRLRN.placeHolderList[15]" "Bow_BottomCTRL:bogen_LP_pivotBottom.ty"
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintTranslateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[16]" "Bow_BottomCTRL:bogen_LP_pivotBottom.tz"
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateX" 
+		"Bow_BottomCTRLRN.placeHolderList[17]" "Bow_BottomCTRL:bogen_LP_pivotBottom.rx"
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateY" 
+		"Bow_BottomCTRLRN.placeHolderList[18]" "Bow_BottomCTRL:bogen_LP_pivotBottom.ry"
+		5 3 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogen_LP_pivotBottom|Bow_BottomCTRL:bogen_LP_pivotBottom_parentConstraint1.constraintRotateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[19]" "Bow_BottomCTRL:bogen_LP_pivotBottom.rz"
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.translateX" 
+		"Bow_BottomCTRLRN.placeHolderList[20]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.translateY" 
+		"Bow_BottomCTRLRN.placeHolderList[21]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.translateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[22]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.rotateX" 
+		"Bow_BottomCTRLRN.placeHolderList[23]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.rotateY" 
+		"Bow_BottomCTRLRN.placeHolderList[24]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.rotateZ" 
+		"Bow_BottomCTRLRN.placeHolderList[25]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.scaleX" 
+		"Bow_BottomCTRLRN.placeHolderList[26]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.scaleY" 
+		"Bow_BottomCTRLRN.placeHolderList[27]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.scaleZ" 
+		"Bow_BottomCTRLRN.placeHolderList[28]" ""
+		5 4 "Bow_BottomCTRLRN" "|Bow_BottomCTRL:Geige_BowBottom|Bow_BottomCTRL:bogen_ctrlBottom|Bow_BottomCTRL:bogenCTRL_bottom.visibility" 
+		"Bow_BottomCTRLRN.placeHolderList[29]" "";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
+createNode transferAttributes -n "transferAttributes1";
+	rename -uid "0D707EEA-41DD-F0E9-D2DC-CCB6CFDF2064";
+	setAttr ".uvs" 1;
+	setAttr ".suv" -type "string" "map1";
+	setAttr ".tuv" -type "string" "map1";
+	setAttr ".spa" 4;
+	setAttr ".sus" -type "string" "map1";
+	setAttr ".tus" -type "string" "map1";
+createNode tweak -n "tweak1";
+	rename -uid "7C79573C-47EA-16EE-DC14-DEA4DE8DF223";
+createNode animCurveTU -n "bogen_LP_pivotBottom_visibility";
+	rename -uid "5ABC62C4-482D-390B-4E87-519DFDDCC8B0";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  379 0 380 1;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "bogen_ctrlMiddle_visibility";
+	rename -uid "54394941-4762-3BDF-83CB-F28C4F8A1638";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  379 1 380 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode reference -n "sharedReferenceNode";
+	rename -uid "52299DC0-4E60-F09D-0CCD-289D3F17C961";
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"sharedReferenceNode";
+createNode pairBlend -n "pairBlend1";
+	rename -uid "6C1B77C2-4D66-B89B-4CB5-448A7C39DA81";
+createNode animCurveTL -n "pairBlend1_inTranslateX1";
+	rename -uid "BE478414-42B8-DA4B-E10C-6A9E389AF85A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  380 7.5611393921952779 407 11.772942092972485;
+createNode animCurveTL -n "pairBlend1_inTranslateY1";
+	rename -uid "5309F653-4124-6A51-DC5F-F695077BBC39";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  380 -9.7375915307902634 407 -5.7025366481497919;
+createNode animCurveTL -n "pairBlend1_inTranslateZ1";
+	rename -uid "C6715CA8-4B38-FCB6-EBCE-67A7696AD4A8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  380 -8.9232662028134584 407 -16.557434439032495;
+createNode animCurveTA -n "pairBlend1_inRotateX1";
+	rename -uid "2541BF3D-45C6-ECC5-201B-1B820C3A85A4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  380 54.144351082987058 393 121.77396889105451
+		 407 89.710422201607898;
+createNode animCurveTA -n "pairBlend1_inRotateY1";
+	rename -uid "03353F78-4523-8E93-F379-219013F85D5F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  380 28.222951843001656 407 0.87704933111769634;
+createNode animCurveTA -n "pairBlend1_inRotateZ1";
+	rename -uid "0229F486-44A5-8CF7-70C6-E483D259B792";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  380 22.45017124631276 407 179.49180910433506;
+createNode animCurveTU -n "bogen_LP_pivotBottom_blendParent1";
+	rename -uid "D1B813D8-48C7-23C7-9970-DAA21CE2A7C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  380 0;
+createNode animCurveTA -n "bogenCTRL_bottom_rotateX";
+	rename -uid "594A3263-4642-26CF-6D27-5AB4318A2E09";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 54.144351082987043;
+createNode animCurveTA -n "bogenCTRL_bottom_rotateY";
+	rename -uid "1159667F-44B5-6796-7532-F39D3FB79F24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 28.222951843001656;
+createNode animCurveTA -n "bogenCTRL_bottom_rotateZ";
+	rename -uid "D45E8CD8-45D6-288C-8A2D-41B6D7929EDE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 22.450171246312753;
+createNode animCurveTU -n "bogenCTRL_bottom_visibility";
+	rename -uid "4043D115-4456-2A73-FC05-AABE421CCFC9";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "bogenCTRL_bottom_translateX";
+	rename -uid "3C13DA8D-4DAF-97D0-55E0-96BACB52AC2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 7.5612768198121545;
+createNode animCurveTL -n "bogenCTRL_bottom_translateY";
+	rename -uid "425CA702-4ED6-D66E-CB38-61B138D2812B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 -9.7377478571096727;
+createNode animCurveTL -n "bogenCTRL_bottom_translateZ";
+	rename -uid "310D7547-4E58-5F99-E9B5-26A200ECD301";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 -8.9233837939504816;
+createNode animCurveTU -n "bogenCTRL_bottom_scaleX";
+	rename -uid "19CADC17-4A67-34D9-7943-2BAF69275F2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 1;
+createNode animCurveTU -n "bogenCTRL_bottom_scaleY";
+	rename -uid "1807EBB4-4FB7-42B1-7D23-83BDF3A6C35B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 1;
+createNode animCurveTU -n "bogenCTRL_bottom_scaleZ";
+	rename -uid "198D5459-4A21-BD01-00FD-F6BFB43A6700";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  406 1;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -k on ".fzn";
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr ".o" 109;
-	setAttr -av -k on ".unw" 109;
+	setAttr ".o" 11;
+	setAttr -av -k on ".unw" 11;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -1939,7 +2497,7 @@ select -ne :renderPartition;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 18 ".st";
+	setAttr -s 21 ".st";
 	setAttr -cb on ".an";
 	setAttr -cb on ".pt";
 select -ne :renderGlobalsList1;
@@ -1952,7 +2510,7 @@ select -ne :defaultShaderList1;
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 28 ".s";
+	setAttr -s 29 ".s";
 select -ne :postProcessList1;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -1963,7 +2521,7 @@ select -ne :defaultRenderUtilityList1;
 	setAttr -s 32 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
-	setAttr -s 4 ".r";
+	setAttr -s 5 ".r";
 select -ne :lightList1;
 	setAttr -s 9 ".l";
 select -ne :defaultTextureList1;
@@ -1979,6 +2537,7 @@ select -ne :initialShadingGroup;
 	setAttr -k on ".vwm";
 	setAttr -k on ".tpv";
 	setAttr -k on ".uit";
+	setAttr -s 13 ".dsm";
 	setAttr -k on ".mwc";
 	setAttr -cb on ".an";
 	setAttr -cb on ".il";
@@ -2254,28 +2813,74 @@ connectAttr "Geige_visibility.o" "Geige_RigRN.phl[7]";
 connectAttr "Geige_scaleX.o" "Geige_RigRN.phl[8]";
 connectAttr "Geige_scaleY.o" "Geige_RigRN.phl[9]";
 connectAttr "Geige_scaleZ.o" "Geige_RigRN.phl[10]";
-connectAttr "bogenCTRL_middle_Bend.o" "Geige_RigRN.phl[11]";
-connectAttr "bogenCTRL_middle_squashNstretch.o" "Geige_RigRN.phl[12]";
-connectAttr "bogenCTRL_middle_translateX.o" "Geige_RigRN.phl[13]";
-connectAttr "bogenCTRL_middle_translateZ.o" "Geige_RigRN.phl[14]";
-connectAttr "bogenCTRL_middle_translateY.o" "Geige_RigRN.phl[15]";
-connectAttr "bogenCTRL_middle_rotateY.o" "Geige_RigRN.phl[16]";
-connectAttr "bogenCTRL_middle_rotateX.o" "Geige_RigRN.phl[17]";
-connectAttr "bogenCTRL_middle_rotateZ.o" "Geige_RigRN.phl[18]";
-connectAttr "bogenCTRL_middle_scaleX.o" "Geige_RigRN.phl[19]";
-connectAttr "bogenCTRL_middle_scaleY.o" "Geige_RigRN.phl[20]";
-connectAttr "bogenCTRL_middle_scaleZ.o" "Geige_RigRN.phl[21]";
-connectAttr "bogenCTRL_middle_visibility.o" "Geige_RigRN.phl[22]";
-connectAttr "geigeCTRL_bottom_translateX.o" "Geige_RigRN.phl[23]";
-connectAttr "geigeCTRL_bottom_translateY.o" "Geige_RigRN.phl[24]";
-connectAttr "geigeCTRL_bottom_translateZ.o" "Geige_RigRN.phl[25]";
-connectAttr "geigeCTRL_bottom_rotateX.o" "Geige_RigRN.phl[26]";
-connectAttr "geigeCTRL_bottom_rotateY.o" "Geige_RigRN.phl[27]";
-connectAttr "geigeCTRL_bottom_rotateZ.o" "Geige_RigRN.phl[28]";
-connectAttr "geigeCTRL_bottom_scaleX.o" "Geige_RigRN.phl[29]";
-connectAttr "geigeCTRL_bottom_scaleY.o" "Geige_RigRN.phl[30]";
-connectAttr "geigeCTRL_bottom_scaleZ.o" "Geige_RigRN.phl[31]";
-connectAttr "geigeCTRL_bottom_visibility.o" "Geige_RigRN.phl[32]";
+connectAttr "bogen_ctrlMiddle_visibility.o" "Geige_RigRN.phl[11]";
+connectAttr "Geige_RigRN.phl[12]" "transferAttributes1.src[0]";
+connectAttr "Geige_RigRN.phl[13]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_Bend_BogenRotation.o" "Geige_RigRN.phl[14]";
+connectAttr "Geige_RigRN.phl[15]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_squashNstretch_BogenRotation.o" "Geige_RigRN.phl[16]"
+		;
+connectAttr "Geige_RigRN.phl[17]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_translateX_BogenRotation.o" "Geige_RigRN.phl[18]";
+connectAttr "Geige_RigRN.phl[19]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_translateZ_BogenRotation.o" "Geige_RigRN.phl[20]";
+connectAttr "Geige_RigRN.phl[21]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_translateY_BogenRotation.o" "Geige_RigRN.phl[22]";
+connectAttr "Geige_RigRN.phl[23]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation.oy" "Geige_RigRN.phl[24]";
+connectAttr "Geige_RigRN.phl[25]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation.ox" "Geige_RigRN.phl[26]";
+connectAttr "Geige_RigRN.phl[27]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation.oz" "Geige_RigRN.phl[28]";
+connectAttr "Geige_RigRN.phl[29]" "bogenCTRL_middle_rotate_BogenRotation.ro";
+connectAttr "Geige_RigRN.phl[30]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_scaleX_BogenRotation.o" "Geige_RigRN.phl[31]";
+connectAttr "Geige_RigRN.phl[32]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_scaleY_BogenRotation.o" "Geige_RigRN.phl[33]";
+connectAttr "Geige_RigRN.phl[34]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_scaleZ_BogenRotation.o" "Geige_RigRN.phl[35]";
+connectAttr "Geige_RigRN.phl[36]" "BogenRotation.dsm" -na;
+connectAttr "bogenCTRL_middle_visibility_BogenRotation.o" "Geige_RigRN.phl[37]";
+connectAttr "geigeCTRL_bottom_translateX.o" "Geige_RigRN.phl[38]";
+connectAttr "geigeCTRL_bottom_translateY.o" "Geige_RigRN.phl[39]";
+connectAttr "geigeCTRL_bottom_translateZ.o" "Geige_RigRN.phl[40]";
+connectAttr "geigeCTRL_bottom_rotateX.o" "Geige_RigRN.phl[41]";
+connectAttr "geigeCTRL_bottom_rotateY.o" "Geige_RigRN.phl[42]";
+connectAttr "geigeCTRL_bottom_rotateZ.o" "Geige_RigRN.phl[43]";
+connectAttr "geigeCTRL_bottom_scaleX.o" "Geige_RigRN.phl[44]";
+connectAttr "geigeCTRL_bottom_scaleY.o" "Geige_RigRN.phl[45]";
+connectAttr "geigeCTRL_bottom_scaleZ.o" "Geige_RigRN.phl[46]";
+connectAttr "geigeCTRL_bottom_visibility.o" "Geige_RigRN.phl[47]";
+connectAttr "Bow_BottomCTRLRN.phl[1]" "Geige_RigRN.phl[48]";
+connectAttr "Bow_BottomCTRLRN.phl[2]" "Geige_RigRN.phl[49]";
+connectAttr "Bow_BottomCTRLRN.phl[3]" "Geige_RigRN.phl[50]";
+connectAttr "griff_lowShapeDeformed.iog" "Geige_RigRN.phl[51]";
+connectAttr "pairBlend1.otx" "Bow_BottomCTRLRN.phl[4]";
+connectAttr "pairBlend1.oty" "Bow_BottomCTRLRN.phl[5]";
+connectAttr "pairBlend1.otz" "Bow_BottomCTRLRN.phl[6]";
+connectAttr "pairBlend1.orx" "Bow_BottomCTRLRN.phl[7]";
+connectAttr "pairBlend1.ory" "Bow_BottomCTRLRN.phl[8]";
+connectAttr "pairBlend1.orz" "Bow_BottomCTRLRN.phl[9]";
+connectAttr "bogen_LP_pivotBottom_visibility.o" "Bow_BottomCTRLRN.phl[10]";
+connectAttr "Bow_BottomCTRLRN.phl[11]" "pairBlend1.w";
+connectAttr "bogen_LP_pivotBottom_blendParent1.o" "Bow_BottomCTRLRN.phl[12]";
+connectAttr "Bow_BottomCTRLRN.phl[13]" "tweak1.ip[0].ig";
+connectAttr "Bow_BottomCTRLRN.phl[14]" "pairBlend1.itx2";
+connectAttr "Bow_BottomCTRLRN.phl[15]" "pairBlend1.ity2";
+connectAttr "Bow_BottomCTRLRN.phl[16]" "pairBlend1.itz2";
+connectAttr "Bow_BottomCTRLRN.phl[17]" "pairBlend1.irx2";
+connectAttr "Bow_BottomCTRLRN.phl[18]" "pairBlend1.iry2";
+connectAttr "Bow_BottomCTRLRN.phl[19]" "pairBlend1.irz2";
+connectAttr "bogenCTRL_bottom_translateX.o" "Bow_BottomCTRLRN.phl[20]";
+connectAttr "bogenCTRL_bottom_translateY.o" "Bow_BottomCTRLRN.phl[21]";
+connectAttr "bogenCTRL_bottom_translateZ.o" "Bow_BottomCTRLRN.phl[22]";
+connectAttr "bogenCTRL_bottom_rotateX.o" "Bow_BottomCTRLRN.phl[23]";
+connectAttr "bogenCTRL_bottom_rotateY.o" "Bow_BottomCTRLRN.phl[24]";
+connectAttr "bogenCTRL_bottom_rotateZ.o" "Bow_BottomCTRLRN.phl[25]";
+connectAttr "bogenCTRL_bottom_scaleX.o" "Bow_BottomCTRLRN.phl[26]";
+connectAttr "bogenCTRL_bottom_scaleY.o" "Bow_BottomCTRLRN.phl[27]";
+connectAttr "bogenCTRL_bottom_scaleZ.o" "Bow_BottomCTRLRN.phl[28]";
+connectAttr "bogenCTRL_bottom_visibility.o" "Bow_BottomCTRLRN.phl[29]";
 connectAttr "Shot7_translateX.o" "Shot7.tx" -l on;
 connectAttr "Shot7_translateY.o" "Shot7.ty" -l on;
 connectAttr "Shot7_translateZ.o" "Shot7.tz" -l on;
@@ -2296,6 +2901,8 @@ connectAttr "aiAreaLight4_scaleX.o" "violin_light.sx";
 connectAttr "aiAreaLight4_scaleY.o" "violin_light.sy";
 connectAttr "aiAreaLight4_scaleZ.o" "violin_light.sz";
 connectAttr "aiAreaLight4_visibility.o" "violin_light.v";
+connectAttr "transferAttributes1.og[0]" "griff_lowShapeDeformed.i";
+connectAttr "tweak1.vl[0].vt[0]" "griff_lowShapeDeformed.twl";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "aiStandardSurface1SG.message" ":defaultLightSet.message";
@@ -2548,6 +3155,109 @@ connectAttr ":defaultArnoldDriver.msg" "aiAOV_N.out[0].drvr";
 connectAttr "aiAOVFilter2.msg" "aiAOV_N.out[0].ftr";
 connectAttr ":defaultArnoldDriver.msg" "aiAOV_emission.out[0].drvr";
 connectAttr ":defaultArnoldFilter.msg" "aiAOV_emission.out[0].ftr";
+connectAttr "BogenRotation.sl" "BaseAnimation.chsl[0]";
+connectAttr "BogenRotation.play" "BaseAnimation.cdly[0]";
+connectAttr "BaseAnimation.csol" "BogenRotation.sslo";
+connectAttr "BaseAnimation.fgwt" "BogenRotation.pwth";
+connectAttr "BaseAnimation.omte" "BogenRotation.pmte";
+connectAttr "bogenCTRL_middle_visibility_BogenRotation.msg" "BogenRotation.bnds[0]"
+		;
+connectAttr "bogenCTRL_middle_translateX_BogenRotation.msg" "BogenRotation.bnds[1]"
+		;
+connectAttr "bogenCTRL_middle_translateY_BogenRotation.msg" "BogenRotation.bnds[2]"
+		;
+connectAttr "bogenCTRL_middle_translateZ_BogenRotation.msg" "BogenRotation.bnds[3]"
+		;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation.msg" "BogenRotation.bnds[7]";
+connectAttr "bogenCTRL_middle_scaleX_BogenRotation.msg" "BogenRotation.bnds[8]";
+connectAttr "bogenCTRL_middle_scaleY_BogenRotation.msg" "BogenRotation.bnds[9]";
+connectAttr "bogenCTRL_middle_scaleZ_BogenRotation.msg" "BogenRotation.bnds[10]"
+		;
+connectAttr "bogenCTRL_middle_Bend_BogenRotation.msg" "BogenRotation.bnds[11]";
+connectAttr "bogenCTRL_middle_squashNstretch_BogenRotation.msg" "BogenRotation.bnds[12]"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_visibility_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_visibility_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_visibility.o" "bogenCTRL_middle_visibility_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_visibility_BogenRotation_inputB.o" "bogenCTRL_middle_visibility_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_translateX_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_translateX_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_translateX.o" "bogenCTRL_middle_translateX_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_translateX_BogenRotation_inputB.o" "bogenCTRL_middle_translateX_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_translateY_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_translateY_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_translateY.o" "bogenCTRL_middle_translateY_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_translateY_BogenRotation_inputB.o" "bogenCTRL_middle_translateY_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_translateZ_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_translateZ_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_translateZ.o" "bogenCTRL_middle_translateZ_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_translateZ_BogenRotation_inputB.o" "bogenCTRL_middle_translateZ_BogenRotation.ib"
+		;
+connectAttr "bogenCTRL_middle_rotateX.o" "bogenCTRL_middle_rotate_BogenRotation.iax"
+		;
+connectAttr "bogenCTRL_middle_rotateY.o" "bogenCTRL_middle_rotate_BogenRotation.iay"
+		;
+connectAttr "bogenCTRL_middle_rotateZ.o" "bogenCTRL_middle_rotate_BogenRotation.iaz"
+		;
+connectAttr "BogenRotation.oram" "bogenCTRL_middle_rotate_BogenRotation.acm";
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_rotate_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_rotate_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_rotate_BogenRotation_inputBX.o" "bogenCTRL_middle_rotate_BogenRotation.ibx"
+		;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation_inputBY.o" "bogenCTRL_middle_rotate_BogenRotation.iby"
+		;
+connectAttr "bogenCTRL_middle_rotate_BogenRotation_inputBZ.o" "bogenCTRL_middle_rotate_BogenRotation.ibz"
+		;
+connectAttr "BogenRotation.sam" "bogenCTRL_middle_scaleX_BogenRotation.acm";
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_scaleX_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_scaleX_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_scaleX.o" "bogenCTRL_middle_scaleX_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_scaleX_BogenRotation_inputB.o" "bogenCTRL_middle_scaleX_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.sam" "bogenCTRL_middle_scaleY_BogenRotation.acm";
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_scaleY_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_scaleY_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_scaleY.o" "bogenCTRL_middle_scaleY_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_scaleY_BogenRotation_inputB.o" "bogenCTRL_middle_scaleY_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.sam" "bogenCTRL_middle_scaleZ_BogenRotation.acm";
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_scaleZ_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_scaleZ_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_scaleZ.o" "bogenCTRL_middle_scaleZ_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_scaleZ_BogenRotation_inputB.o" "bogenCTRL_middle_scaleZ_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_Bend_BogenRotation.wa";
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_Bend_BogenRotation.wb";
+connectAttr "bogenCTRL_middle_Bend.o" "bogenCTRL_middle_Bend_BogenRotation.ia";
+connectAttr "bogenCTRL_middle_Bend_BogenRotation_inputB.o" "bogenCTRL_middle_Bend_BogenRotation.ib"
+		;
+connectAttr "BogenRotation.bgwt" "bogenCTRL_middle_squashNstretch_BogenRotation.wa"
+		;
+connectAttr "BogenRotation.fgwt" "bogenCTRL_middle_squashNstretch_BogenRotation.wb"
+		;
+connectAttr "bogenCTRL_middle_squashNstretch.o" "bogenCTRL_middle_squashNstretch_BogenRotation.ia"
+		;
+connectAttr "bogenCTRL_middle_squashNstretch_BogenRotation_inputB.o" "bogenCTRL_middle_squashNstretch_BogenRotation.ib"
+		;
+connectAttr "Bow_BottomCTRLRNfosterParent1.msg" "Bow_BottomCTRLRN.fp";
+connectAttr "sharedReferenceNode.sr" "Bow_BottomCTRLRN.sr";
+connectAttr "tweak1.og[0]" "transferAttributes1.ip[0].ig";
+connectAttr "pairBlend1_inTranslateX1.o" "pairBlend1.itx1";
+connectAttr "pairBlend1_inTranslateY1.o" "pairBlend1.ity1";
+connectAttr "pairBlend1_inTranslateZ1.o" "pairBlend1.itz1";
+connectAttr "pairBlend1_inRotateX1.o" "pairBlend1.irx1";
+connectAttr "pairBlend1_inRotateY1.o" "pairBlend1.iry1";
+connectAttr "pairBlend1_inRotateZ1.o" "pairBlend1.irz1";
 connectAttr "aiStandardSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface2SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface3SG.pa" ":renderPartition.st" -na;
